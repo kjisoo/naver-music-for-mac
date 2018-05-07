@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0BBAD2039A96ACE75A857173 /* Pods_naver_music_for_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */; };
+		1DEBEF20739C8892B0655037 /* Pods_naver_music_for_macTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */; };
+		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
+		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
+		E837905020A086BE006BCBBF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E837904E20A086BE006BCBBF /* MainMenu.xib */; };
+		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E837905820A086BE006BCBBF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E837903F20A086BE006BCBBF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E837904620A086BE006BCBBF;
+			remoteInfo = "naver-music-for-mac";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_naver_music_for_mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C088D875D5E3480DFE3C105 /* Pods-naver-music-for-mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.release.xcconfig"; sourceTree = "<group>"; };
+		8097FFEA310C198CABC3865F /* Pods-naver-music-for-macTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.release.xcconfig"; sourceTree = "<group>"; };
+		83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_naver_music_for_macTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E837904720A086BE006BCBBF /* naver-music-for-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "naver-music-for-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E837904F20A086BE006BCBBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		E837905120A086BE006BCBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E837905220A086BE006BCBBF /* naver_music_for_mac.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = naver_music_for_mac.entitlements; sourceTree = "<group>"; };
+		E837905720A086BE006BCBBF /* naver-music-for-macTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "naver-music-for-macTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = naver_music_for_macTests.swift; sourceTree = "<group>"; };
+		E837905D20A086BE006BCBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.debug.xcconfig"; sourceTree = "<group>"; };
+		FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E837904420A086BE006BCBBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0BBAD2039A96ACE75A857173 /* Pods_naver_music_for_mac.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E837905420A086BE006BCBBF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DEBEF20739C8892B0655037 /* Pods_naver_music_for_macTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		971E7684D73AA1A188553876 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */,
+				7C088D875D5E3480DFE3C105 /* Pods-naver-music-for-mac.release.xcconfig */,
+				FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */,
+				8097FFEA310C198CABC3865F /* Pods-naver-music-for-macTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A63601EE047FE8CDEC93CC09 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */,
+				83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E837903E20A086BE006BCBBF = {
+			isa = PBXGroup;
+			children = (
+				E837904920A086BE006BCBBF /* naver-music-for-mac */,
+				E837905A20A086BE006BCBBF /* naver-music-for-macTests */,
+				E837904820A086BE006BCBBF /* Products */,
+				971E7684D73AA1A188553876 /* Pods */,
+				A63601EE047FE8CDEC93CC09 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		E837904820A086BE006BCBBF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E837904720A086BE006BCBBF /* naver-music-for-mac.app */,
+				E837905720A086BE006BCBBF /* naver-music-for-macTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E837904920A086BE006BCBBF /* naver-music-for-mac */ = {
+			isa = PBXGroup;
+			children = (
+				E837904A20A086BE006BCBBF /* AppDelegate.swift */,
+				E837904C20A086BE006BCBBF /* Assets.xcassets */,
+				E837904E20A086BE006BCBBF /* MainMenu.xib */,
+				E837905120A086BE006BCBBF /* Info.plist */,
+				E837905220A086BE006BCBBF /* naver_music_for_mac.entitlements */,
+			);
+			path = "naver-music-for-mac";
+			sourceTree = "<group>";
+		};
+		E837905A20A086BE006BCBBF /* naver-music-for-macTests */ = {
+			isa = PBXGroup;
+			children = (
+				E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */,
+				E837905D20A086BE006BCBBF /* Info.plist */,
+			);
+			path = "naver-music-for-macTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E837904620A086BE006BCBBF /* naver-music-for-mac */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E837906020A086BE006BCBBF /* Build configuration list for PBXNativeTarget "naver-music-for-mac" */;
+			buildPhases = (
+				050A819515C65D87CB1C0147 /* [CP] Check Pods Manifest.lock */,
+				E837904320A086BE006BCBBF /* Sources */,
+				E837904420A086BE006BCBBF /* Frameworks */,
+				E837904520A086BE006BCBBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "naver-music-for-mac";
+			productName = "naver-music-for-mac";
+			productReference = E837904720A086BE006BCBBF /* naver-music-for-mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E837905620A086BE006BCBBF /* naver-music-for-macTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E837906320A086BE006BCBBF /* Build configuration list for PBXNativeTarget "naver-music-for-macTests" */;
+			buildPhases = (
+				F09BD6A826358EE6859DA7D1 /* [CP] Check Pods Manifest.lock */,
+				E837905320A086BE006BCBBF /* Sources */,
+				E837905420A086BE006BCBBF /* Frameworks */,
+				E837905520A086BE006BCBBF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E837905920A086BE006BCBBF /* PBXTargetDependency */,
+			);
+			name = "naver-music-for-macTests";
+			productName = "naver-music-for-macTests";
+			productReference = E837905720A086BE006BCBBF /* naver-music-for-macTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E837903F20A086BE006BCBBF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Kimjisoo;
+				TargetAttributes = {
+					E837904620A086BE006BCBBF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					E837905620A086BE006BCBBF = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E837904620A086BE006BCBBF;
+					};
+				};
+			};
+			buildConfigurationList = E837904220A086BE006BCBBF /* Build configuration list for PBXProject "naver-music-for-mac" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E837903E20A086BE006BCBBF;
+			productRefGroup = E837904820A086BE006BCBBF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E837904620A086BE006BCBBF /* naver-music-for-mac */,
+				E837905620A086BE006BCBBF /* naver-music-for-macTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E837904520A086BE006BCBBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */,
+				E837905020A086BE006BCBBF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E837905520A086BE006BCBBF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		050A819515C65D87CB1C0147 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-naver-music-for-mac-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F09BD6A826358EE6859DA7D1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-naver-music-for-macTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E837904320A086BE006BCBBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E837905320A086BE006BCBBF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E837905920A086BE006BCBBF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E837904620A086BE006BCBBF /* naver-music-for-mac */;
+			targetProxy = E837905820A086BE006BCBBF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E837904E20A086BE006BCBBF /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E837904F20A086BE006BCBBF /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E837905E20A086BE006BCBBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E837905F20A086BE006BCBBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		E837906120A086BE006BCBBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "naver-music-for-mac/naver_music_for_mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "naver-music-for-mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		E837906220A086BE006BCBBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C088D875D5E3480DFE3C105 /* Pods-naver-music-for-mac.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "naver-music-for-mac/naver_music_for_mac.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "naver-music-for-mac/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-mac";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		E837906420A086BE006BCBBF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "naver-music-for-macTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-macTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/naver-music-for-mac.app/Contents/MacOS/naver-music-for-mac";
+			};
+			name = Debug;
+		};
+		E837906520A086BE006BCBBF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8097FFEA310C198CABC3865F /* Pods-naver-music-for-macTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "naver-music-for-macTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-macTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/naver-music-for-mac.app/Contents/MacOS/naver-music-for-mac";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E837904220A086BE006BCBBF /* Build configuration list for PBXProject "naver-music-for-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E837905E20A086BE006BCBBF /* Debug */,
+				E837905F20A086BE006BCBBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E837906020A086BE006BCBBF /* Build configuration list for PBXNativeTarget "naver-music-for-mac" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E837906120A086BE006BCBBF /* Debug */,
+				E837906220A086BE006BCBBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E837906320A086BE006BCBBF /* Build configuration list for PBXNativeTarget "naver-music-for-macTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E837906420A086BE006BCBBF /* Debug */,
+				E837906520A086BE006BCBBF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E837903F20A086BE006BCBBF /* Project object */;
+}
