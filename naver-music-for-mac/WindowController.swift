@@ -9,6 +9,12 @@
 import Cocoa
 
 class WindowController: NSWindowController {
+  override func windowDidLoad() {
+    super.windowDidLoad()
+    self.window?.titlebarAppearsTransparent = true
+    self.window?.titleVisibility = .hidden
+    self.window?.styleMask.update(with: .fullSizeContentView) 
+  }
 }
 
 extension WindowController: NSWindowDelegate {
