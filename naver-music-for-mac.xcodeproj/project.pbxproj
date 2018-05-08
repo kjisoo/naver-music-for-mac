@@ -33,7 +33,7 @@
 		83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_naver_music_for_macTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0ABE59D20A14C2B00C28E77 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E0ABE59F20A14C4B00C28E77 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		E837904720A086BE006BCBBF /* naver-music-for-mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "naver-music-for-mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E837905120A086BE006BCBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,7 +99,7 @@
 		E837904820A086BE006BCBBF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E837904720A086BE006BCBBF /* naver-music-for-mac.app */,
+				E837904720A086BE006BCBBF /* 네이버 뮤직.app */,
 				E837905720A086BE006BCBBF /* naver-music-for-macTests.xctest */,
 			);
 			name = Products;
@@ -146,7 +146,7 @@
 			);
 			name = "naver-music-for-mac";
 			productName = "naver-music-for-mac";
-			productReference = E837904720A086BE006BCBBF /* naver-music-for-mac.app */;
+			productReference = E837904720A086BE006BCBBF /* 네이버 뮤직.app */;
 			productType = "com.apple.product-type.application";
 		};
 		E837905620A086BE006BCBBF /* naver-music-for-macTests */ = {
@@ -459,7 +459,7 @@
 				INFOPLIST_FILE = "naver-music-for-mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "네이버 뮤직";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -475,7 +475,7 @@
 				INFOPLIST_FILE = "naver-music-for-mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-mac";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "네이버 뮤직";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
