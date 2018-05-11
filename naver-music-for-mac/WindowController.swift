@@ -36,8 +36,8 @@ class WindowController: NSWindowController {
     let splitViewController = SplitViewController()
     
     let sideMenuSplitViewItem = NSSplitViewItem(contentListWithViewController: self.sideMenuViewController)
-    sideMenuSplitViewItem.minimumThickness = 300
-    sideMenuSplitViewItem.maximumThickness = 300
+    sideMenuSplitViewItem.minimumThickness = 200
+    sideMenuSplitViewItem.maximumThickness = 200
     splitViewController.addSplitViewItem(sideMenuSplitViewItem)
     
     let contentSplitViewItem = NSSplitViewItem(viewController: SideMenuViewController())
