@@ -2,18 +2,15 @@
 //  WindowController.swift
 //  naver-music-for-mac
 //
-//  Created by sonny on 2018. 5. 8..
+//  Created by sonny on 2018. 5. 11..
 //  Copyright © 2018년 Kimjisoo. All rights reserved.
 //
 
 import Cocoa
 
 class WindowController: NSWindowController {
-  override func windowDidLoad() {
-    super.windowDidLoad()
-    self.window?.titlebarAppearsTransparent = true
-    self.window?.titleVisibility = .hidden
-    self.window?.styleMask.update(with: .fullSizeContentView) 
+  override var windowNibName: NSNib.Name? {
+    return NSNib.Name("WindowController")
   }
 }
 
