@@ -19,6 +19,13 @@ class WindowController: NSWindowController {
     return SideMenuViewController()
   }()
   
+  lazy var contentTabViewController: NSTabViewController = {
+    let tabViewController = NSTabViewController()
+    tabViewController.tabStyle = .unspecified
+    tabViewController.addTabViewItem(NSTabViewItem(viewController: PlayerController()))
+    return tabViewController
+  }()
+  
   
   // MARK: Life cycle
   override func windowDidLoad() {
@@ -40,7 +47,7 @@ class WindowController: NSWindowController {
     sideMenuSplitViewItem.maximumThickness = 200
     splitViewController.addSplitViewItem(sideMenuSplitViewItem)
     
-    let contentSplitViewItem = NSSplitViewItem(viewController: PlayerController())
+    let contentSplitViewItem = NSSplitViewItem(viewController: contentTabViewController)
     contentSplitViewItem.minimumThickness = 400
     splitViewController.addSplitViewItem(contentSplitViewItem)
     
