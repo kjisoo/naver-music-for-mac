@@ -12,7 +12,44 @@ class WindowController: NSWindowController {
   override var windowNibName: NSNib.Name? {
     return NSNib.Name("WindowController")
   }
+  
+  
+  // MARK: Variables
+  lazy var sideMenuViewController: SideMenuViewController = {
+    return SideMenuViewController()
+  }()
+  
+  
+  // MARK: Life cycle
+  override func windowDidLoad() {
+    super.windowDidLoad()
+    self.window?.titleVisibility = .hidden
+    self.window?.backgroundColor = .white
+    self.setupSplitView()
+  }
+  
+  // MARK: Private Methods
+  private func setupSplitView() {
+    guard let window = self.window else {
+      return
+    }
+    let splitViewController = SplitViewController()
+    
+    let sideMenuSplitViewItem = NSSplitViewItem(contentListWithViewController: self.sideMenuViewController)
+    sideMenuSplitViewItem.minimumThickness = 300
+    sideMenuSplitViewItem.maximumThickness = 300
+    splitViewController.addSplitViewItem(sideMenuSplitViewItem)
+    
+    let contentSplitViewItem = NSSplitViewItem(viewController: SideMenuViewController())
+    contentSplitViewItem.minimumThickness = 500
+    splitViewController.addSplitViewItem(contentSplitViewItem)
+    
+    let frameSize = window.contentRect(forFrameRect: window.frame).size
+    splitViewController.view.setFrameSize(frameSize)
+    window.contentViewController = splitViewController
+  }
 }
+
 
 extension WindowController: NSWindowDelegate {
   func windowShouldClose(_ sender: NSWindow) -> Bool {
@@ -20,3 +57,4 @@ extension WindowController: NSWindowDelegate {
     return false
   }
 }
+
