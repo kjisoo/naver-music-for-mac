@@ -40,8 +40,8 @@ class WindowController: NSWindowController {
     sideMenuSplitViewItem.maximumThickness = 200
     splitViewController.addSplitViewItem(sideMenuSplitViewItem)
     
-    let contentSplitViewItem = NSSplitViewItem(viewController: SideMenuViewController())
-    contentSplitViewItem.minimumThickness = 500
+    let contentSplitViewItem = NSSplitViewItem(viewController: PlayerController())
+    contentSplitViewItem.minimumThickness = 400
     splitViewController.addSplitViewItem(contentSplitViewItem)
     
     let frameSize = window.contentRect(forFrameRect: window.frame).size
