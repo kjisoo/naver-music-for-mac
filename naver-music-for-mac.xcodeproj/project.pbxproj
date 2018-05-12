@@ -24,6 +24,10 @@
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
+		E85B8D4D20A6C39A007D3C90 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D4C20A6C39A007D3C90 /* Music.swift */; };
+		E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D4E20A6C680007D3C90 /* Album.swift */; };
+		E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5020A6C696007D3C90 /* Artist.swift */; };
+		E85B8D5320A6C6DF007D3C90 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5220A6C6DF007D3C90 /* Playlist.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +65,10 @@
 		E837905720A086BE006BCBBF /* naver-music-for-macTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "naver-music-for-macTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = naver_music_for_macTests.swift; sourceTree = "<group>"; };
 		E837905D20A086BE006BCBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E85B8D4C20A6C39A007D3C90 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
+		E85B8D4E20A6C680007D3C90 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
+		E85B8D5020A6C696007D3C90 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		E85B8D5220A6C6DF007D3C90 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
 		E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -167,6 +175,7 @@
 		E837904920A086BE006BCBBF /* naver-music-for-mac */ = {
 			isa = PBXGroup;
 			children = (
+				E85B8D4B20A6C38E007D3C90 /* Models */,
 				0085C9E520A599AF00CEFCA5 /* Component */,
 				0085C9DF20A592D800CEFCA5 /* Screens */,
 				E837904A20A086BE006BCBBF /* AppDelegate.swift */,
@@ -187,6 +196,17 @@
 				E837905D20A086BE006BCBBF /* Info.plist */,
 			);
 			path = "naver-music-for-macTests";
+			sourceTree = "<group>";
+		};
+		E85B8D4B20A6C38E007D3C90 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E85B8D4C20A6C39A007D3C90 /* Music.swift */,
+				E85B8D4E20A6C680007D3C90 /* Album.swift */,
+				E85B8D5020A6C696007D3C90 /* Artist.swift */,
+				E85B8D5220A6C6DF007D3C90 /* Playlist.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,9 +413,13 @@
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
 				0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
+				E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */,
+				E85B8D4D20A6C39A007D3C90 /* Music.swift in Sources */,
 				0085C9F120A5AE1500CEFCA5 /* MusicCoverViewController.swift in Sources */,
 				0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */,
 				0085C9E920A5A02300CEFCA5 /* ResponsiveButton.swift in Sources */,
+				E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */,
+				E85B8D5320A6C6DF007D3C90 /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
