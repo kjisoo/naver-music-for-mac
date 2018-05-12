@@ -28,6 +28,9 @@
 		E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D4E20A6C680007D3C90 /* Album.swift */; };
 		E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5020A6C696007D3C90 /* Artist.swift */; };
 		E85B8D5320A6C6DF007D3C90 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5220A6C6DF007D3C90 /* Playlist.swift */; };
+		E85B8D5720A715AA007D3C90 /* TOPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5520A715AA007D3C90 /* TOPViewController.swift */; };
+		E85B8D5820A715AA007D3C90 /* TOPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85B8D5620A715AA007D3C90 /* TOPViewController.xib */; };
+		E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		E85B8D4E20A6C680007D3C90 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		E85B8D5020A6C696007D3C90 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		E85B8D5220A6C6DF007D3C90 /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		E85B8D5520A715AA007D3C90 /* TOPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPViewController.swift; sourceTree = "<group>"; };
+		E85B8D5620A715AA007D3C90 /* TOPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TOPViewController.xib; sourceTree = "<group>"; };
+		E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPTableCellView.swift; sourceTree = "<group>"; };
 		E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +102,7 @@
 		0085C9DF20A592D800CEFCA5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E85B8D5420A7159A007D3C90 /* TOP */,
 				0085C9EA20A5AC9300CEFCA5 /* Player */,
 				0085C9E020A5946F00CEFCA5 /* SideMenu */,
 			);
@@ -209,6 +216,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E85B8D5420A7159A007D3C90 /* TOP */ = {
+			isa = PBXGroup;
+			children = (
+				E85B8D5520A715AA007D3C90 /* TOPViewController.swift */,
+				E85B8D5620A715AA007D3C90 /* TOPViewController.xib */,
+				E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */,
+			);
+			path = TOP;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -298,6 +315,7 @@
 			files = (
 				0085C9F220A5AE1500CEFCA5 /* MusicCoverViewController.xib in Resources */,
 				0085C9E420A5948900CEFCA5 /* SideMenuViewController.xib in Resources */,
+				E85B8D5820A715AA007D3C90 /* TOPViewController.xib in Resources */,
 				E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */,
 				0085C9EE20A5AD7900CEFCA5 /* PlayListViewController.xib in Resources */,
 				E0ABE5C420A57A8800C28E77 /* WindowController.xib in Resources */,
@@ -409,6 +427,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
+				E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */,
+				E85B8D5720A715AA007D3C90 /* TOPViewController.swift in Sources */,
 				0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
 				0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */,
