@@ -1,5 +1,5 @@
 //
-//  Singer.swift
+//  Artist.swift
 //  naver-music-for-mac
 //
 //  Created by A on 2018. 5. 12..
@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
+
+class Artist: Object {
+  @objc dynamic var id: String?
+  @objc dynamic var name: String?
+}

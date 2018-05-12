@@ -7,3 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
+
+class Playlist: Object {
+  @objc dynamic var name: String?
+  @objc dynamic var musics: [Music] = []
+}
