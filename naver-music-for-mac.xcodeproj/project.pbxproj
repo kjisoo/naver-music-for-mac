@@ -33,6 +33,9 @@
 		E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */; };
 		E85B8D5D20A7FD72007D3C90 /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5C20A7FD72007D3C90 /* PlayerService.swift */; };
 		E85B8D5F20A7FEBA007D3C90 /* MusicBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5E20A7FEBA007D3C90 /* MusicBrowser.swift */; };
+		E85B8D8C20A81C25007D3C90 /* TOPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D8B20A81C25007D3C90 /* TOPParser.swift */; };
+		E85B8D9120A81F41007D3C90 /* TOPParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D9020A81F41007D3C90 /* TOPParserSpec.swift */; };
+		E85B8D9420A82469007D3C90 /* TOP.html in Resources */ = {isa = PBXBuildFile; fileRef = E85B8D9320A82469007D3C90 /* TOP.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +82,9 @@
 		E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPTableCellView.swift; sourceTree = "<group>"; };
 		E85B8D5C20A7FD72007D3C90 /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
 		E85B8D5E20A7FEBA007D3C90 /* MusicBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrowser.swift; sourceTree = "<group>"; };
+		E85B8D8B20A81C25007D3C90 /* TOPParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPParser.swift; sourceTree = "<group>"; };
+		E85B8D9020A81F41007D3C90 /* TOPParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPParserSpec.swift; sourceTree = "<group>"; };
+		E85B8D9320A82469007D3C90 /* TOP.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TOP.html; sourceTree = "<group>"; };
 		E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,6 +210,7 @@
 		E837905A20A086BE006BCBBF /* naver-music-for-macTests */ = {
 			isa = PBXGroup;
 			children = (
+				E85B8D8F20A81F28007D3C90 /* Parser */,
 				E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */,
 				E837905D20A086BE006BCBBF /* Info.plist */,
 			);
@@ -234,10 +241,36 @@
 		E85B8D5B20A73F20007D3C90 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E85B8D8A20A81C16007D3C90 /* Parser */,
 				E85B8D5C20A7FD72007D3C90 /* PlayerService.swift */,
 				E85B8D5E20A7FEBA007D3C90 /* MusicBrowser.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		E85B8D8A20A81C16007D3C90 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				E85B8D8B20A81C25007D3C90 /* TOPParser.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		E85B8D8F20A81F28007D3C90 /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				E85B8D9220A8243A007D3C90 /* HTML */,
+				E85B8D9020A81F41007D3C90 /* TOPParserSpec.swift */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		E85B8D9220A8243A007D3C90 /* HTML */ = {
+			isa = PBXGroup;
+			children = (
+				E85B8D9320A82469007D3C90 /* TOP.html */,
+			);
+			path = HTML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +374,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E85B8D9420A82469007D3C90 /* TOP.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -458,6 +492,7 @@
 				E85B8D4D20A6C39A007D3C90 /* Music.swift in Sources */,
 				0085C9F120A5AE1500CEFCA5 /* MusicCoverViewController.swift in Sources */,
 				0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */,
+				E85B8D8C20A81C25007D3C90 /* TOPParser.swift in Sources */,
 				0085C9E920A5A02300CEFCA5 /* ResponsiveButton.swift in Sources */,
 				E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */,
 				E85B8D5D20A7FD72007D3C90 /* PlayerService.swift in Sources */,
@@ -470,6 +505,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */,
+				E85B8D9120A81F41007D3C90 /* TOPParserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,6 +637,7 @@
 				INFOPLIST_FILE = "naver-music-for-mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-mac";
+				PRODUCT_MODULE_NAME = naver_music_for_mac;
 				PRODUCT_NAME = "네이버 뮤직";
 				SWIFT_VERSION = 4.0;
 			};
@@ -617,6 +654,7 @@
 				INFOPLIST_FILE = "naver-music-for-mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-mac";
+				PRODUCT_MODULE_NAME = naver_music_for_mac;
 				PRODUCT_NAME = "네이버 뮤직";
 				SWIFT_VERSION = 4.0;
 			};
@@ -635,7 +673,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-macTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/naver-music-for-mac.app/Contents/MacOS/naver-music-for-mac";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/네이버 뮤직.app/Contents/MacOS/네이버 뮤직";
 			};
 			name = Debug;
 		};
@@ -652,7 +690,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "net.jisoo.naver-music-for-macTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/naver-music-for-mac.app/Contents/MacOS/naver-music-for-mac";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/네이버 뮤직.app/Contents/MacOS/네이버 뮤직";
 			};
 			name = Release;
 		};
