@@ -14,6 +14,15 @@ target 'naver-music-for-mac' do
   # Database
   pod 'RealmSwift'
 
+  # Network
+  pod 'Alamofire', '~> 4.7'
+
+  # Image downloader
+  pod 'Kingfisher', '~> 4.7'
+
+  # HTML Parser
+  pod 'Kanna', '~> 4.0.0'
+
   target 'naver-music-for-macTests' do
     inherit! :search_paths
     # Pods for testing

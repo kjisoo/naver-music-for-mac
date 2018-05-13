@@ -1,4 +1,7 @@
 PODS:
+  - Alamofire (4.7.2)
+  - Kanna (4.0.0)
+  - Kingfisher (4.7.0)
   - Nimble (7.0.3)
   - Quick (1.2.0)
   - Realm (3.2.0):
@@ -15,6 +18,9 @@ PODS:
     - RxSwift (~> 4.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - Kanna (~> 4.0.0)
+  - Kingfisher (~> 4.7)
   - Nimble
   - Quick
   - RealmSwift
@@ -25,6 +31,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Kanna
+    - Kingfisher
     - Nimble
     - Quick
     - Realm
@@ -35,6 +44,9 @@ SPEC REPOS:
     - RxTest
 
 SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
+  Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   Realm: ae552b9b9eca3a12374a589fa842f220e286a80a
@@ -44,6 +56,6 @@ SPEC CHECKSUMS:
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
 
-PODFILE CHECKSUM: 80aecbfa16b493e8fe64806522c03aac7f8d8607
+PODFILE CHECKSUM: aed824f76f22e25b8c7dab00ff52d454a38bed9d
 
 COCOAPODS: 1.5.0
