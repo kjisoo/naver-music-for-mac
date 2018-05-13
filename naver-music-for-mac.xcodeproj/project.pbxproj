@@ -31,6 +31,8 @@
 		E85B8D5720A715AA007D3C90 /* TOPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5520A715AA007D3C90 /* TOPViewController.swift */; };
 		E85B8D5820A715AA007D3C90 /* TOPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E85B8D5620A715AA007D3C90 /* TOPViewController.xib */; };
 		E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */; };
+		E85B8D5D20A7FD72007D3C90 /* PlayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5C20A7FD72007D3C90 /* PlayerService.swift */; };
+		E85B8D5F20A7FEBA007D3C90 /* MusicBrowser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5E20A7FEBA007D3C90 /* MusicBrowser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		E85B8D5520A715AA007D3C90 /* TOPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPViewController.swift; sourceTree = "<group>"; };
 		E85B8D5620A715AA007D3C90 /* TOPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TOPViewController.xib; sourceTree = "<group>"; };
 		E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPTableCellView.swift; sourceTree = "<group>"; };
+		E85B8D5C20A7FD72007D3C90 /* PlayerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerService.swift; sourceTree = "<group>"; };
+		E85B8D5E20A7FEBA007D3C90 /* MusicBrowser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrowser.swift; sourceTree = "<group>"; };
 		E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,6 +186,7 @@
 		E837904920A086BE006BCBBF /* naver-music-for-mac */ = {
 			isa = PBXGroup;
 			children = (
+				E85B8D5B20A73F20007D3C90 /* Core */,
 				E85B8D4B20A6C38E007D3C90 /* Models */,
 				0085C9E520A599AF00CEFCA5 /* Component */,
 				0085C9DF20A592D800CEFCA5 /* Screens */,
@@ -224,6 +229,15 @@
 				E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */,
 			);
 			path = TOP;
+			sourceTree = "<group>";
+		};
+		E85B8D5B20A73F20007D3C90 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E85B8D5C20A7FD72007D3C90 /* PlayerService.swift */,
+				E85B8D5E20A7FEBA007D3C90 /* MusicBrowser.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,6 +442,7 @@
 			files = (
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */,
+				E85B8D5F20A7FEBA007D3C90 /* MusicBrowser.swift in Sources */,
 				E85B8D5720A715AA007D3C90 /* TOPViewController.swift in Sources */,
 				0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
@@ -439,6 +454,7 @@
 				0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */,
 				0085C9E920A5A02300CEFCA5 /* ResponsiveButton.swift in Sources */,
 				E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */,
+				E85B8D5D20A7FD72007D3C90 /* PlayerService.swift in Sources */,
 				E85B8D5320A6C6DF007D3C90 /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
