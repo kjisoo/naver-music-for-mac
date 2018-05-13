@@ -12,4 +12,8 @@ import RealmSwift
 class Artist: Object {
   @objc dynamic var id: String?
   @objc dynamic var name: String?
+  
+  override class func primaryKey() -> String? {
+    return "id"
+  }
 }

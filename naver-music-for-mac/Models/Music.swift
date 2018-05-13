@@ -16,4 +16,8 @@ class Music: Object {
   @objc dynamic var coverImageURL: String?
   let artist = LinkingObjects(fromType: Artist.self, property: "musics")
   let album = LinkingObjects(fromType: Album.self, property: "musics")
+  
+  override class func primaryKey() -> String? {
+    return "id"
+  }
 }
