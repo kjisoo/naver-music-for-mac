@@ -38,6 +38,7 @@
 		E85B8D8C20A81C25007D3C90 /* TOPParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D8B20A81C25007D3C90 /* TOPParser.swift */; };
 		E85B8D9120A81F41007D3C90 /* TOPParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D9020A81F41007D3C90 /* TOPParserSpec.swift */; };
 		E85B8D9420A82469007D3C90 /* TOP.html in Resources */ = {isa = PBXBuildFile; fileRef = E85B8D9320A82469007D3C90 /* TOP.html */; };
+		E874D24A20A9E650009534E3 /* AlbumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E874D24920A9E650009534E3 /* AlbumSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,7 @@
 		E85B8D8B20A81C25007D3C90 /* TOPParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPParser.swift; sourceTree = "<group>"; };
 		E85B8D9020A81F41007D3C90 /* TOPParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPParserSpec.swift; sourceTree = "<group>"; };
 		E85B8D9320A82469007D3C90 /* TOP.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TOP.html; sourceTree = "<group>"; };
+		E874D24920A9E650009534E3 /* AlbumSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSpec.swift; sourceTree = "<group>"; };
 		E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				E0ABE5C820A9AEB500C28E77 /* Core */,
+				E874D24820A9E640009534E3 /* Models */,
 				E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */,
 				E837905D20A086BE006BCBBF /* Info.plist */,
 			);
@@ -293,6 +296,14 @@
 				E85B8D9320A82469007D3C90 /* TOP.html */,
 			);
 			path = HTML;
+			sourceTree = "<group>";
+		};
+		E874D24820A9E640009534E3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E874D24920A9E650009534E3 /* AlbumSpec.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -537,6 +548,7 @@
 			files = (
 				E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */,
 				E0ABE5CA20A9AEE500C28E77 /* MusicBrowserSpec.swift in Sources */,
+				E874D24A20A9E650009534E3 /* AlbumSpec.swift in Sources */,
 				E85B8D9120A81F41007D3C90 /* TOPParserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
