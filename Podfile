@@ -13,9 +13,10 @@ target 'naver-music-for-mac' do
 
   # Database
   pod 'RealmSwift'
+  pod 'RxRealmDataSources'
 
   # Network
-  pod 'Alamofire', '~> 4.7'
+  pod 'Moya/RxSwift', '~> 11.0'
 
   # Image downloader
   pod 'Kingfisher', '~> 4.7'
