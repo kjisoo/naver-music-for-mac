@@ -21,6 +21,7 @@
 		E0ABE5A620A5795900C28E77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE5A520A5795900C28E77 /* MainMenu.xib */; };
 		E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5C120A57A8800C28E77 /* WindowController.swift */; };
 		E0ABE5C420A57A8800C28E77 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE5C220A57A8800C28E77 /* WindowController.xib */; };
+		E0ABE5C720A9534200C28E77 /* NaverPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5C620A9534200C28E77 /* NaverPage.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -65,6 +66,7 @@
 		E0ABE5A520A5795900C28E77 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		E0ABE5C120A57A8800C28E77 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		E0ABE5C220A57A8800C28E77 /* WindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WindowController.xib; sourceTree = "<group>"; };
+		E0ABE5C620A9534200C28E77 /* NaverPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverPage.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +171,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E0ABE5C520A9530700C28E77 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				E0ABE5C620A9534200C28E77 /* NaverPage.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		E837903E20A086BE006BCBBF = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +202,7 @@
 		E837904920A086BE006BCBBF /* naver-music-for-mac */ = {
 			isa = PBXGroup;
 			children = (
+				E0ABE5C520A9530700C28E77 /* Network */,
 				E85B8D5B20A73F20007D3C90 /* Core */,
 				E85B8D4B20A6C38E007D3C90 /* Models */,
 				0085C9E520A599AF00CEFCA5 /* Component */,
@@ -493,6 +504,7 @@
 				E85B8D5F20A7FEBA007D3C90 /* MusicBrowser.swift in Sources */,
 				E85B8D5720A715AA007D3C90 /* TOPViewController.swift in Sources */,
 				0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */,
+				E0ABE5C720A9534200C28E77 /* NaverPage.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
 				0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
