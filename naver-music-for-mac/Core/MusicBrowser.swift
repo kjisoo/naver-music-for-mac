@@ -30,8 +30,8 @@ class MusicBrowser: MusicBrowserType {
   }
   
   func search(top type: TOPType) -> Single<[Music]> {
-    return Single.zip(self.provider.rx.request(.top(domain: type.rawValue, page: 1)),
-                      self.provider.rx.request(.top(domain: type.rawValue, page: 2)))
+    return Single.zip(self.provider.rx.request(.top(domain: type.rawValue, page: 1)).filterSuccessfulStatusCodes(),
+                      self.provider.rx.request(.top(domain: type.rawValue, page: 2)).filterSuccessfulStatusCodes())
       .map { [weak self] (firstResponse, secondResponse) -> [Music]  in
         if let `self` = self,
           let firstResponseString = String(data: firstResponse.data, encoding: .utf8),

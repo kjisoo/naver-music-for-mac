@@ -15,24 +15,60 @@ import RxBlocking
 
 class MusicBrowserSpec: QuickSpec {
   override func spec() {
-    let endpointClosure = { (target: NaverPage) -> Endpoint in
-      let data = (try! String(contentsOfFile: Bundle(for: type(of: self)).path(forResource: "TOP", ofType: "html")!)).data(using: .utf8)!
-      let url = URL(target: target).absoluteString
-      return Endpoint(url: url,
-                      sampleResponseClosure: {.networkResponse(200, data)},
-                      method: target.method,
-                      task: target.task,
-                      httpHeaderFields: target.headers)
-    }
-    let provider = MoyaProvider<NaverPage>(endpointClosure: endpointClosure)
+   
     var musicBrowser: MusicBrowser!
-    beforeEach {
-      musicBrowser = MusicBrowser(provider: provider)
+    
+    context("Response success") {
+      beforeEach {
+        let endpointClosure = { (target: NaverPage) -> Endpoint in
+          let data = (try! String(contentsOfFile: Bundle(for: type(of: self)).path(forResource: "TOP", ofType: "html")!)).data(using: .utf8)!
+          let url = URL(target: target).absoluteString
+          return Endpoint(url: url,
+                          sampleResponseClosure: {.networkResponse(200, data)},
+                          method: target.method,
+                          task: target.task,
+                          httpHeaderFields: target.headers)
+        }
+        let stubClosure = { (target: TargetType) -> Moya.StubBehavior in
+          return .immediate
+        }
+        let provider = MoyaProvider<NaverPage>(endpointClosure: endpointClosure, stubClosure: stubClosure)
+        musicBrowser = MusicBrowser(provider: provider)
+      }
+      
+      it("two page request and merge") {
+        let musics = try? musicBrowser.search(top: .total).toBlocking().first()
+        expect(musics??.count).to(equal(100))
+      }
     }
     
-    it("two page request and merge") {
-      let musics = try? musicBrowser.search(top: .total).toBlocking().first()
-      expect(musics??.count).to(equal(100))
+    
+    context("Response error") {
+      beforeEach {
+        let endpointClosure = { (target: NaverPage) -> Endpoint in
+          let url = URL(target: target).absoluteString
+          return Endpoint(url: url,
+                          sampleResponseClosure: {.networkResponse(400, Data())},
+                          method: target.method,
+                          task: target.task,
+                          httpHeaderFields: target.headers)
+        }
+        let stubClosure = { (target: TargetType) -> Moya.StubBehavior in
+          return .immediate
+        }
+        let provider = MoyaProvider<NaverPage>(endpointClosure: endpointClosure, stubClosure:stubClosure)
+        musicBrowser = MusicBrowser(provider: provider)
+      }
+      
+      it("request failed") {
+        var occurredError = false
+        _ = try? musicBrowser.search(top: .total).subscribe(onSuccess: { (a) in
+          fail()
+        }, onError: { (e) in
+          occurredError = true
+        })
+        expect(occurredError).toEventually(beTrue())
+      }
     }
   }
 }
