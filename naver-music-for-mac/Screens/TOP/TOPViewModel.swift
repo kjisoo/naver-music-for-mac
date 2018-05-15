@@ -38,7 +38,7 @@ class TOPViewModel {
         }
         return Observable.from(object: playList)
       }
-    }.map{ $0.musics.enumerated().map { TOPCellViewModel(music: $1, rank: $0) } }
+    }.map{ $0.musics.enumerated().map { TOPCellViewModel(music: $1, rank: $0+1) } }
     
     self.topType.subscribe(onNext: { [weak self] type in
       if let `self` = self {
