@@ -14,20 +14,36 @@ class PlayListViewController: NSViewController {
   private var cellViewModels: [PlayListCellViewModel] = []
   private let viewModel = PlayListViewModel()
   private let disposeBag = DisposeBag()
-  
-  // MARK: Outlets
-  @IBOutlet weak var tableView: NSTableView!
-  
   override var nibName: NSNib.Name? {
     return NSNib.Name("PlayListViewController")
   }
   
+  
+  // MARK: Outlets
+  @IBOutlet weak var tableView: NSTableView!
+  
+  
+  // MARK: Life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
     viewModel.playListViewModels.subscribe(onNext: { [weak self] in
       self?.cellViewModels = $0
       self?.tableView.reloadData()
     }).disposed(by: self.disposeBag)
+  }
+  
+  
+  // MARK: IBActions
+  @IBAction func delete(sender: NSButton) {
+    self.viewModel.deleteSelectedList()
+  }
+  
+  @IBAction func selectAll(sender: NSButton) {
+    if case NSControl.StateValue.on = sender.state {
+      self.viewModel.selectAll()
+    } else if case NSControl.StateValue.off = sender.state {
+      self.viewModel.deselectAll()
+    }
   }
 }
 
@@ -44,5 +60,8 @@ extension PlayListViewController: NSTableViewDataSource {
 }
 
 extension PlayListViewController: NSTableViewDelegate {
-  
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    self.viewModel.play(index: row)
+    return false
+  }
 }
