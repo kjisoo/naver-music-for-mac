@@ -8,9 +8,10 @@
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="TOPViewController" customModule="네이버_뮤직" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="TOPViewController" customModule="naver_music_for_mac" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="oby-Qd-aD8" id="WK0-Rb-QCR"/>
+                <outlet property="topTypeSegmentedControl" destination="9lc-Ga-te7" id="Jv7-E3-DSo"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -21,14 +22,13 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9lc-Ga-te7">
-                    <rect key="frame" x="145" y="405" width="319" height="25"/>
+                    <rect key="frame" x="208" y="405" width="194" height="25"/>
                     <segmentedCell key="cell" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="ME9-JW-8Jo">
                         <font key="font" metaFont="systemBlack" size="24"/>
                         <segments>
-                            <segment label="전체"/>
-                            <segment label="국내" selected="YES" tag="1"/>
+                            <segment label="전체" selected="YES"/>
+                            <segment label="국내" tag="1"/>
                             <segment label="해외"/>
-                            <segment label="뮤지션리그"/>
                         </segments>
                     </segmentedCell>
                 </segmentedControl>
@@ -57,7 +57,7 @@
                                         </textFieldCell>
                                         <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                         <prototypeCellViews>
-                                            <tableCellView identifier="TOPTableCellView" id="veZ-21-Ksk" customClass="TOPTableCellView" customModule="네이버_뮤직" customModuleProvider="target">
+                                            <tableCellView identifier="TOPTableCellView" id="veZ-21-Ksk" customClass="TOPTableCellView" customModule="naver_music_for_mac" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="606" height="84"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <subviews>

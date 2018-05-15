@@ -8,6 +8,7 @@
 
 import Cocoa
 import RxSwift
+import RxCocoa
 import Moya
 
 class TOPViewController: NSViewController {
@@ -18,6 +19,7 @@ class TOPViewController: NSViewController {
 
   // MARK: Outlets
   @IBOutlet weak var tableView: NSTableView!
+  @IBOutlet weak var topTypeSegmentedControl: NSSegmentedControl!
   
   override var nibName: NSNib.Name? {
     return NSNib.Name("TOPViewController")
@@ -33,6 +35,23 @@ class TOPViewController: NSViewController {
       self?.cellViewModels = viewModels
       self?.tableView.reloadData()
     }).disposed(by: self.disposeBag)
+    
+    self.topTypeSegmentedControl.rx.controlProperty(getter: { $0.selectedSegment }, setter: { _,_ in  })
+      .map { (index) -> TOPType in
+        if index == 0 {
+          return TOPType.total
+        } else if index == 1 {
+          return TOPType.domestic
+        } else if index == 2 {
+          return TOPType.oversea
+        } else {
+          return TOPType.total
+        }
+      }
+      .subscribe(onNext: { [weak self] type in
+        self?.viewModel.topType.onNext(type)
+      })
+      .disposed(by: self.disposeBag)
   }
 }
 
