@@ -23,6 +23,8 @@
 		E0ABE5C420A57A8800C28E77 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE5C220A57A8800C28E77 /* WindowController.xib */; };
 		E0ABE5C720A9534200C28E77 /* NaverPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5C620A9534200C28E77 /* NaverPage.swift */; };
 		E0ABE5CA20A9AEE500C28E77 /* MusicBrowserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5C920A9AEE500C28E77 /* MusicBrowserSpec.swift */; };
+		E0ABE5CC20AA714700C28E77 /* TOPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5CB20AA714700C28E77 /* TOPViewModel.swift */; };
+		E0ABE5CE20AA715800C28E77 /* TOPCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -70,6 +72,8 @@
 		E0ABE5C220A57A8800C28E77 /* WindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WindowController.xib; sourceTree = "<group>"; };
 		E0ABE5C620A9534200C28E77 /* NaverPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverPage.swift; sourceTree = "<group>"; };
 		E0ABE5C920A9AEE500C28E77 /* MusicBrowserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrowserSpec.swift; sourceTree = "<group>"; };
+		E0ABE5CB20AA714700C28E77 /* TOPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPViewModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPCellViewModel.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -259,6 +263,8 @@
 				E85B8D5520A715AA007D3C90 /* TOPViewController.swift */,
 				E85B8D5620A715AA007D3C90 /* TOPViewController.xib */,
 				E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */,
+				E0ABE5CB20AA714700C28E77 /* TOPViewModel.swift */,
+				E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */,
 			);
 			path = TOP;
 			sourceTree = "<group>";
@@ -523,6 +529,7 @@
 			files = (
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */,
+				E0ABE5CC20AA714700C28E77 /* TOPViewModel.swift in Sources */,
 				E85B8D5F20A7FEBA007D3C90 /* MusicBrowser.swift in Sources */,
 				E85B8D5720A715AA007D3C90 /* TOPViewController.swift in Sources */,
 				0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */,
@@ -536,6 +543,7 @@
 				0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */,
 				E85B8D8C20A81C25007D3C90 /* TOPParser.swift in Sources */,
 				0085C9E920A5A02300CEFCA5 /* ResponsiveButton.swift in Sources */,
+				E0ABE5CE20AA715800C28E77 /* TOPCellViewModel.swift in Sources */,
 				E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */,
 				E85B8D5D20A7FD72007D3C90 /* PlayerService.swift in Sources */,
 				E85B8D5320A6C6DF007D3C90 /* Playlist.swift in Sources */,

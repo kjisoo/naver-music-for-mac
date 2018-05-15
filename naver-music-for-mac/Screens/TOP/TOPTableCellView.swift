@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Kingfisher
 
 class TOPTableCellView: NSTableCellView {
   @IBOutlet weak var coverImageView: NSImageView!
@@ -14,4 +15,15 @@ class TOPTableCellView: NSTableCellView {
   @IBOutlet weak var name: NSTextField!
   @IBOutlet weak var albumName: NSTextField!
   @IBOutlet weak var optionButton: NSButton!
+  
+  var viewModel: TOPCellViewModel? {
+    didSet {
+      if let viewModel = self.viewModel {
+        self.name.stringValue = viewModel.name
+        self.albumName.stringValue = viewModel.albumName
+        self.coverImageView.kf.setImage(with: viewModel.coverImageURL)
+        self.rank.stringValue = viewModel.rank
+      }
+    }
+  }
 }

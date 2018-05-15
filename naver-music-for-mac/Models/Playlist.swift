@@ -11,7 +11,7 @@ import RealmSwift
 
 class Playlist: Object {
   @objc dynamic var name: String?
-  @objc dynamic var musics: [Music] = []
+  let musics = List<Music>()
   
   override class func primaryKey() -> String? {
     return "name"
