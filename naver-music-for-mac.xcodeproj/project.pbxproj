@@ -27,6 +27,7 @@
 		E0ABE5CE20AA715800C28E77 /* TOPCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */; };
 		E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */; };
 		E0ABE5D420AADB5800C28E77 /* PlayListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */; };
+		E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -78,6 +79,7 @@
 		E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPCellViewModel.swift; sourceTree = "<group>"; };
 		E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewModel.swift; sourceTree = "<group>"; };
 		E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellView.swift; sourceTree = "<group>"; };
+		E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellViewModel.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				0085C9EB20A5AD7900CEFCA5 /* PlayListViewController.swift */,
 				0085C9EC20A5AD7900CEFCA5 /* PlayListViewController.xib */,
 				E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */,
+				E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */,
 				0085C9EF20A5AE1500CEFCA5 /* MusicCoverViewController.swift */,
 				0085C9F020A5AE1500CEFCA5 /* MusicCoverViewController.xib */,
 				0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */,
@@ -542,6 +545,7 @@
 				E0ABE5D420AADB5800C28E77 /* PlayListCellView.swift in Sources */,
 				0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */,
 				E0ABE5C720A9534200C28E77 /* NaverPage.swift in Sources */,
+				E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
 				0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
