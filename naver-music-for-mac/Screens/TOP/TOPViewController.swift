@@ -83,7 +83,7 @@ extension TOPViewController: NSTableViewDataSource {
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
     let view: TOPTableCellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TOPTableCellView"), owner: self) as! TOPTableCellView
     view.viewModel = self.cellViewModels[row]
-    return view;
+    return view
   }
 }
 

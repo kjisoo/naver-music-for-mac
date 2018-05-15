@@ -13,3 +13,18 @@ class PlayListViewController: NSViewController {
     return NSNib.Name("PlayListViewController")
   }
 }
+
+extension PlayListViewController: NSTableViewDataSource {
+  func numberOfRows(in tableView: NSTableView) -> Int {
+    return 0
+  }
+  
+  func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    let view: TOPTableCellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "PlayListCellView"), owner: self) as! TOPTableCellView
+    return view
+  }
+}
+
+extension PlayListViewController: NSTableViewDelegate {
+  
+}

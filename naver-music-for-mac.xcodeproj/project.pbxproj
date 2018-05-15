@@ -25,6 +25,8 @@
 		E0ABE5CA20A9AEE500C28E77 /* MusicBrowserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5C920A9AEE500C28E77 /* MusicBrowserSpec.swift */; };
 		E0ABE5CC20AA714700C28E77 /* TOPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5CB20AA714700C28E77 /* TOPViewModel.swift */; };
 		E0ABE5CE20AA715800C28E77 /* TOPCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */; };
+		E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */; };
+		E0ABE5D420AADB5800C28E77 /* PlayListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -74,6 +76,8 @@
 		E0ABE5C920A9AEE500C28E77 /* MusicBrowserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicBrowserSpec.swift; sourceTree = "<group>"; };
 		E0ABE5CB20AA714700C28E77 /* TOPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPViewModel.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPCellViewModel.swift; sourceTree = "<group>"; };
+		E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewModel.swift; sourceTree = "<group>"; };
+		E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellView.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -150,8 +154,10 @@
 		0085C9EA20A5AC9300CEFCA5 /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */,
 				0085C9EB20A5AD7900CEFCA5 /* PlayListViewController.swift */,
 				0085C9EC20A5AD7900CEFCA5 /* PlayListViewController.xib */,
+				E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */,
 				0085C9EF20A5AE1500CEFCA5 /* MusicCoverViewController.swift */,
 				0085C9F020A5AE1500CEFCA5 /* MusicCoverViewController.xib */,
 				0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */,
@@ -260,11 +266,11 @@
 		E85B8D5420A7159A007D3C90 /* TOP */ = {
 			isa = PBXGroup;
 			children = (
+				E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */,
 				E85B8D5520A715AA007D3C90 /* TOPViewController.swift */,
 				E85B8D5620A715AA007D3C90 /* TOPViewController.xib */,
-				E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */,
 				E0ABE5CB20AA714700C28E77 /* TOPViewModel.swift */,
-				E0ABE5CD20AA715800C28E77 /* TOPCellViewModel.swift */,
+				E85B8D5920A71EA0007D3C90 /* TOPTableCellView.swift */,
 			);
 			path = TOP;
 			sourceTree = "<group>";
@@ -527,11 +533,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */,
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */,
 				E0ABE5CC20AA714700C28E77 /* TOPViewModel.swift in Sources */,
 				E85B8D5F20A7FEBA007D3C90 /* MusicBrowser.swift in Sources */,
 				E85B8D5720A715AA007D3C90 /* TOPViewController.swift in Sources */,
+				E0ABE5D420AADB5800C28E77 /* PlayListCellView.swift in Sources */,
 				0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */,
 				E0ABE5C720A9534200C28E77 /* NaverPage.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
