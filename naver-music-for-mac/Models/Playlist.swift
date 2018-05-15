@@ -16,4 +16,16 @@ class Playlist: Object {
   override class func primaryKey() -> String? {
     return "name"
   }
+  
+  static func createIfNil(name: String, realm: Realm) -> Playlist {
+    if let playlist = realm.object(ofType: Playlist.self, forPrimaryKey: name) {
+      return playlist
+    } else {
+      let playlist = Playlist(value: ["name": name])
+      try? realm.write {
+        realm.add(playlist)
+      }
+      return playlist
+    }
+  }
 }

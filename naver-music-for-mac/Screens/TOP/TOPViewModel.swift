@@ -16,6 +16,8 @@ class TOPViewModel {
   // MARK: Varibales
   private let musicBrowser: MusicBrowser
   private let disposeBag = DisposeBag()
+  private let realm: Realm
+  private var playList: Playlist?
   
   // MARK: Input
   public let topType = PublishSubject<TOPType>()
@@ -25,27 +27,24 @@ class TOPViewModel {
   
   init(musicBrowser: MusicBrowser) {
     self.musicBrowser = musicBrowser
-    let realm = try! Realm()
+    self.realm = try! Realm()
     
-    self.musicDatasource = self.topType.flatMapLatest { (type) -> Observable<Playlist> in
-      if let playList = realm.object(ofType: Playlist.self, forPrimaryKey: type.rawValue) {
-        return Observable.from(object: playList)
+    self.musicDatasource = self.topType.flatMapLatest { [weak self] (type) -> Observable<Playlist> in
+      guard let `self` = self else {
+        return Observable.never()
       }
-      else {
-        let playList = Playlist(value: ["name": type.rawValue])
-        try? realm.write {
-          realm.add(playList)
-        }
-        return Observable.from(object: playList)
-      }
-    }.map{ $0.musics.enumerated().map { TOPCellViewModel(music: $1, rank: $0+1) } }
+      let playList = Playlist.createIfNil(name: type.rawValue, realm: self.realm)
+      return Observable.from(object: playList)
+    }.do(onNext: {[weak self] in self?.playList = $0})
+    .map{ $0.musics.enumerated().map { TOPCellViewModel(music: $1, rank: $0+1) } }
+
     
     self.topType.subscribe(onNext: { [weak self] type in
       if let `self` = self {
         self.musicBrowser.search(top: type).filter { $0.count > 0 }.subscribe(onSuccess: { [weak self] musics in
-          if let playList = realm.object(ofType: Playlist.self, forPrimaryKey: type.rawValue) {
-            try? realm.write {
-              realm.add(musics, update: true)
+          if let playList = self?.realm.object(ofType: Playlist.self, forPrimaryKey: type.rawValue) {
+            try? self?.realm.write {
+              self?.realm.add(musics, update: true)
               playList.musics.replaceSubrange(0..<playList.musics.count, with: musics)
             }
           }
@@ -53,5 +52,14 @@ class TOPViewModel {
       }
       
     }).disposed(by: self.disposeBag)
+  }
+  
+  public func addMusicToList(indexs: [Int]) {
+    let myList = Playlist.createIfNil(name: "MY", realm: self.realm)
+    self.realm.beginWrite()
+    for index in indexs {
+      myList.musics.append(self.playList!.musics[index])
+    }
+    try? self.realm.commitWrite()
   }
 }

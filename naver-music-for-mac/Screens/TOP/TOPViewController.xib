@@ -151,10 +151,13 @@
                 </scrollView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BWT-Ys-Gr6">
                     <rect key="frame" x="10" y="400" width="89" height="32"/>
-                    <buttonCell key="cell" type="push" title="전체 듣기" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0nr-kz-TsN">
+                    <buttonCell key="cell" type="push" title="전체 선택" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0nr-kz-TsN">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="selectAllMusicWithSender:" target="-1" id="aMx-tr-ro0"/>
+                    </connections>
                 </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="P9J-Fr-380">
                     <rect key="frame" x="0.0" y="0.0" width="609" height="0.0"/>

@@ -66,8 +66,12 @@ class TOPViewController: NSViewController {
   }
   
   @IBAction func addingList(sender: NSButton) {
-    let selectedRows = Array(self.tableView.selectedRowIndexes)
-    print(selectedRows)
+    self.viewModel.addMusicToList(indexs: Array(self.tableView.selectedRowIndexes))
+    self.tableView.deselectAll(nil)
+  }
+  
+  @IBAction func selectAllMusic(sender: NSButton) {
+    self.tableView.selectAll(nil)
   }
 }
 
