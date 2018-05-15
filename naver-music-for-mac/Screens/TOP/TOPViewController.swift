@@ -20,6 +20,7 @@ class TOPViewController: NSViewController {
   // MARK: Outlets
   @IBOutlet weak var tableView: NSTableView!
   @IBOutlet weak var topTypeSegmentedControl: NSSegmentedControl!
+  @IBOutlet weak var addingViewHeightConstraint: NSLayoutConstraint!
   
   override var nibName: NSNib.Name? {
     return NSNib.Name("TOPViewController")
@@ -28,9 +29,11 @@ class TOPViewController: NSViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.binding()
+    self.view.wantsLayer = true
+    self.view.layer?.backgroundColor = NSColor.white.cgColor
   }
   
-  func binding() {
+  private func binding() {
     self.viewModel.musicDatasource.subscribe(onNext: { [weak self] (viewModels) in
       self?.cellViewModels = viewModels
       self?.tableView.reloadData()
@@ -53,6 +56,19 @@ class TOPViewController: NSViewController {
       })
       .disposed(by: self.disposeBag)
   }
+  
+  private func hiddenAddingList(hidden: Bool) {
+    if hidden {
+      self.addingViewHeightConstraint.constant = 0
+    } else {
+      self.addingViewHeightConstraint.constant = 100
+    }
+  }
+  
+  @IBAction func addingList(sender: NSButton) {
+    let selectedRows = Array(self.tableView.selectedRowIndexes)
+    print(selectedRows)
+  }
 }
 
 extension TOPViewController: NSTableViewDataSource {
@@ -68,4 +84,7 @@ extension TOPViewController: NSTableViewDataSource {
 }
 
 extension TOPViewController: NSTableViewDelegate {
+  func tableViewSelectionDidChange(_ notification: Notification) {
+    self.hiddenAddingList(hidden: self.tableView.selectedRowIndexes.count == 0)
+  }
 }

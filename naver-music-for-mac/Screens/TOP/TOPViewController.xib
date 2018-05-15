@@ -10,6 +10,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TOPViewController" customModule="naver_music_for_mac" customModuleProvider="target">
             <connections>
+                <outlet property="addingViewHeightConstraint" destination="1kb-HW-tZ1" id="xQ8-ce-anl"/>
                 <outlet property="tableView" destination="oby-Qd-aD8" id="WK0-Rb-QCR"/>
                 <outlet property="topTypeSegmentedControl" destination="9lc-Ga-te7" id="Jv7-E3-DSo"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -44,7 +45,7 @@
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="606" minWidth="40" maxWidth="1000" id="zzb-q2-DoI">
+                                    <tableColumn width="606" minWidth="40" maxWidth="9999" id="zzb-q2-DoI">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -155,14 +156,39 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="P9J-Fr-380">
+                    <rect key="frame" x="0.0" y="0.0" width="609" height="0.0"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qNC-NH-HGb">
+                            <rect key="frame" x="0.0" y="0.0" width="609" height="0.0"/>
+                            <buttonCell key="cell" type="bevel" title="Button" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="qRY-DW-Cqh">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="addingListWithSender:" target="-1" id="05B-Kz-op8"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" id="1kb-HW-tZ1"/>
+                        <constraint firstAttribute="bottom" secondItem="qNC-NH-HGb" secondAttribute="bottom" id="Cuv-z6-qvl"/>
+                        <constraint firstItem="qNC-NH-HGb" firstAttribute="top" secondItem="P9J-Fr-380" secondAttribute="top" id="Nrg-lG-oIE"/>
+                        <constraint firstItem="qNC-NH-HGb" firstAttribute="leading" secondItem="P9J-Fr-380" secondAttribute="leading" id="Rza-Om-j7m"/>
+                        <constraint firstAttribute="trailing" secondItem="qNC-NH-HGb" secondAttribute="trailing" id="oJP-GL-6V1"/>
+                    </constraints>
+                </customView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="SEK-WH-wbv" secondAttribute="bottom" id="EWU-w6-OG3"/>
+                <constraint firstItem="P9J-Fr-380" firstAttribute="top" secondItem="SEK-WH-wbv" secondAttribute="bottom" id="5mA-y2-Pmu"/>
+                <constraint firstAttribute="trailing" secondItem="P9J-Fr-380" secondAttribute="trailing" id="Inc-Dk-elT"/>
                 <constraint firstAttribute="trailing" secondItem="SEK-WH-wbv" secondAttribute="trailing" id="Ja6-v7-Zjx"/>
                 <constraint firstItem="SEK-WH-wbv" firstAttribute="top" secondItem="9lc-Ga-te7" secondAttribute="bottom" constant="8" id="Orf-fa-o0d"/>
                 <constraint firstItem="SEK-WH-wbv" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="V2I-c8-VbB"/>
                 <constraint firstItem="9lc-Ga-te7" firstAttribute="centerY" secondItem="BWT-Ys-Gr6" secondAttribute="centerY" id="YfZ-ek-wc1"/>
                 <constraint firstItem="9lc-Ga-te7" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="dLV-cE-ne2"/>
+                <constraint firstItem="P9J-Fr-380" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="hEa-Mc-SSj"/>
+                <constraint firstAttribute="bottom" secondItem="P9J-Fr-380" secondAttribute="bottom" id="jFs-xg-ye6"/>
                 <constraint firstItem="9lc-Ga-te7" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="jTN-ww-cXh"/>
                 <constraint firstItem="BWT-Ys-Gr6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="16" id="mi5-SE-VcY"/>
             </constraints>
