@@ -12,7 +12,7 @@ import RxSwift
 class PlayListCellView: NSTableCellView {
   // MARK: IBOutlets
   @IBOutlet weak var name: NSTextField!
-  
+
   // MARK: Variables
   private var disposeBag = DisposeBag()
   public var viewModel: PlayListCellViewModel? {

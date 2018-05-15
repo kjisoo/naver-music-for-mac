@@ -7,8 +7,20 @@
 //
 
 import Foundation
+import RealmSwift
+import RxRealm
+import RxSwift
 
 class PlayListViewModel {
+  private let playList: Playlist
   
+  public let playListViewModels: Observable<[PlayListCellViewModel]>
+  
+  init() {
+    let realm = try! Realm()
+    self.playList = Playlist.createIfNil(name: "MY", realm: realm)
+    
+    self.playListViewModels = Observable.from(object: self.playList).map { $0.musics.map{ PlayListCellViewModel(music: $0) } }
+  }
 }
 
