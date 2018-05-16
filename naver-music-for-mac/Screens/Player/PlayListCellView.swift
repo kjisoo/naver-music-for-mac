@@ -19,7 +19,8 @@ class PlayListCellView: NSTableCellView {
   public var viewModel: PlayListCellViewModel? {
     didSet {
       self.disposeBag = DisposeBag()
-      
+      self.updateCheckBox()
+
       self.viewModel?.name.subscribe(onNext: { [weak self] in
         self?.name.stringValue = $0
       }).disposed(by: self.disposeBag)
@@ -29,16 +30,20 @@ class PlayListCellView: NSTableCellView {
       }).disposed(by: self.disposeBag)
       
       self.viewModel?.propertyChanged.subscribe(onNext: { [weak self] _ in
-        if self?.viewModel?.isChecked == true {
-          self?.checkButton.state = .on
-        } else {
-          self?.checkButton.state = .off
-        }
+        self?.updateCheckBox()
       }).disposed(by: self.disposeBag)
       
       self.checkButton.rx.controlProperty(getter: { (button) -> Void in
         self.viewModel?.checked(checked: button.state == .on)
       }, setter: {_,_ in }).subscribe().disposed(by: self.disposeBag)
+    }
+  }
+  
+  private func updateCheckBox() {
+    if self.viewModel?.isChecked == true {
+      self.checkButton.state = .on
+    } else {
+      self.checkButton.state = .off
     }
   }
 }

@@ -43,7 +43,7 @@ class PlayListViewModel {
   }
   
   public func deleteSelectedList() {
-    print(#file, #function, #line)
+    self.musicBrowser.removeMusicFromMyList(indexs: self.cellViewModels.enumerated().filter({ $1.isChecked }).map({ $0.offset }))
   }
 }
 
