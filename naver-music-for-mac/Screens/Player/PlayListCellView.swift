@@ -28,8 +28,8 @@ class PlayListCellView: NSTableCellView {
         self?.name.textColor = $0 ? NSColor.green : NSColor.black
       }).disposed(by: self.disposeBag)
       
-      self.viewModel?.isChecked.subscribe(onNext: { [weak self] in
-        if $0 {
+      self.viewModel?.propertyChanged.subscribe(onNext: { [weak self] _ in
+        if self?.viewModel?.isChecked == true {
           self?.checkButton.state = .on
         } else {
           self?.checkButton.state = .off
