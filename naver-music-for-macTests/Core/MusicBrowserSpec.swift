@@ -35,7 +35,7 @@ class MusicBrowserSpec: QuickSpec {
         return .immediate
       }
       provider = MoyaProvider<NaverPage>(endpointClosure: endpointClosure, stubClosure: stubClosure)
-      realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "MusicBrowserSpec"))
+      realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "MusicBrowserSpec" + String(arc4random())))
       try! realm.write {
         realm.deleteAll()
       }
@@ -112,7 +112,7 @@ class MusicBrowserSpec: QuickSpec {
         musicBrowser = MusicBrowser(provider: provider, parser: TOPParser(), realm: realm)
       }
       
-      context("add music with trackid") {
+      context("add music") {
         it("Id does not exist in music models") {
           // Arrange
           let playlist = musicBrowser.getPlayList(type: PlayListType.my)
@@ -154,6 +154,73 @@ class MusicBrowserSpec: QuickSpec {
           expect(playlist.musics[0].id).to(equal("1"))
           expect(playlist.musics[1].id).to(equal("1"))
           expect(playlist.musics[2].id).to(equal("2"))
+        }
+      }
+      
+      context("remove music") {
+        it("remove one") {
+          // Arrange
+          let playlist = musicBrowser.getPlayList(type: PlayListType.my)
+          musicBrowser.addMusicToMyList(trackID: "1")
+          musicBrowser.addMusicToMyList(trackID: "2")
+          
+          // Act
+          musicBrowser.removeMusicFromMyList(index: 0)
+          
+          // Assert
+          expect(playlist.musics.count).to(equal(1))
+          expect(playlist.musics[0].id).to(equal("2"))
+        }
+        
+        it("remove out of index") {
+          // Arrange
+          let playlist = musicBrowser.getPlayList(type: PlayListType.my)
+          musicBrowser.addMusicToMyList(trackID: "1")
+          
+          // Act
+          musicBrowser.removeMusicFromMyList(index: 1)
+          
+          // Assert
+          expect(playlist.musics.count).to(equal(1))
+        }
+        
+        it("remove sequence") {
+          // Arrange
+          let playlist = musicBrowser.getPlayList(type: PlayListType.my)
+          musicBrowser.addMusicToMyList(trackID: "1")
+          musicBrowser.addMusicToMyList(trackID: "2")
+          
+          // Act
+          musicBrowser.removeMusicFromMyList(indexs: [0, 1])
+          
+          // Assert
+          expect(playlist.musics.count).to(equal(0))
+        }
+        
+        it("remove sequence") {
+          // Arrange
+          let playlist = musicBrowser.getPlayList(type: PlayListType.my)
+          musicBrowser.addMusicToMyList(trackIDs: ["0", "1", "2", "3", "4"])
+          
+          // Act
+          musicBrowser.removeMusicFromMyList(indexs: [3, 1, 2])
+          
+          // Assert
+          expect(playlist.musics.count).to(equal(2))
+          expect(playlist.musics[0].id).to(equal("0"))
+          expect(playlist.musics[1].id).to(equal("4"))
+        }
+        
+        it("remove sequence out of range") {
+          // Arrange
+          let playlist = musicBrowser.getPlayList(type: PlayListType.my)
+          musicBrowser.addMusicToMyList(trackIDs: ["0"])
+          
+          // Act
+          musicBrowser.removeMusicFromMyList(indexs: [0, 1, 2])
+          
+          // Assert
+          expect(playlist.musics.count).to(equal(0))
         }
       }
     }

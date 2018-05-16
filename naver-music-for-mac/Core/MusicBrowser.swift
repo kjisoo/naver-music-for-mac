@@ -12,14 +12,7 @@ import RealmSwift
 import Moya
 
 
-protocol MusicBrowserType {
-  func getPlayList(type: PlayListType) -> Playlist
-  func updateTOPPlayList(top type: TOPType) -> Single<Playlist>
-  func addMusicToMyList(trackID: String)
-  func addMusicToMyList(trackIDs: [String])
-}
-
-class MusicBrowser: MusicBrowserType {
+class MusicBrowser {
   private let provider: MoyaProvider<NaverPage>
   private let topParser: TOPParser
   private let realm: Realm
@@ -74,5 +67,23 @@ class MusicBrowser: MusicBrowserType {
   
   func addMusicToMyList(trackIDs: [String]) {
     trackIDs.forEach { self.addMusicToMyList(trackID: $0) }
+  }
+  
+  func removeMusicFromMyList(index: Int) {
+    let playList = self.getPlayList(type: PlayListType.my)
+    if index < playList.musics.count {
+      try? realm.write {
+        playList.musics.remove(at: index)
+      }
+    }
+  }
+  
+  func removeMusicFromMyList(indexs: [Int]) {
+    let playList = self.getPlayList(type: PlayListType.my)
+    realm.beginWrite()
+    for index in indexs.sorted().reversed().filter({ $0 < playList.musics.count }) {
+      playList.musics.remove(at: index)
+    }
+    try? realm.commitWrite()
   }
 }
