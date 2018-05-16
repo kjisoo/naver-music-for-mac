@@ -16,7 +16,7 @@ class Album: Object {
     case large
   }
   
-  @objc dynamic var id: String?
+  @objc dynamic var id = ""
   @objc dynamic var name: String?
   @objc dynamic var artist: Artist?
   let musics = LinkingObjects(fromType: Music.self, property: "album")
@@ -26,13 +26,12 @@ class Album: Object {
   }
   
   public func coverImageURL(size: Size) -> URL?{
-    guard let idString = self.id,
-      let id = Int(idString) else {
+    guard let numbericID = Int(id) else {
         return nil
     }
     var url = "http://musicmeta.phinf.naver.net"
     
-    url += String(format: "/album/%03d/%03d/%@.jpg", id / 1000000, (id % 1000000) / 1000, idString)
+    url += String(format: "/album/%03d/%03d/%@.jpg", numbericID / 1000000, (numbericID % 1000000) / 1000, id)
     
     switch size {
     case .small:

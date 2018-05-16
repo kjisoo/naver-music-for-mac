@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class Artist: Object {
-  @objc dynamic var id: String?
+  @objc dynamic var id = ""
   @objc dynamic var name: String?
   let albums = LinkingObjects(fromType: Album.self, property: "artist")
   let musics = LinkingObjects(fromType: Music.self, property: "artist")
