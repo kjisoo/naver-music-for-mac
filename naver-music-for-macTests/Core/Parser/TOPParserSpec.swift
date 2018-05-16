@@ -29,23 +29,15 @@ class TOPParserSpec: QuickSpec {
           expect(result.count).to(equal(50))
         }
         
-        it("relation") {
-          let first = parser.parse(from: htmlString)[0]
-          expect(first.album).notTo(beNil())
-          expect(first.artist).notTo(beNil())
-          expect(first.music.album).to(equal(first.album))
-          expect(first.music.artist).to(equal(first.artist))
-          expect(first.album?.artist).to(equal(first.artist))
-        }
-        
         it("entity infor") {
-          let first = parser.parse(from: htmlString)[0]
-          expect(first.music.id).to(equal("21293002"))
-          expect(first.music.name).to(equal("밤 (Time for the moon night)"))
-          expect(first.album!.id).to(equal("2450804"))
-          expect(first.album!.name).to(equal("여자친구 The 6th Mini Album 'Time for the moon night'"))
-          expect(first.artist!.id).to(equal("369038"))
-          expect(first.artist!.name).to(equal("여자친구(GFRIEND)"))
+          let first = parser.parse(from: htmlString)[0] as! [String: Any]
+
+          expect(first["id"] as? String).to(equal("21293002"))
+          expect(first["name"] as? String).to(equal("밤 (Time for the moon night)"))
+          expect((first["album"] as! [String: Any])["id"] as? String).to(equal("2450804"))
+          expect((first["album"] as! [String: Any])["name"] as? String).to(equal("여자친구 The 6th Mini Album 'Time for the moon night'"))
+          expect((first["artist"] as! [String: Any])["id"] as? String).to(equal("369038"))
+          expect((first["artist"] as! [String: Any])["name"] as? String).to(equal("여자친구(GFRIEND)"))
         }
       }
     }
