@@ -147,13 +147,26 @@ class MusicBrowserSpec: QuickSpec {
           let playlist = musicBrowser.getPlayList(type: PlayListType.my)
           
           // Act
-          musicBrowser.addMusicToMyList(trackIDs: ["1", "1", "2"])
+          musicBrowser.addMusicToMyList(trackIDs: ["1", "2", "3"])
           
           // Assert
           expect(playlist.musics.count).to(equal(3))
           expect(playlist.musics[0].id).to(equal("1"))
+          expect(playlist.musics[1].id).to(equal("2"))
+          expect(playlist.musics[2].id).to(equal("3"))
+        }
+        
+        it("add duplicated sequence") {
+          // Arrange
+          let playlist = musicBrowser.getPlayList(type: PlayListType.my)
+          
+          // Act
+          musicBrowser.addMusicToMyList(trackIDs: ["1", "2", "1"])
+          
+          // Assert
+          expect(playlist.musics.count).to(equal(2))
+          expect(playlist.musics[0].id).to(equal("2"))
           expect(playlist.musics[1].id).to(equal("1"))
-          expect(playlist.musics[2].id).to(equal("2"))
         }
       }
       

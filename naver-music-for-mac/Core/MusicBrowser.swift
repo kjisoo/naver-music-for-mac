@@ -59,6 +59,7 @@ class MusicBrowser {
   
   func addMusicToMyList(trackID: String) {
     let playList = self.getPlayList(type: PlayListType.my)
+    self.removeMusicFromMyList(indexs: playList.musics.enumerated().filter({$0.element.id == trackID}).map({$0.offset}))
     try? realm.write {
       let music = realm.create(Music.self, value: ["id": trackID], update: true)
       playList.musics.append(music)
