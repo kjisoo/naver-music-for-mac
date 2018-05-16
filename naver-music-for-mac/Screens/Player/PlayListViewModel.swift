@@ -12,19 +12,19 @@ import RxRealm
 import RxSwift
 
 class PlayListViewModel {
-  private var playList: Playlist!
+  private let playList: Playlist
+  private let musicBrowser: MusicBrowser
   private var cellViewModels: [PlayListCellViewModel] = []
   
   private(set) public var playListViewModels: Observable<[PlayListCellViewModel]>!
   
-  init() {
+  init(musicBrowser: MusicBrowser) {
+    self.musicBrowser = musicBrowser
+    self.playList = musicBrowser.getPlayList(type: PlayListType.my)
     self.binding()
   }
   
   private func binding() {
-    let realm = try! Realm()
-    self.playList = Playlist.createIfNil(name: "MY", realm: realm)
-    
     self.playListViewModels = Observable.from(object: self.playList)
       .map { $0.musics.map{ PlayListCellViewModel(music: $0) } }
       .do(onNext: { [weak self] in self?.cellViewModels = $0 })
