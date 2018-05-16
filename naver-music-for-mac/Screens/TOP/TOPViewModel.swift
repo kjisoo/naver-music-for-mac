@@ -9,14 +9,11 @@
 import Foundation
 import RxSwift
 import RxRealm
-import RealmSwift
-import RxRealmDataSources
 
 class TOPViewModel {
   // MARK: Varibales
   private let musicBrowser: MusicBrowser
   private let disposeBag = DisposeBag()
-  private let realm: Realm
   private var playList: Playlist?
   
   // MARK: Input
@@ -27,7 +24,6 @@ class TOPViewModel {
   
   init(musicBrowser: MusicBrowser) {
     self.musicBrowser = musicBrowser
-    self.realm = try! Realm()
     
     self.musicDatasource = self.topType.flatMapLatest { [weak self] (type) -> Observable<Playlist> in
       guard let `self` = self else {
@@ -49,11 +45,6 @@ class TOPViewModel {
   }
   
   public func addMusicToList(indexs: [Int]) {
-    let myList = Playlist.createIfNil(name: "MY", realm: self.realm)
-    self.realm.beginWrite()
-    for index in indexs {
-      myList.musics.append(self.playList!.musics[index])
-    }
-    try? self.realm.commitWrite()
+    self.musicBrowser.addMusicToMyList(trackIDs: indexs.map { self.playList!.musics[$0].id })
   }
 }

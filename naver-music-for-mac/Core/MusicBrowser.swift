@@ -15,6 +15,8 @@ import Moya
 protocol MusicBrowserType {
   func getPlayList(type: PlayListType) -> Playlist
   func updateTOPPlayList(top type: TOPType) -> Single<Playlist>
+  func addMusicToMyList(trackID: String)
+  func addMusicToMyList(trackIDs: [String])
 }
 
 class MusicBrowser: MusicBrowserType {
@@ -60,5 +62,17 @@ class MusicBrowser: MusicBrowserType {
         }
         return playList
     }
+  }
+  
+  func addMusicToMyList(trackID: String) {
+    let playList = self.getPlayList(type: PlayListType.my)
+    try? realm.write {
+      let music = realm.create(Music.self, value: ["id": trackID], update: true)
+      playList.musics.append(music)
+    }
+  }
+  
+  func addMusicToMyList(trackIDs: [String]) {
+    trackIDs.forEach { self.addMusicToMyList(trackID: $0) }
   }
 }
