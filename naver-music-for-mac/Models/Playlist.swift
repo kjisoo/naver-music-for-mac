@@ -9,6 +9,19 @@
 import Foundation
 import RealmSwift
 
+enum TOPType: String {
+  case total = "TOTAL"
+  case domestic = "DOMESTIC"
+  case oversea = "OVERSEA"
+}
+
+enum PlayListType: String {
+  case total = "TOTAL"
+  case domestic = "DOMESTIC"
+  case oversea = "OVERSEA"
+  case my = "MY"
+}
+
 class Playlist: Object {
   @objc dynamic var name = ""
   let musics = List<Music>()

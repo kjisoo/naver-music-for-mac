@@ -8,38 +8,57 @@
 
 import Foundation
 import RxSwift
+import RealmSwift
 import Moya
 
-enum TOPType: String {
-  case total = "TOTAL"
-  case domestic = "DOMESTIC"
-  case oversea = "OVERSEA"
-}
 
 protocol MusicBrowserType {
-  func search(top type: TOPType) -> Single<[Music]>
+  func getPlayList(type: PlayListType) -> Playlist
+  func updateTOPPlayList(top type: TOPType) -> Single<Playlist>
 }
 
 class MusicBrowser: MusicBrowserType {
   private let provider: MoyaProvider<NaverPage>
   private let topParser: TOPParser
+  private let realm: Realm
 
-  init(provider: MoyaProvider<NaverPage>, parser: TOPParser = TOPParser()) {
+  init(provider: MoyaProvider<NaverPage>, parser: TOPParser = TOPParser(), realm: Realm = try! Realm()) {
     self.provider = provider
     self.topParser = parser
+    self.realm = realm
   }
   
-  func search(top type: TOPType) -> Single<[Music]> {
+  func getPlayList(type: TOPType) -> Playlist {
+    var playList: Playlist?
+    try? realm.write {
+      playList = self.realm.create(Playlist.self, value: ["name": type.rawValue], update: true)
+    }
+    return playList!
+  }
+  
+  func getPlayList(type: PlayListType) -> Playlist {
+    var playList: Playlist?
+    try? realm.write {
+      playList = self.realm.create(Playlist.self, value: ["name": type.rawValue], update: true)
+    }
+    return playList!
+  }
+  
+  func updateTOPPlayList(top type: TOPType) -> Single<Playlist> {
     return Single.zip(self.provider.rx.request(.top(domain: type.rawValue, page: 1)).filterSuccessfulStatusCodes(),
                       self.provider.rx.request(.top(domain: type.rawValue, page: 2)).filterSuccessfulStatusCodes())
-      .map { [weak self] (firstResponse, secondResponse) -> [Music]  in
+      .map { [weak self] (firstResponse, secondResponse) in
+        var playList: Playlist!
         if let `self` = self,
           let firstResponseString = String(data: firstResponse.data, encoding: .utf8),
           let secondResponseString = String(data: secondResponse.data, encoding: .utf8) {
           let result = self.topParser.parse(from: firstResponseString) + self.topParser.parse(from: secondResponseString)
-          return result.map { $0.music }
+          try? self.realm.write {
+            let playListValue: [String : Any] = ["name": type.rawValue, "musics": result]
+            playList = self.realm.create(Playlist.self, value: playListValue, update: true)
+          }
         }
-        return []
+        return playList
     }
   }
 }

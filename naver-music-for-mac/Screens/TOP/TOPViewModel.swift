@@ -33,24 +33,18 @@ class TOPViewModel {
       guard let `self` = self else {
         return Observable.never()
       }
-      let playList = Playlist.createIfNil(name: type.rawValue, realm: self.realm)
-      return Observable.from(object: playList)
+      return Observable.from(object: self.musicBrowser.getPlayList(type: type))
     }.do(onNext: {[weak self] in self?.playList = $0})
     .map{ $0.musics.enumerated().map { TOPCellViewModel(music: $1, rank: $0+1) } }
 
     
     self.topType.subscribe(onNext: { [weak self] type in
       if let `self` = self {
-        self.musicBrowser.search(top: type).filter { $0.count > 0 }.subscribe(onSuccess: { [weak self] musics in
-          if let playList = self?.realm.object(ofType: Playlist.self, forPrimaryKey: type.rawValue) {
-            try? self?.realm.write {
-              self?.realm.add(musics, update: true)
-              playList.musics.replaceSubrange(0..<playList.musics.count, with: musics)
-            }
-          }
-        }).disposed(by: self.disposeBag)
+        self.musicBrowser.updateTOPPlayList(top: type)
+          .subscribe(onSuccess: nil, onError: { (error) in
+            print(error)
+          }).disposed(by: self.disposeBag)
       }
-      
     }).disposed(by: self.disposeBag)
   }
   

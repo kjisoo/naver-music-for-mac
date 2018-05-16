@@ -10,6 +10,7 @@ import Quick
 import Nimble
 import Moya
 import RxBlocking
+import RealmSwift
 
 @testable import naver_music_for_mac
 
@@ -33,12 +34,42 @@ class MusicBrowserSpec: QuickSpec {
           return .immediate
         }
         let provider = MoyaProvider<NaverPage>(endpointClosure: endpointClosure, stubClosure: stubClosure)
-        musicBrowser = MusicBrowser(provider: provider)
+        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "MusicBrowserSpec"))
+        try! realm.write {
+          realm.deleteAll()
+        }
+        musicBrowser = MusicBrowser(provider: provider, parser: TOPParser(), realm: realm)
       }
       
-      it("two page request and merge") {
-        let musics = try? musicBrowser.search(top: .total).toBlocking().first()
-        expect(musics??.count).to(equal(100))
+      it("get playlist") {
+        // Arrange
+        let playList = musicBrowser.getPlayList(type: .total)
+        
+        // Assert
+        expect(playList.name).to(equal(PlayListType.total.rawValue))
+      }
+      
+      it("update playlist") {
+        // Arrange
+        let playList = musicBrowser.getPlayList(type: .total)
+        
+        // Act
+        _ = try! musicBrowser.updateTOPPlayList(top: .total).toBlocking().first()
+        
+        // Assert
+        expect(playList.musics.count).to(equal(100))
+      }
+      
+      it("new playlist") {
+        // Arrange
+        let playList = musicBrowser.getPlayList(type: .total)
+        
+        // Act
+        let newPlayList = try! musicBrowser.updateTOPPlayList(top: .total).toBlocking().first()
+        
+        // Assert
+        expect(playList.musics.count).to(equal(100))
+        expect(newPlayList).to(equal(playList))
       }
     }
     
@@ -57,12 +88,16 @@ class MusicBrowserSpec: QuickSpec {
           return .immediate
         }
         let provider = MoyaProvider<NaverPage>(endpointClosure: endpointClosure, stubClosure:stubClosure)
-        musicBrowser = MusicBrowser(provider: provider)
+        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "MusicBrowserSpec"))
+        try! realm.write {
+          realm.deleteAll()
+        }
+        musicBrowser = MusicBrowser(provider: provider, parser: TOPParser(), realm: realm)
       }
       
       it("request failed") {
         var occurredError = false
-        _ = try? musicBrowser.search(top: .total).subscribe(onSuccess: { (a) in
+        _ = try? musicBrowser.updateTOPPlayList(top: .total).subscribe(onSuccess: { (a) in
           fail()
         }, onError: { (e) in
           occurredError = true
