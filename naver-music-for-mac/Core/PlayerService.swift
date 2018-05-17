@@ -110,6 +110,6 @@ extension PlayerService: WebUIDelegate {
 
 extension PlayerService: WebFrameLoadDelegate {
   func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
-    sender.stringByEvaluatingJavaScript(from: "MobilePlayerManager._endedUIDelegate = function() { fEndedDrawUI(); alert('ENDED'); }")
+    sender.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.options.callbacks.ended = function() { fEndedDrawUI(); MobilePlayerManager._bIsPlaying = false; alert('ENDED'); };")
   }
 }
