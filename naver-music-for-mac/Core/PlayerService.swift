@@ -14,10 +14,10 @@ import RxSwift
 
 class PlayerService: NSObject {
   private static let instance = PlayerService()
-  private let playList: Playlist = Playlist.get(type: .my)
   private let disposeBag = DisposeBag()
   private var currentIndex = -1
-  public let playedMusic = PublishSubject<(index: Int, music: Music)>()
+  public let playList: Playlist = Playlist.get(type: .my)
+  public let playingMusic = PublishSubject<(index: Int, music: Music)>()
   public let webPlayer: WebView = {
     return WebView()
   }()
@@ -91,7 +91,7 @@ class PlayerService: NSObject {
   public func play(index: Int) {
     self.currentIndex = index
     let music = self.playList.musics[index]
-    self.playedMusic.onNext((index: index, music: music))
+    self.playingMusic.onNext((index: index, music: music))
     play(id: music.id)
   }
   

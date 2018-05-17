@@ -29,7 +29,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       return windowController
     }
     container.register(PlayListViewModel.self) { r in
-      return PlayListViewModel(musicBrowser: r.resolve(MusicBrowser.self)!)
+      return PlayListViewModel()
     }
     container.register(PlayListViewController.self) { r in
       let playListViewController = PlayListViewController()

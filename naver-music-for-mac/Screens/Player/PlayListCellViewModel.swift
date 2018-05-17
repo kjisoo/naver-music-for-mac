@@ -11,9 +11,18 @@ import RxSwift
 import RxRealm
 
 class PlayListCellViewModel {
+  // MARK: Variables
+  public var _isPlaying = false {
+    didSet {
+      if oldValue != self._isPlaying {
+        self.isPlaying.onNext(self._isPlaying)
+      }
+    }
+  }
+  
   // MARK: Output
   public let name: Observable<String>
-  public let isPlaying: Observable<Bool>
+  public let isPlaying = BehaviorSubject<Bool>(value: false)
   public var isChecked = false
   public var propertyChanged: Observable<Void> {
     return _propertyChanged.asObservable()
@@ -23,7 +32,6 @@ class PlayListCellViewModel {
   init(music: Music) {
     let musicObservable = Observable.from(object: music)
     self.name = musicObservable.map { $0.name! }
-    self.isPlaying = Observable.never() 
   }
   
   public func checked(checked: Bool) {

@@ -47,6 +47,7 @@
 		E85B8D9120A81F41007D3C90 /* TOPParserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D9020A81F41007D3C90 /* TOPParserSpec.swift */; };
 		E85B8D9420A82469007D3C90 /* TOP.html in Resources */ = {isa = PBXBuildFile; fileRef = E85B8D9320A82469007D3C90 /* TOP.html */; };
 		E874D24A20A9E650009534E3 /* AlbumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E874D24920A9E650009534E3 /* AlbumSpec.swift */; };
+		E8D9204520AD9A7C001F18DC /* MusicCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9204420AD9A7C001F18DC /* MusicCoverViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +108,7 @@
 		E85B8D9020A81F41007D3C90 /* TOPParserSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TOPParserSpec.swift; sourceTree = "<group>"; };
 		E85B8D9320A82469007D3C90 /* TOP.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TOP.html; sourceTree = "<group>"; };
 		E874D24920A9E650009534E3 /* AlbumSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSpec.swift; sourceTree = "<group>"; };
+		E8D9204420AD9A7C001F18DC /* MusicCoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCoverViewModel.swift; sourceTree = "<group>"; };
 		E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -165,8 +167,9 @@
 				E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */,
 				0085C9EB20A5AD7900CEFCA5 /* PlayListViewController.swift */,
 				0085C9EC20A5AD7900CEFCA5 /* PlayListViewController.xib */,
-				E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */,
 				E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */,
+				E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */,
+				E8D9204420AD9A7C001F18DC /* MusicCoverViewModel.swift */,
 				0085C9EF20A5AE1500CEFCA5 /* MusicCoverViewController.swift */,
 				0085C9F020A5AE1500CEFCA5 /* MusicCoverViewController.xib */,
 				0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */,
@@ -557,6 +560,7 @@
 			files = (
 				E0ABE5DE20AD50E200C28E77 /* Object+Realm.swift in Sources */,
 				E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */,
+				E8D9204520AD9A7C001F18DC /* MusicCoverViewModel.swift in Sources */,
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */,
 				E0ABE5CC20AA714700C28E77 /* TOPViewModel.swift in Sources */,

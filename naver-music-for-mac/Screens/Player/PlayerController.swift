@@ -31,14 +31,4 @@ class PlayerController: SplitViewController {
     super.splitViewDidResizeSubviews(notification)
     self.splitViewItems[1].isCollapsed = self.view.frame.width < 550
   }
-  
-  // MARK: IBActions
-  @IBAction func prev(sender: NSButton) {
-  }
-  
-  @IBAction func next(sender: NSButton) {
-  }
-  
-  @IBAction func palyOrPause(sender: NSButton) {
-  }
 }

@@ -24,7 +24,7 @@
                     <constraints>
                         <constraint firstAttribute="width" secondItem="XHs-1g-CMQ" secondAttribute="height" multiplier="1:1" id="ZVy-hm-odi"/>
                     </constraints>
-                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="YVf-3q-iZa"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="YVf-3q-iZa"/>
                 </imageView>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="ifj-mm-vx8">
                     <rect key="frame" x="0.0" y="0.0" width="425" height="89"/>
@@ -36,7 +36,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="nextWithSender:" target="-1" id="4DX-Nf-OmW"/>
+                                <action selector="nextWithSender:" target="-2" id="WNr-0O-9u7"/>
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-vP-foc">
@@ -46,7 +46,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="prevWithSender:" target="-1" id="Ggk-Jv-Rp6"/>
+                                <action selector="prevWithSender:" target="-2" id="apV-g7-Qrx"/>
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-8z-Y06">
@@ -56,7 +56,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="palyOrPauseWithSender:" target="-1" id="b1V-qF-rsa"/>
+                                <action selector="palyOrPauseWithSender:" target="-2" id="DIf-dM-5Mx"/>
                             </connections>
                         </button>
                     </subviews>

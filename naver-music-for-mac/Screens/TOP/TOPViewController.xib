@@ -156,7 +156,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="selectAllMusicWithSender:" target="-1" id="aMx-tr-ro0"/>
+                        <action selector="selectAllMusicWithSender:" target="-2" id="ujz-mu-nMK"/>
                     </connections>
                 </button>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="P9J-Fr-380">
@@ -169,7 +169,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="addingListWithSender:" target="-1" id="05B-Kz-op8"/>
+                                <action selector="addingListWithSender:" target="-2" id="X2e-Ie-er1"/>
                             </connections>
                         </button>
                     </subviews>
