@@ -3,10 +3,11 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="MusicCoverViewController" customModule="네이버_뮤직" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="MusicCoverViewController" customModule="naver_music_for_mac" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
@@ -14,8 +15,70 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="272"/>
+            <rect key="frame" x="0.0" y="0.0" width="425" height="514"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XHs-1g-CMQ">
+                    <rect key="frame" x="0.0" y="89" width="425" height="425"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="XHs-1g-CMQ" secondAttribute="height" multiplier="1:1" id="ZVy-hm-odi"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="YVf-3q-iZa"/>
+                </imageView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="ifj-mm-vx8">
+                    <rect key="frame" x="0.0" y="0.0" width="425" height="89"/>
+                    <subviews>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kv4-Zo-1xm">
+                            <rect key="frame" x="244" y="28" width="33" height="32"/>
+                            <buttonCell key="cell" type="bevel" title="Next" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="MIV-LR-23L">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="nextWithSender:" target="-1" id="4DX-Nf-OmW"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-vP-foc">
+                            <rect key="frame" x="150" y="29" width="32" height="32"/>
+                            <buttonCell key="cell" type="bevel" title="Prev" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="sz3-Lr-qCc">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="prevWithSender:" target="-1" id="Ggk-Jv-Rp6"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-8z-Y06">
+                            <rect key="frame" x="198" y="29" width="30" height="32"/>
+                            <buttonCell key="cell" type="bevel" title="Play" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="rYI-Fe-E7a">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="palyOrPauseWithSender:" target="-1" id="b1V-qF-rsa"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="gNz-8z-Y06" firstAttribute="centerY" secondItem="ifj-mm-vx8" secondAttribute="centerY" id="388-ax-R2m"/>
+                        <constraint firstItem="ErA-vP-foc" firstAttribute="centerY" secondItem="ifj-mm-vx8" secondAttribute="centerY" id="J9z-4c-ZvZ"/>
+                        <constraint firstItem="gNz-8z-Y06" firstAttribute="leading" secondItem="ErA-vP-foc" secondAttribute="trailing" constant="16" id="JVi-xd-sPT"/>
+                        <constraint firstItem="Kv4-Zo-1xm" firstAttribute="leading" secondItem="gNz-8z-Y06" secondAttribute="trailing" constant="16" id="NKl-g9-dPg"/>
+                        <constraint firstItem="Kv4-Zo-1xm" firstAttribute="centerY" secondItem="ifj-mm-vx8" secondAttribute="centerY" id="Wh1-0U-LFh"/>
+                        <constraint firstItem="gNz-8z-Y06" firstAttribute="centerX" secondItem="ifj-mm-vx8" secondAttribute="centerX" id="nlK-DS-Wq6"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="XHs-1g-CMQ" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="0Rp-RW-b7d"/>
+                <constraint firstAttribute="trailing" secondItem="ifj-mm-vx8" secondAttribute="trailing" id="6DY-0w-nVG"/>
+                <constraint firstItem="ifj-mm-vx8" firstAttribute="top" secondItem="XHs-1g-CMQ" secondAttribute="bottom" id="6j7-LC-ydo"/>
+                <constraint firstAttribute="bottom" secondItem="ifj-mm-vx8" secondAttribute="bottom" id="7XA-bj-WOQ"/>
+                <constraint firstAttribute="trailing" secondItem="XHs-1g-CMQ" secondAttribute="trailing" id="AiF-aH-J6n"/>
+                <constraint firstItem="ifj-mm-vx8" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="c1j-YR-sfC"/>
+                <constraint firstItem="XHs-1g-CMQ" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="euq-Ot-Iwe"/>
+            </constraints>
+            <point key="canvasLocation" x="111.5" y="290"/>
         </customView>
     </objects>
 </document>

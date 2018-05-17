@@ -22,6 +22,7 @@ class PlayerController: SplitViewController {
     self.addSplitViewItem(playListSplitViewItem)
     
     let musicCoverSplitViewItem = NSSplitViewItem(sidebarWithViewController: MusicCoverViewController())
+    musicCoverSplitViewItem.minimumThickness = 300
     musicCoverSplitViewItem.maximumThickness = 300
     self.addSplitViewItem(musicCoverSplitViewItem)
   }
@@ -29,5 +30,15 @@ class PlayerController: SplitViewController {
   override func splitViewDidResizeSubviews(_ notification: Notification) {
     super.splitViewDidResizeSubviews(notification)
     self.splitViewItems[1].isCollapsed = self.view.frame.width < 550
+  }
+  
+  // MARK: IBActions
+  @IBAction func prev(sender: NSButton) {
+  }
+  
+  @IBAction func next(sender: NSButton) {
+  }
+  
+  @IBAction func palyOrPause(sender: NSButton) {
   }
 }
