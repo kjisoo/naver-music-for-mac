@@ -24,6 +24,9 @@ target 'naver-music-for-mac' do
   # HTML Parser
   pod 'Kanna', '~> 4.0.0'
 
+  # DI
+  pod 'Swinject'
+
   target 'naver-music-for-macTests' do
     inherit! :search_paths
     # Pods for testing

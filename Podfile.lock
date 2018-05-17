@@ -31,6 +31,7 @@ PODS:
   - RxSwift (4.1.2)
   - RxTest (4.1.2):
     - RxSwift (~> 4.0)
+  - Swinject (2.4.0)
 
 DEPENDENCIES:
   - Kanna (~> 4.0.0)
@@ -44,6 +45,7 @@ DEPENDENCIES:
   - RxRealmDataSources
   - RxSwift (~> 4.0)
   - RxTest (~> 4.0)
+  - Swinject
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -62,6 +64,7 @@ SPEC REPOS:
     - RxRealmDataSources
     - RxSwift
     - RxTest
+    - Swinject
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -79,7 +82,8 @@ SPEC CHECKSUMS:
   RxRealmDataSources: 798303f1d7db18d80da9e95bab9605010378040e
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  Swinject: a1364b0f66c2736bb03c1c7cab54809e16df25da
 
-PODFILE CHECKSUM: ba802eb1c69a7946c8af8bd5919d8cdedb30064d
+PODFILE CHECKSUM: ec0b5258960c11fa56866bb97dc55440c5407791
 
 COCOAPODS: 1.5.0
