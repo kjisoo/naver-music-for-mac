@@ -17,7 +17,7 @@ class PlayerController: SplitViewController {
   
   // MARK: Private methods
   private func setupSplitView() {
-    let playListSplitViewItem = NSSplitViewItem(viewController: PlayListViewController())
+    let playListSplitViewItem = NSSplitViewItem(viewController: Container.container.resolve(PlayListViewController.self)!)
     playListSplitViewItem.minimumThickness = 200
     self.addSplitViewItem(playListSplitViewItem)
     

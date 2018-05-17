@@ -13,20 +13,37 @@ import Moya
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-  let window = WindowController()
+  var window: WindowController?
   let container: Swinject.Container = {
     let container = Swinject.Container()
     container.register(Realm.self) { _ in try! Realm() }
     container.register(MoyaProvider<NaverPage>.self) { _ in MoyaProvider<NaverPage>() }
     container.register(TOPParser.self) { _ in TOPParser() }
+    container.register(MusicBrowser.self) { r in
+      return MusicBrowser(provider: r.resolve(MoyaProvider<NaverPage>.self)!,
+                          parser: r.resolve(TOPParser.self)!,
+                          realm: r.resolve(Realm.self)!)
+    }
+    container.register(WindowController.self) { r in
+      let windowController = WindowController()
+      return windowController
+    }
+    container.register(PlayListViewModel.self) { r in
+      return PlayListViewModel(musicBrowser: r.resolve(MusicBrowser.self)!)
+    }
+    container.register(PlayListViewController.self) { r in
+      let playListViewController = PlayListViewController()
+      playListViewController.viewModel = r.resolve(PlayListViewModel.self)
+      return playListViewController
+    }
     return container
   }()
   
   override func awakeFromNib() {
     super.awakeFromNib()
     Container.container = container
-    window.showWindow(nil)
+    self.window = container.resolve(WindowController.self)
+    window?.showWindow(nil)
   }
 
 }

@@ -13,8 +13,8 @@ import Moya
 class PlayListViewController: NSViewController {
   // MARK: Variables
   private var cellViewModels: [PlayListCellViewModel] = []
-  private let viewModel = PlayListViewModel(musicBrowser: MusicBrowser(provider: MoyaProvider<NaverPage>())) // TODO: resolve dependency
   private let disposeBag = DisposeBag()
+  public var viewModel: PlayListViewModel!
   override var nibName: NSNib.Name? {
     return NSNib.Name("PlayListViewController")
   }
