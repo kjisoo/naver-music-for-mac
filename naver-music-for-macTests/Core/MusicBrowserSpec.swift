@@ -54,7 +54,7 @@ class MusicBrowserSpec: QuickSpec {
       _ = try? musicBrowser.updateTOPPlayList(top: .total).toBlocking().first()
       
       // Assert
-      expect(playlist.musics.count).to(equal(100))
+      expect(playlist.musicStates.count).to(equal(100))
     }
     
     context("Response error") {

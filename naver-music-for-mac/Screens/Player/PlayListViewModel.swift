@@ -27,13 +27,8 @@ class PlayListViewModel {
   
   private func binding() {
     self.playListViewModels = Observable.from(object: self.playList)
-      .map { $0.musics.map{ PlayListCellViewModel(music: $0) } }
+      .map { $0.musicStates.map{ PlayListCellViewModel(musicState: $0) } }
       .do(onNext: { [weak self] in self?.cellViewModels = $0 })
-    
-    player.playingMusic.subscribe(onNext: { [weak self] in
-      self?.cellViewModels.forEach({ $0._isPlaying = false })
-      self?.cellViewModels[$0.index]._isPlaying = true
-    }).disposed(by: self.disposeBag)
   }
   
   public func play(index: Int) {

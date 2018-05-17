@@ -15,9 +15,8 @@ import RxSwift
 class PlayerService: NSObject {
   private static let instance = PlayerService()
   private let disposeBag = DisposeBag()
-  private var currentIndex = -1
   public let playList: Playlist = Playlist.get(type: .my)
-  public let playingMusic = PublishSubject<(index: Int, music: Music)>()
+  public let playingMusicState = PublishSubject<MusicState>()
   public let webPlayer: WebView = {
     return WebView()
   }()
@@ -40,9 +39,8 @@ class PlayerService: NSObject {
   }
   
   private func bindingPlayList() {
-    Observable.changeset(from: playList.musics).subscribe(onNext: { [weak self] (_, changeset) in
-      if let changeset = changeset,
-        changeset.deleted.contains(self?.currentIndex ?? -1) {
+    Observable.changeset(from: playList.musicStates).subscribe(onNext: { [weak self] (a, changeset) in
+      if let _ = changeset, self?.playList.playingIndex() == nil {
         self?.stop()
       }
     }).disposed(by: self.disposeBag)
@@ -62,10 +60,11 @@ class PlayerService: NSObject {
   }
   
   public func next() {
-    guard self.playList.musics.count > 0 else {
+    guard self.playList.musicStates.count > 0 else {
       return
     }
-    if currentIndex + 1 < self.playList.musics.count {
+    if let currentIndex = self.playList.playingIndex(),
+      currentIndex + 1 < self.playList.musicStates.count {
       self.play(index: currentIndex + 1)
     } else {
       self.play(index: 0)
@@ -73,26 +72,27 @@ class PlayerService: NSObject {
   }
   
   public func prev() {
-    guard self.playList.musics.count > 0 else {
+    guard self.playList.musicStates.count > 0 else {
       return
     }
-    if 0 < currentIndex - 1 {
+    if let currentIndex = self.playList.playingIndex(),
+      0 < currentIndex - 1 {
       self.play(index: currentIndex - 1)
     } else {
-      self.play(index: self.playList.musics.count - 1)
+      self.play(index: self.playList.musicStates.count - 1)
     }
   }
   
   public func stop() {
-    self.currentIndex = -1;
+    self.playList.playingMusicState()?.changePlaying(isPlaying: false)
     self.pause()
   }
   
   public func play(index: Int) {
-    self.currentIndex = index
-    let music = self.playList.musics[index]
-    self.playingMusic.onNext((index: index, music: music))
-    play(id: music.id)
+    self.playList.playingMusicState()?.changePlaying(isPlaying: false)
+    let musicState = self.playList.musicStates[index]
+    musicState.changePlaying(isPlaying: true)
+    play(id: musicState.music.id)
   }
   
   private func play(id: String) {

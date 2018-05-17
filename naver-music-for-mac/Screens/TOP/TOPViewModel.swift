@@ -29,7 +29,7 @@ class TOPViewModel {
     self.musicDatasource = self.topType.flatMapLatest { (type) -> Observable<Playlist> in
       return Observable.from(object: Playlist.get(type: type))
     }.do(onNext: {[weak self] in self?.playList = $0})
-    .map{ $0.musics.enumerated().map { TOPCellViewModel(music: $1, rank: $0+1) } }
+    .map{ $0.musicStates.enumerated().map { TOPCellViewModel(music: $1.music!, rank: $0+1) } }
 
     
     self.topType.subscribe(onNext: { [weak self] type in
@@ -43,6 +43,6 @@ class TOPViewModel {
   }
   
   public func addMusicToList(indexs: [Int]) {
-    self.myPlayList.append(musics: indexs.map{ self.playList!.musics[$0] })
+    self.myPlayList.append(musics: indexs.map{ self.playList!.musicStates[$0] })
   }
 }

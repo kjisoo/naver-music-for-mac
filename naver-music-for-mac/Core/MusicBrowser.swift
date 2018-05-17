@@ -27,14 +27,14 @@ class MusicBrowser {
     return Single.zip(self.provider.rx.request(.top(domain: type.rawValue, page: 1)).filterSuccessfulStatusCodes(),
                       self.provider.rx.request(.top(domain: type.rawValue, page: 2)).filterSuccessfulStatusCodes())
       .map { [weak self] (firstResponse, secondResponse) in
-        var playList: Playlist!
+        let playList = Playlist.get(type: type)
         if let `self` = self,
           let firstResponseString = String(data: firstResponse.data, encoding: .utf8),
           let secondResponseString = String(data: secondResponse.data, encoding: .utf8) {
           let result = self.topParser.parse(from: firstResponseString) + self.topParser.parse(from: secondResponseString)
           try? self.realm.write {
-            let playListValue: [String : Any] = ["name": type.rawValue, "musics": result]
-            playList = self.realm.create(Playlist.self, value: playListValue, update: true)
+            playList.musicStates.removeAll()
+            playList.musicStates.append(objectsIn: result.map({self.realm.create(MusicState.self, value: ["music": $0], update: true)}))
           }
         }
         return playList

@@ -49,9 +49,9 @@ class PlayListSpec: QuickSpec {
           playlist.append(musicID: "1")
           
           // Assert
-          expect(playlist.musics.count).to(equal(1))
-          expect(playlist.musics[0].id).to(equal("1"))
-          expect(playlist.musics[0].name).to(beNil())
+          expect(playlist.musicStates.count).to(equal(1))
+          expect(playlist.musicStates[0].music.id).to(equal("1"))
+          expect(playlist.musicStates[0].music.name).to(beNil())
         }
         
         it("Id exist") {
@@ -65,9 +65,9 @@ class PlayListSpec: QuickSpec {
           playlist.append(musicID: "1")
           
           // Assert
-          expect(playlist.musics.count).to(equal(1))
-          expect(playlist.musics[0].id).to(equal("1"))
-          expect(playlist.musics[0].name).to(equal("name"))
+          expect(playlist.musicStates.count).to(equal(1))
+          expect(playlist.musicStates[0].music.id).to(equal("1"))
+          expect(playlist.musicStates[0].music.name).to(equal("name"))
         }
         
         it("add sequence") {
@@ -78,10 +78,10 @@ class PlayListSpec: QuickSpec {
           playlist.append(musicIDs: ["1", "2", "3"])
           
           // Assert
-          expect(playlist.musics.count).to(equal(3))
-          expect(playlist.musics[0].id).to(equal("1"))
-          expect(playlist.musics[1].id).to(equal("2"))
-          expect(playlist.musics[2].id).to(equal("3"))
+          expect(playlist.musicStates.count).to(equal(3))
+          expect(playlist.musicStates[0].music.id).to(equal("1"))
+          expect(playlist.musicStates[1].music.id).to(equal("2"))
+          expect(playlist.musicStates[2].music.id).to(equal("3"))
         }
         
         it("add duplicated sequence") {
@@ -92,10 +92,10 @@ class PlayListSpec: QuickSpec {
           playlist.append(musicIDs: ["1", "2", "1"])
           
           // Assert
-          expect(playlist.musics.count).to(equal(3))
-          expect(playlist.musics[0].id).to(equal("1"))
-          expect(playlist.musics[1].id).to(equal("2"))
-          expect(playlist.musics[2].id).to(equal("1"))
+          expect(playlist.musicStates.count).to(equal(3))
+          expect(playlist.musicStates[0].music.id).to(equal("1"))
+          expect(playlist.musicStates[1].music.id).to(equal("2"))
+          expect(playlist.musicStates[2].music.id).to(equal("1"))
         }
       }
       
@@ -115,8 +115,8 @@ class PlayListSpec: QuickSpec {
           playlist.remove(at: 0)
           
           // Assert
-          expect(playlist.musics.count).to(equal(1))
-          expect(playlist.musics[0].id).to(equal("2"))
+          expect(playlist.musicStates.count).to(equal(1))
+          expect(playlist.musicStates[0].music.id).to(equal("2"))
         }
         
         it("remove out of index") {
@@ -128,7 +128,7 @@ class PlayListSpec: QuickSpec {
           playlist.remove(at: 1)
           
           // Assert
-          expect(playlist.musics.count).to(equal(1))
+          expect(playlist.musicStates.count).to(equal(1))
         }
         
         it("remove sequence") {
@@ -141,7 +141,7 @@ class PlayListSpec: QuickSpec {
           playlist.remove(at: [0, 1])
           
           // Assert
-          expect(playlist.musics.count).to(equal(0))
+          expect(playlist.musicStates.count).to(equal(0))
         }
         
         it("remove sequence") {
@@ -153,9 +153,9 @@ class PlayListSpec: QuickSpec {
           playlist.remove(at: [3, 1, 2])
           
           // Assert
-          expect(playlist.musics.count).to(equal(2))
-          expect(playlist.musics[0].id).to(equal("0"))
-          expect(playlist.musics[1].id).to(equal("4"))
+          expect(playlist.musicStates.count).to(equal(2))
+          expect(playlist.musicStates[0].music.id).to(equal("0"))
+          expect(playlist.musicStates[1].music.id).to(equal("4"))
         }
         
         it("remove sequence out of range") {
@@ -167,7 +167,7 @@ class PlayListSpec: QuickSpec {
           playlist.remove(at: [0, 1, 2])
           
           // Assert
-          expect(playlist.musics.count).to(equal(0))
+          expect(playlist.musicStates.count).to(equal(0))
         }
       }
     }
