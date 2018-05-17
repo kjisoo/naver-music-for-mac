@@ -60,7 +60,9 @@ class Playlist: Object {
   
   public func remove(at index: Int) {
     try? self.realm.write {
-      self.musics.remove(at: index)
+      if index < self.musics.count {
+        self.musics.remove(at: index)
+      }
     }
   }
   

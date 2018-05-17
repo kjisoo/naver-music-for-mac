@@ -8,11 +8,22 @@
 
 import Quick
 import Nimble
+import RealmSwift
+import Swinject
 
 @testable import naver_music_for_mac
 
 class AlbumSpec: QuickSpec {
   override func spec() {
+    beforeEach {
+      let container = Swinject.Container()
+      container.register(Realm.self) { _ in
+        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "AlbumSpec" ))
+        return realm
+      }
+      Container.container = container
+    }
+    
     context("Cover image url by id") {
       it("id of album is empty") {
         let album = Album()

@@ -30,6 +30,7 @@
 		E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */; };
 		E0ABE5DE20AD50E200C28E77 /* Object+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5DD20AD50E200C28E77 /* Object+Realm.swift */; };
 		E0ABE5E120AD541E00C28E77 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5E020AD541E00C28E77 /* Container.swift */; };
+		E0ABE5E320AD7AA000C28E77 /* PlayListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5E220AD7AA000C28E77 /* PlayListSpec.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -84,6 +85,7 @@
 		E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellViewModel.swift; sourceTree = "<group>"; };
 		E0ABE5DD20AD50E200C28E77 /* Object+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Realm.swift"; sourceTree = "<group>"; };
 		E0ABE5E020AD541E00C28E77 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		E0ABE5E220AD7AA000C28E77 /* PlayListSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListSpec.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				E874D24920A9E650009534E3 /* AlbumSpec.swift */,
+				E0ABE5E220AD7AA000C28E77 /* PlayListSpec.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */,
 				E0ABE5CA20A9AEE500C28E77 /* MusicBrowserSpec.swift in Sources */,
 				E874D24A20A9E650009534E3 /* AlbumSpec.swift in Sources */,
+				E0ABE5E320AD7AA000C28E77 /* PlayListSpec.swift in Sources */,
 				E85B8D9120A81F41007D3C90 /* TOPParserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
