@@ -28,6 +28,8 @@
 		E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */; };
 		E0ABE5D420AADB5800C28E77 /* PlayListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */; };
 		E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */; };
+		E0ABE5DE20AD50E200C28E77 /* Object+Realm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5DD20AD50E200C28E77 /* Object+Realm.swift */; };
+		E0ABE5E120AD541E00C28E77 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5E020AD541E00C28E77 /* Container.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -80,6 +82,8 @@
 		E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewModel.swift; sourceTree = "<group>"; };
 		E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellView.swift; sourceTree = "<group>"; };
 		E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellViewModel.swift; sourceTree = "<group>"; };
+		E0ABE5DD20AD50E200C28E77 /* Object+Realm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Realm.swift"; sourceTree = "<group>"; };
+		E0ABE5E020AD541E00C28E77 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -205,6 +209,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		E0ABE5DF20AD540B00C28E77 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				E0ABE5E020AD541E00C28E77 /* Container.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		E837903E20A086BE006BCBBF = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +240,7 @@
 		E837904920A086BE006BCBBF /* naver-music-for-mac */ = {
 			isa = PBXGroup;
 			children = (
+				E0ABE5DF20AD540B00C28E77 /* Utils */,
 				E0ABE5C520A9530700C28E77 /* Network */,
 				E85B8D5B20A73F20007D3C90 /* Core */,
 				E85B8D4B20A6C38E007D3C90 /* Models */,
@@ -258,6 +271,7 @@
 		E85B8D4B20A6C38E007D3C90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E0ABE5DD20AD50E200C28E77 /* Object+Realm.swift */,
 				E85B8D4C20A6C39A007D3C90 /* Music.swift */,
 				E85B8D4E20A6C680007D3C90 /* Album.swift */,
 				E85B8D5020A6C696007D3C90 /* Artist.swift */,
@@ -538,6 +552,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0ABE5DE20AD50E200C28E77 /* Object+Realm.swift in Sources */,
 				E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */,
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */,
@@ -549,6 +564,7 @@
 				E0ABE5C720A9534200C28E77 /* NaverPage.swift in Sources */,
 				E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
+				E0ABE5E120AD541E00C28E77 /* Container.swift in Sources */,
 				0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
 				E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */,
