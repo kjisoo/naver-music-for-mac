@@ -14,32 +14,18 @@ import RxSwift
 
 class PlayerService: NSObject {
   private static let instance = PlayerService()
+  private let playList: Playlist = Playlist.get(type: .my)
+  private let disposeBag = DisposeBag()
+  private var currentIndex = -1
+  public let playedMusic = PublishSubject<(index: Int, music: Music)>()
   public let webPlayer: WebView = {
     return WebView()
   }()
-  
-  private var playList: Playlist! {
-    didSet {
-      Observable.from(object: playList).subscribe(onNext: { [weak self] _ in
-        print(1)
-        }, onError: nil, onCompleted: nil, onDisposed: {
-          print("dispose")
-      })
-    }
-  }
-  
-  public var realm: Realm? {
-    didSet {
-      if let realm = self.realm {
-        self.playList = realm.object(ofType: Playlist.self, forPrimaryKey: "MY")
-      }
-    }
-  }
-  
 
   private override init() {
     super.init()
     setupWebPlayer()
+    bindingPlayList()
   }
   
   public static func shared() -> PlayerService {
@@ -51,6 +37,15 @@ class PlayerService: NSObject {
     self.webPlayer.mainFrame.load(URLRequest(url: URL(string: "http://m.music.naver.com/search/search.nhn")!))
     self.webPlayer.uiDelegate = self
     self.webPlayer.frameLoadDelegate = self
+  }
+  
+  private func bindingPlayList() {
+    Observable.changeset(from: playList.musics).subscribe(onNext: { [weak self] (_, changeset) in
+      if let changeset = changeset,
+        changeset.deleted.contains(self?.currentIndex ?? -1) {
+        self?.stop()
+      }
+    }).disposed(by: self.disposeBag)
   }
   
   public func resume() {
@@ -67,36 +62,41 @@ class PlayerService: NSObject {
   }
   
   public func next() {
-    if let index = self.playList.musics.enumerated().first(where: {$1.isPlaying}).map({$0.offset}),
-      index+1 < self.playList.musics.count {
-      self.play(id: self.playList.musics[index+1].id)
-    } else if self.playList.musics.count > 0 {
-      self.play(id: self.playList.musics[0].id)
+    guard self.playList.musics.count > 0 else {
+      return
+    }
+    if currentIndex + 1 < self.playList.musics.count {
+      self.play(index: currentIndex + 1)
+    } else {
+      self.play(index: 0)
     }
   }
   
   public func prev() {
-    if let index = self.playList.musics.enumerated().first(where: {$1.isPlaying}).map({$0.offset}),
-      0 < index-1 && index-1 < self.playList.musics.count {
-      self.play(id: self.playList.musics[index-1].id)
-    } else if self.playList.musics.count > 0,
-      let lastID = self.playList.musics.last?.id {
-      self.play(id: lastID)
+    guard self.playList.musics.count > 0 else {
+      return
     }
+    if 0 < currentIndex - 1 {
+      self.play(index: currentIndex - 1)
+    } else {
+      self.play(index: self.playList.musics.count - 1)
+    }
+  }
+  
+  public func stop() {
+    self.currentIndex = -1;
+    self.pause()
+  }
+  
+  public func play(index: Int) {
+    self.currentIndex = index
+    let music = self.playList.musics[index]
+    self.playedMusic.onNext((index: index, music: music))
+    play(id: music.id)
   }
   
   private func play(id: String) {
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.play(" + id + ");")
-    self.changeStateToPlay(id: id)
-  }
-  
-  private func changeStateToPlay(id: String) {
-    self.realm?.beginWrite()
-    for music in self.realm!.objects(Music.self).filter("isPlaying = true") {
-      music.isPlaying = false
-    }
-    self.realm?.object(ofType: Music.self, forPrimaryKey: id)?.isPlaying = true
-    try? self.realm?.commitWrite()
   }
 }
 
