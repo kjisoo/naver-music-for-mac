@@ -23,7 +23,7 @@ class PlayListCellViewModel {
   init(music: Music) {
     let musicObservable = Observable.from(object: music)
     self.name = musicObservable.map { $0.name! }
-    self.isPlaying = musicObservable.map { $0.isPlaying }
+    self.isPlaying = Observable.never() 
   }
   
   public func checked(checked: Bool) {
