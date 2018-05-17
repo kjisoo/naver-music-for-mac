@@ -13,4 +13,8 @@ extension Object {
   var realm: Realm {
     return Container.container.resolve(Realm.self)!
   }
+  
+  static var realm: Realm {
+    return Container.container.resolve(Realm.self)!
+  }
 }

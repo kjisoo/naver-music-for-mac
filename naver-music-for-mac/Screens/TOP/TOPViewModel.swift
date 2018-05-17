@@ -14,10 +14,11 @@ class TOPViewModel {
   // MARK: Varibales
   private let musicBrowser: MusicBrowser
   private let disposeBag = DisposeBag()
+  private let myPlayList = Playlist.get(type: .my)
   private var playList: Playlist?
   
   // MARK: Input
-  public let topType = PublishSubject<TOPType>()
+  public let topType = PublishSubject<PlayListType>()
   
   // MARK: Output
   private(set) public var musicDatasource: Observable<[TOPCellViewModel]>!
@@ -25,11 +26,8 @@ class TOPViewModel {
   init(musicBrowser: MusicBrowser) {
     self.musicBrowser = musicBrowser
     
-    self.musicDatasource = self.topType.flatMapLatest { [weak self] (type) -> Observable<Playlist> in
-      guard let `self` = self else {
-        return Observable.never()
-      }
-      return Observable.from(object: self.musicBrowser.getPlayList(type: type))
+    self.musicDatasource = self.topType.flatMapLatest { (type) -> Observable<Playlist> in
+      return Observable.from(object: Playlist.get(type: type))
     }.do(onNext: {[weak self] in self?.playList = $0})
     .map{ $0.musics.enumerated().map { TOPCellViewModel(music: $1, rank: $0+1) } }
 
@@ -45,6 +43,6 @@ class TOPViewModel {
   }
   
   public func addMusicToList(indexs: [Int]) {
-    self.musicBrowser.addMusicToMyList(trackIDs: indexs.map { self.playList!.musics[$0].id })
+    self.myPlayList.append(musics: indexs.map{ self.playList!.musics[$0] })
   }
 }

@@ -40,15 +40,15 @@ class TOPViewController: NSViewController {
     }).disposed(by: self.disposeBag)
     
     self.topTypeSegmentedControl.rx.controlProperty(getter: { $0.selectedSegment }, setter: { _,_ in  })
-      .map { (index) -> TOPType in
+      .map { (index) -> PlayListType in
         if index == 0 {
-          return TOPType.total
+          return .total
         } else if index == 1 {
-          return TOPType.domestic
+          return .domestic
         } else if index == 2 {
-          return TOPType.oversea
+          return .oversea
         } else {
-          return TOPType.total
+          return .total
         }
       }
       .subscribe(onNext: { [weak self] type in

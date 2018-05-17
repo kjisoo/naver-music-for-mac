@@ -20,7 +20,7 @@ class PlayListViewModel {
   
   init(musicBrowser: MusicBrowser) {
     self.musicBrowser = musicBrowser
-    self.playList = musicBrowser.getPlayList(type: PlayListType.my)
+    self.playList = Playlist.get(type: .my)
     self.binding()
   }
   
@@ -43,7 +43,7 @@ class PlayListViewModel {
   }
   
   public func deleteSelectedList() {
-    self.musicBrowser.removeMusicFromMyList(indexs: self.cellViewModels.enumerated().filter({ $1.isChecked }).map({ $0.offset }))
+    self.playList.remove(at: self.cellViewModels.enumerated().filter({ $1.isChecked }).map({ $0.offset }))
   }
 }
 

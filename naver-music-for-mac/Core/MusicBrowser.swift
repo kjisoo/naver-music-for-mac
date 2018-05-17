@@ -23,23 +23,7 @@ class MusicBrowser {
     self.realm = realm
   }
   
-  func getPlayList(type: TOPType) -> Playlist {
-    var playList: Playlist?
-    try? realm.write {
-      playList = self.realm.create(Playlist.self, value: ["name": type.rawValue], update: true)
-    }
-    return playList!
-  }
-  
-  func getPlayList(type: PlayListType) -> Playlist {
-    var playList: Playlist?
-    try? realm.write {
-      playList = self.realm.create(Playlist.self, value: ["name": type.rawValue], update: true)
-    }
-    return playList!
-  }
-  
-  func updateTOPPlayList(top type: TOPType) -> Single<Playlist> {
+  func updateTOPPlayList(top type: PlayListType) -> Single<Playlist> {
     return Single.zip(self.provider.rx.request(.top(domain: type.rawValue, page: 1)).filterSuccessfulStatusCodes(),
                       self.provider.rx.request(.top(domain: type.rawValue, page: 2)).filterSuccessfulStatusCodes())
       .map { [weak self] (firstResponse, secondResponse) in
@@ -55,36 +39,5 @@ class MusicBrowser {
         }
         return playList
     }
-  }
-  
-  func addMusicToMyList(trackID: String) {
-    let playList = self.getPlayList(type: PlayListType.my)
-    self.removeMusicFromMyList(indexs: playList.musics.enumerated().filter({$0.element.id == trackID}).map({$0.offset}))
-    try? realm.write {
-      let music = realm.create(Music.self, value: ["id": trackID], update: true)
-      playList.musics.append(music)
-    }
-  }
-  
-  func addMusicToMyList(trackIDs: [String]) {
-    trackIDs.forEach { self.addMusicToMyList(trackID: $0) }
-  }
-  
-  func removeMusicFromMyList(index: Int) {
-    let playList = self.getPlayList(type: PlayListType.my)
-    if index < playList.musics.count {
-      try? realm.write {
-        playList.musics.remove(at: index)
-      }
-    }
-  }
-  
-  func removeMusicFromMyList(indexs: [Int]) {
-    let playList = self.getPlayList(type: PlayListType.my)
-    realm.beginWrite()
-    for index in indexs.sorted().reversed().filter({ $0 < playList.musics.count }) {
-      playList.musics.remove(at: index)
-    }
-    try? realm.commitWrite()
   }
 }

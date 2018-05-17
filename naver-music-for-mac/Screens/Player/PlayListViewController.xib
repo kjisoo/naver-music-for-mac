@@ -124,7 +124,7 @@
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="deleteWithSender:" target="-1" id="evl-qy-T4x"/>
+                                <action selector="deleteWithSender:" target="-2" id="qlo-MV-nOp"/>
                             </connections>
                         </button>
                     </subviews>

@@ -9,12 +9,6 @@
 import Foundation
 import RealmSwift
 
-enum TOPType: String {
-  case total = "TOTAL"
-  case domestic = "DOMESTIC"
-  case oversea = "OVERSEA"
-}
-
 enum PlayListType: String {
   case total = "TOTAL"
   case domestic = "DOMESTIC"
@@ -30,15 +24,51 @@ class Playlist: Object {
     return "name"
   }
   
-  static func createIfNil(name: String, realm: Realm) -> Playlist {
-    if let playlist = realm.object(ofType: Playlist.self, forPrimaryKey: name) {
-      return playlist
-    } else {
-      let playlist = Playlist(value: ["name": name])
-      try? realm.write {
-        realm.add(playlist)
-      }
-      return playlist
+  public static func get(type: PlayListType) -> Playlist {
+    var playList: Playlist!
+    try? realm.write {
+      playList = realm.create(Playlist.self, value: ["name": type.rawValue], update: true)
     }
+    return playList
+  }
+  
+  public func append(musicID: String) {
+    self.realm.beginWrite()
+    let music = realm.create(Music.self, value: ["id": musicID], update: true)
+    self.musics.append(music)
+    try? self.realm.commitWrite()
+  }
+  
+  public func append(musicIDs: [String]) {
+    self.realm.beginWrite()
+    let musics = musicIDs.map({realm.create(Music.self, value: ["id": $0], update: true)})
+    self.musics.append(objectsIn: musics)
+    try? self.realm.commitWrite()
+  }
+  
+  public func append(music: Music) {
+    try? self.realm.write {
+      self.musics.append(music)
+    }
+  }
+  
+  public func append(musics: [Music]) {
+    try? self.realm.write {
+      self.musics.append(objectsIn: musics)
+    }
+  }
+  
+  public func remove(at index: Int) {
+    try? self.realm.write {
+      self.musics.remove(at: index)
+    }
+  }
+  
+  public func remove(at indexs: [Int]) {
+    realm.beginWrite()
+    for index in indexs.sorted().reversed().filter({ $0 < self.musics.count }) {
+      self.musics.remove(at: index)
+    }
+    try? realm.commitWrite()
   }
 }
