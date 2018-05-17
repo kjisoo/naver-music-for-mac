@@ -9,6 +9,8 @@
 import Cocoa
 
 class MusicCoverViewController: NSViewController {
+  @IBOutlet weak var coverImage: NSImageView!
+  
   override var nibName: NSNib.Name? {
     return NSNib.Name("MusicCoverViewController")
   }
