@@ -24,7 +24,7 @@ class SideMenuViewController: NSViewController {
     super.viewDidLoad()
     viewModel?.menuList.subscribe(onNext: {[weak self] in self?.menuList = $0 }).disposed(by: self.disposeBag)
     viewModel?.signState.map { $0 ? "Signout" : "Signin" }.subscribe(onNext: { [weak self] in
-      self?.signButton.stringValue = $0
+      self?.signButton.title = $0
     }).disposed(by: self.disposeBag)
   }
 }

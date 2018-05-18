@@ -36,6 +36,7 @@
 		E0ABE5F320AEB0E500C28E77 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE5F120AEB0E500C28E77 /* SettingViewController.xib */; };
 		E0ABE5F720AEB0FB00C28E77 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5F520AEB0FB00C28E77 /* SignViewController.swift */; };
 		E0ABE5F820AEB0FB00C28E77 /* SignViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE5F620AEB0FB00C28E77 /* SignViewController.xib */; };
+		E0ABE5FA20AEB39D00C28E77 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5F920AEB39D00C28E77 /* AuthService.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -98,6 +99,7 @@
 		E0ABE5F120AEB0E500C28E77 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		E0ABE5F520AEB0FB00C28E77 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		E0ABE5F620AEB0FB00C28E77 /* SignViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignViewController.xib; sourceTree = "<group>"; };
+		E0ABE5F920AEB39D00C28E77 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				E0ABE5E020AD541E00C28E77 /* Container.swift */,
+				E0ABE5F920AEB39D00C28E77 /* AuthService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0ABE5F220AEB0E500C28E77 /* SettingViewController.swift in Sources */,
+				E0ABE5FA20AEB39D00C28E77 /* AuthService.swift in Sources */,
 				E0ABE5DE20AD50E200C28E77 /* Object+Realm.swift in Sources */,
 				E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */,
 				E8D9204520AD9A7C001F18DC /* MusicCoverViewModel.swift in Sources */,

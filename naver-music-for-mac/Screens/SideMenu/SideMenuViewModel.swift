@@ -10,6 +10,9 @@ import Foundation
 import RxSwift
 
 class SideMenuViewModel {
+  // Variable
+  private let authService = AuthService.shared() // TODO: DI
+  
   // Outputs
   public var menuList: Observable<[String]>!
   public var signState: Observable<Bool>!
@@ -19,7 +22,13 @@ class SideMenuViewModel {
   }
   
   private func binding() {
-    self.menuList = Observable.just(["A", "B", "C"])
-    self.signState = Observable.just(false)
+    self.signState = authService.changedAuthorizedState.asObservable()
+    self.menuList = self.signState.map {
+      if $0 {
+        return ["Player", "TOP100", "My list"]
+      } else {
+        return ["Player", "TOP100"]
+      }
+    }
   }
 }

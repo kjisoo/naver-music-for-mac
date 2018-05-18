@@ -37,6 +37,7 @@ class WindowController: NSWindowController {
     self.window?.backgroundColor = .white
     self.setupSplitView()
     self.setupPlayer()
+    self.setupAuthorizedState()
   }
   
   // MARK: Private Methods
@@ -64,12 +65,27 @@ class WindowController: NSWindowController {
     self.window?.contentView?.addSubview(PlayerService.shared().webPlayer)
   }
 
+  private func setupAuthorizedState() {
+    _ = AuthService.shared().changedAuthorizedState.subscribe(onNext: {
+      if $0, self.contentTabViewController.selectedTabViewItemIndex == 4 {
+        self.contentTabViewController.selectedTabViewItemIndex = 1
+      } else if $0 == false, self.contentTabViewController.selectedTabViewItemIndex == 2 {
+        self.contentTabViewController.selectedTabViewItemIndex = 4
+      }
+    })
+  }
+  
+  // IBActions
   @IBAction func settting(sender: NSButton) {
     self.contentTabViewController.selectedTabViewItemIndex = 3
   }
   
   @IBAction func sign(sender: NSButton) {
-    self.contentTabViewController.selectedTabViewItemIndex = 4
+    if try! AuthService.shared().changedAuthorizedState.value() == true {
+      AuthService.shared().signout()
+    } else {
+      self.contentTabViewController.selectedTabViewItemIndex = 4
+    }
   }
   
   @objc public func selected(index: Any) {
