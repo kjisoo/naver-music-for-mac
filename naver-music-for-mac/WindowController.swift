@@ -18,11 +18,11 @@ class WindowController: NSWindowController {
   lazy var sideMenuViewController: SideMenuViewController = {
     return SideMenuViewController()
   }()
-  
   lazy var contentTabViewController: NSTabViewController = {
     let tabViewController = NSTabViewController()
     tabViewController.tabStyle = .unspecified
     tabViewController.addTabViewItem(NSTabViewItem(viewController: PlayerController()))
+    tabViewController.addTabViewItem(NSTabViewItem(viewController: TOPViewController()))
     return tabViewController
   }()
   
@@ -33,6 +33,7 @@ class WindowController: NSWindowController {
     self.window?.titleVisibility = .hidden
     self.window?.backgroundColor = .white
     self.setupSplitView()
+    self.setupPlayer()
   }
   
   // MARK: Private Methods
@@ -54,6 +55,10 @@ class WindowController: NSWindowController {
     let frameSize = window.contentRect(forFrameRect: window.frame).size
     splitViewController.view.setFrameSize(frameSize)
     window.contentViewController = splitViewController
+  }
+  
+  private func setupPlayer() {
+    self.window?.contentView?.addSubview(PlayerService.shared().webPlayer)
   }
 
   @objc public func selected(index: Any) {
