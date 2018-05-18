@@ -13,6 +13,21 @@ class WindowController: NSWindowController {
     return NSNib.Name("WindowController")
   }
   
+  let statusBarItems: [NSStatusItem] = {
+    let nextItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    let playItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
+    let prevItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+    
+    nextItem.action = #selector(WindowController.next(sender:))
+    nextItem.image = NSImage(named: NSImage.Name("next"))
+    
+    playItem.action = #selector(WindowController.palyOrPause(sender:))
+    playItem.image = NSImage(named: NSImage.Name("play"))
+    
+    prevItem.action = #selector(WindowController.prev(sender:))
+    prevItem.image = NSImage(named: NSImage.Name("prev"))
+    return [nextItem, playItem, prevItem]
+  }()
   
   // MARK: Variables
   lazy var sideMenuViewController: SideMenuViewController = {
@@ -63,6 +78,9 @@ class WindowController: NSWindowController {
   
   private func setupPlayer() {
     self.window?.contentView?.addSubview(PlayerService.shared().webPlayer)
+    _ = PlayerService.shared().isPaused
+      .map { $0 ? NSImage(named: NSImage.Name("play")) : NSImage(named: NSImage.Name("pause")) }
+      .subscribe(onNext: { self.statusBarItems[1].image = $0 })
   }
 
   private func setupAuthorizedState() {
@@ -92,6 +110,19 @@ class WindowController: NSWindowController {
     if let index = index as? Int {
       self.contentTabViewController.selectedTabViewItemIndex = index
     }
+  }
+  
+  // MARK: IBActions
+  @IBAction func prev(sender: NSButton) {
+    PlayerService.shared().prev()
+  }
+  
+  @IBAction func next(sender: NSButton) {
+    PlayerService.shared().next()
+  }
+  
+  @IBAction func palyOrPause(sender: NSButton) {
+    PlayerService.shared().togglePlay()
   }
 }
 

@@ -28,16 +28,4 @@ class MusicCoverViewModel {
     self.artistName = player.playingMusicState.map { $0?.music.artist?.name }
     self.isPaused = player.isPaused.asObservable().distinctUntilChanged()
   }
-  
-  public func next() {
-    self.player.next()
-  }
-  
-  public func prev() {
-    self.player.prev()
-  }
-  
-  public func palyOrPause() {
-    self.player.togglePlay()
-  }
 }

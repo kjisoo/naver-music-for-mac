@@ -45,7 +45,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="R7J-rW-Uw8">
                             <rect key="frame" x="-2" y="254" width="737" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" id="Itt-Ie-EHE">
-                                <font key="font" metaFont="system" size="11"/>
+                                <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -53,42 +53,42 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tJA-pD-GIF">
                             <rect key="frame" x="-2" y="236" width="737" height="14"/>
                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="center" id="J3U-ah-HBB">
-                                <font key="font" metaFont="system" size="11"/>
+                                <font key="font" metaFont="smallSystem"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="ifj-mm-vx8">
-                            <rect key="frame" x="154" y="0.0" width="425" height="232"/>
+                            <rect key="frame" x="0.0" y="0.0" width="733" height="232"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kv4-Zo-1xm">
-                                    <rect key="frame" x="244" y="99.5" width="33" height="32"/>
+                                    <rect key="frame" x="398" y="100" width="33" height="32"/>
                                     <buttonCell key="cell" type="bevel" title="Next" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="MIV-LR-23L">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="nextWithSender:" target="-2" id="WNr-0O-9u7"/>
+                                        <action selector="nextWithSender:" target="-1" id="QlC-xu-jB0"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ErA-vP-foc">
-                                    <rect key="frame" x="150" y="100.5" width="32" height="32"/>
+                                    <rect key="frame" x="304" y="100" width="32" height="32"/>
                                     <buttonCell key="cell" type="bevel" title="Prev" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="sz3-Lr-qCc">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="prevWithSender:" target="-2" id="apV-g7-Qrx"/>
+                                        <action selector="prevWithSender:" target="-1" id="2R9-ki-Wtp"/>
                                     </connections>
                                 </button>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-8z-Y06">
-                                    <rect key="frame" x="198" y="100.5" width="30" height="32"/>
+                                    <rect key="frame" x="352" y="100" width="30" height="32"/>
                                     <buttonCell key="cell" type="bevel" title="Play" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="rYI-Fe-E7a">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" metaFont="system"/>
                                     </buttonCell>
                                     <connections>
-                                        <action selector="palyOrPauseWithSender:" target="-2" id="DIf-dM-5Mx"/>
+                                        <action selector="palyOrPauseWithSender:" target="-1" id="D9S-ed-u8A"/>
                                     </connections>
                                 </button>
                             </subviews>

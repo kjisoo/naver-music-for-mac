@@ -45,17 +45,4 @@ class MusicCoverViewController: NSViewController {
       
     }).disposed(by: self.disposeBag)
   }
-  
-  // MARK: IBActions
-  @IBAction func prev(sender: NSButton) {
-    self.viewModel.prev()
-  }
-  
-  @IBAction func next(sender: NSButton) {
-    self.viewModel.next()
-  }
-  
-  @IBAction func palyOrPause(sender: NSButton) {
-    self.viewModel.palyOrPause()
-  }
 }
