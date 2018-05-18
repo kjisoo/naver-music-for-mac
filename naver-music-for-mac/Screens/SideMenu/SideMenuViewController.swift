@@ -27,14 +27,6 @@ class SideMenuViewController: NSViewController {
       self?.signButton.stringValue = $0
     }).disposed(by: self.disposeBag)
   }
-  
-  @IBAction func settting(sender: NSButton) {
-    
-  }
-  
-  @objc @IBAction func sign(sender: NSButton) {
-    
-  }
 }
 
 extension SideMenuViewController: NSTableViewDataSource {

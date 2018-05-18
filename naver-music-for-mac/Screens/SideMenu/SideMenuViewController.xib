@@ -9,7 +9,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SideMenuViewController" customModule="naver_music_for_mac" customModuleProvider="target">
             <connections>
-                <outlet property="signButton" destination="XjU-Oc-NCP" id="VPG-CQ-h8B"/>
+                <outlet property="signButton" destination="XjU-Oc-NCP" id="cwA-pO-QNW"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -28,6 +28,9 @@
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" metaFont="systemBlack" size="28"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="signWithSender:" target="-1" id="7hS-4V-xEV"/>
+                    </connections>
                 </button>
                 <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KyN-gE-gcY">
                     <rect key="frame" x="8" y="68" width="464" height="32"/>
@@ -36,7 +39,7 @@
                         <font key="font" metaFont="systemBlack" size="18"/>
                     </buttonCell>
                     <connections>
-                        <action selector="selectedIndexWithIndex:" target="-1" id="XMc-hb-vfJ"/>
+                        <action selector="setttingWithSender:" target="-1" id="NQ3-ib-RqU"/>
                     </connections>
                 </button>
                 <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="50" horizontalPageScroll="10" verticalLineScroll="50" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZt-dO-XVk">

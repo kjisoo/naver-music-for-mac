@@ -61,6 +61,13 @@ class WindowController: NSWindowController {
     self.window?.contentView?.addSubview(PlayerService.shared().webPlayer)
   }
 
+  @IBAction func settting(sender: NSButton) {
+  }
+  
+  @objc @IBAction func sign(sender: NSButton) {
+    
+  }
+  
   @objc public func selected(index: Any) {
     if let index = index as? Int {
       self.contentTabViewController.selectedTabViewItemIndex = index
