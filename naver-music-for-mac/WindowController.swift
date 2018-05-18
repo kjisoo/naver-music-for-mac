@@ -23,6 +23,9 @@ class WindowController: NSWindowController {
     tabViewController.tabStyle = .unspecified
     tabViewController.addTabViewItem(NSTabViewItem(viewController: PlayerController()))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: TOPViewController()))
+    tabViewController.addTabViewItem(NSTabViewItem(viewController: NSViewController()))
+    tabViewController.addTabViewItem(NSTabViewItem(viewController: SettingViewController()))
+    tabViewController.addTabViewItem(NSTabViewItem(viewController: SignViewController()))
     return tabViewController
   }()
   
@@ -62,10 +65,11 @@ class WindowController: NSWindowController {
   }
 
   @IBAction func settting(sender: NSButton) {
+    self.contentTabViewController.selectedTabViewItemIndex = 3
   }
   
-  @objc @IBAction func sign(sender: NSButton) {
-    
+  @IBAction func sign(sender: NSButton) {
+    self.contentTabViewController.selectedTabViewItemIndex = 4
   }
   
   @objc public func selected(index: Any) {
