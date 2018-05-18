@@ -7,8 +7,9 @@
         <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="SideMenuViewController" customModule="네이버_뮤직" customModuleProvider="target">
+        <customObject id="-2" userLabel="File's Owner" customClass="SideMenuViewController" customModule="naver_music_for_mac" customModuleProvider="target">
             <connections>
+                <outlet property="signButton" destination="XjU-Oc-NCP" id="VPG-CQ-h8B"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -18,17 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="465"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lhs-dU-zjz" customClass="ResponsiveButton" customModule="네이버_뮤직" customModuleProvider="target">
-                    <rect key="frame" x="8" y="405" width="472" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="O8d-mi-WUV"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" title="Player" bezelStyle="rounded" alignment="left" focusRingType="none" inset="2" id="amJ-2e-6oz">
-                        <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="systemBlack" size="28"/>
-                    </buttonCell>
-                </button>
-                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XjU-Oc-NCP" customClass="ResponsiveButton" customModule="네이버_뮤직" customModuleProvider="target">
+                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XjU-Oc-NCP">
                     <rect key="frame" x="8" y="20" width="472" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="bNC-On-321"/>
@@ -38,27 +29,82 @@
                         <font key="font" metaFont="systemBlack" size="28"/>
                     </buttonCell>
                 </button>
-                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oMk-Wb-bLb" customClass="ResponsiveButton" customModule="네이버_뮤직" customModuleProvider="target">
-                    <rect key="frame" x="8" y="357" width="472" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="3Eg-JE-oSa"/>
-                    </constraints>
-                    <buttonCell key="cell" type="bevel" title="TOP100" bezelStyle="rounded" alignment="left" focusRingType="none" inset="2" id="neH-W4-t90">
+                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KyN-gE-gcY">
+                    <rect key="frame" x="8" y="68" width="464" height="32"/>
+                    <buttonCell key="cell" type="bevel" title="Setting" bezelStyle="rounded" alignment="left" focusRingType="none" inset="2" id="bLH-zv-SU6">
                         <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="systemBlack" size="28"/>
+                        <font key="font" metaFont="systemBlack" size="18"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="selectedIndexWithIndex:" target="-1" id="XMc-hb-vfJ"/>
+                    </connections>
                 </button>
+                <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="50" horizontalPageScroll="10" verticalLineScroll="50" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZt-dO-XVk">
+                    <rect key="frame" x="0.0" y="116" width="480" height="349"/>
+                    <clipView key="contentView" id="zm1-GV-VhY">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="349"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="34" rowSizeStyle="automatic" viewBased="YES" id="qVY-Y8-rVl">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="349"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <size key="intercellSpacing" width="16" height="16"/>
+                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                <tableColumns>
+                                    <tableColumn width="464" minWidth="40" maxWidth="9999" id="fk1-Pq-Oy7">
+                                        <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                            <font key="font" metaFont="smallSystem"/>
+                                            <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                        </tableHeaderCell>
+                                        <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" title="Text Cell" id="7ht-3s-tXh">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        <prototypeCellViews>
+                                            <textField identifier="MenuTableViewCell" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" id="Vte-IE-rtc">
+                                                <rect key="frame" x="8" y="8" width="464" height="34"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Table View Cell" id="DRc-CQ-2X8">
+                                                    <font key="font" metaFont="systemBlack" size="28"/>
+                                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                </textFieldCell>
+                                            </textField>
+                                        </prototypeCellViews>
+                                    </tableColumn>
+                                </tableColumns>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="0eS-uK-vRg"/>
+                                    <outlet property="delegate" destination="-2" id="7UW-aU-PMC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="l7L-7n-nGr">
+                        <rect key="frame" x="0.0" y="333" width="480" height="16"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="09H-Dg-pef">
+                        <rect key="frame" x="224" y="17" width="15" height="102"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="oMk-Wb-bLb" secondAttribute="trailing" id="7qb-bK-WRy"/>
-                <constraint firstItem="oMk-Wb-bLb" firstAttribute="top" secondItem="lhs-dU-zjz" secondAttribute="bottom" constant="8" id="9es-wE-m2v"/>
                 <constraint firstAttribute="bottom" secondItem="XjU-Oc-NCP" secondAttribute="bottom" constant="20" id="B2k-9D-8Yn"/>
-                <constraint firstAttribute="trailing" secondItem="lhs-dU-zjz" secondAttribute="trailing" id="BxU-Ym-RLa"/>
-                <constraint firstItem="lhs-dU-zjz" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" id="GyO-Mk-asg"/>
+                <constraint firstAttribute="trailing" secondItem="KyN-gE-gcY" secondAttribute="trailing" constant="8" id="TUl-i5-KDI"/>
+                <constraint firstAttribute="trailing" secondItem="JZt-dO-XVk" secondAttribute="trailing" id="XgW-xe-Pk2"/>
+                <constraint firstItem="JZt-dO-XVk" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="ZYl-1K-VdT"/>
                 <constraint firstItem="XjU-Oc-NCP" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="ZrX-5w-Z5Y"/>
+                <constraint firstItem="KyN-gE-gcY" firstAttribute="top" secondItem="JZt-dO-XVk" secondAttribute="bottom" constant="16" id="bXV-fq-mjV"/>
                 <constraint firstAttribute="trailing" secondItem="XjU-Oc-NCP" secondAttribute="trailing" id="dR9-MS-r5l"/>
-                <constraint firstItem="oMk-Wb-bLb" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="gEa-dM-iZG"/>
-                <constraint firstItem="lhs-dU-zjz" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="mhr-tg-MzR"/>
+                <constraint firstItem="KyN-gE-gcY" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="ig3-uk-DbD"/>
+                <constraint firstItem="XjU-Oc-NCP" firstAttribute="top" secondItem="KyN-gE-gcY" secondAttribute="bottom" constant="8" id="kpp-y7-Tmx"/>
+                <constraint firstItem="JZt-dO-XVk" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="n5Z-Qw-TlT"/>
             </constraints>
             <point key="canvasLocation" x="139" y="264.5"/>
         </customView>

@@ -55,6 +55,12 @@ class WindowController: NSWindowController {
     splitViewController.view.setFrameSize(frameSize)
     window.contentViewController = splitViewController
   }
+
+  @objc public func selected(index: Any) {
+    if let index = index as? Int {
+      self.contentTabViewController.selectedTabViewItemIndex = index
+    }
+  }
 }
 
 
