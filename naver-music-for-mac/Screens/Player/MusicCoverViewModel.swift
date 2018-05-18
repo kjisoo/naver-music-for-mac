@@ -18,7 +18,7 @@ class MusicCoverViewModel {
   
   init(player: PlayerService = PlayerService.shared()) {
     self.player = player
-    self.coverImageURLString = player.playingMusicState.map { $0.music.album?.coverImageURL(size: .large) }
+    self.coverImageURLString = player.playingMusicState.map { $0?.music.album?.coverImageURL(size: .large) }
   }
   
   public func next() {

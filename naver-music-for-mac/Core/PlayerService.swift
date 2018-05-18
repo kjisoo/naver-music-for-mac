@@ -16,7 +16,7 @@ class PlayerService: NSObject {
   private static let instance = PlayerService()
   private let disposeBag = DisposeBag()
   public let playList: Playlist = Playlist.get(type: .my)
-  public let playingMusicState = PublishSubject<MusicState>()
+  public let playingMusicState = PublishSubject<MusicState?>()
   public let webPlayer: WebView = {
     return WebView()
   }()
@@ -85,6 +85,7 @@ class PlayerService: NSObject {
   
   public func stop() {
     self.playList.playingMusicState()?.changePlaying(isPlaying: false)
+    self.playingMusicState.onNext(nil)
     self.pause()
   }
   
@@ -92,6 +93,7 @@ class PlayerService: NSObject {
     self.playList.playingMusicState()?.changePlaying(isPlaying: false)
     let musicState = self.playList.musicStates[index]
     musicState.changePlaying(isPlaying: true)
+    self.playingMusicState.onNext(musicState)
     play(id: musicState.music.id)
   }
   
