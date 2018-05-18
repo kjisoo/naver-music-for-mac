@@ -18,6 +18,7 @@ class MusicCoverViewModel {
   public let name: Observable<String?>
   public let albumeName: Observable<String?>
   public let artistName: Observable<String?>
+  public let isPaused: Observable<Bool>
   
   init(player: PlayerService = PlayerService.shared()) {
     self.player = player
@@ -25,6 +26,7 @@ class MusicCoverViewModel {
     self.name = player.playingMusicState.map { $0?.music.name }
     self.albumeName = player.playingMusicState.map { $0?.music.album?.name }
     self.artistName = player.playingMusicState.map { $0?.music.artist?.name }
+    self.isPaused = player.isPaused.asObservable().distinctUntilChanged()
   }
   
   public func next() {
@@ -33,5 +35,9 @@ class MusicCoverViewModel {
   
   public func prev() {
     self.player.prev()
+  }
+  
+  public func palyOrPause() {
+    self.player.togglePlay()
   }
 }

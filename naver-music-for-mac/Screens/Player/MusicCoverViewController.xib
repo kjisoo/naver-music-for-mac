@@ -14,6 +14,7 @@
                 <outlet property="artistName" destination="tJA-pD-GIF" id="shv-9N-nZn"/>
                 <outlet property="coverImage" destination="XHs-1g-CMQ" id="yXY-Y7-CU1"/>
                 <outlet property="name" destination="A5L-U9-ncE" id="vxo-nK-OEs"/>
+                <outlet property="playButton" destination="gNz-8z-Y06" id="iL5-Hg-ied"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>

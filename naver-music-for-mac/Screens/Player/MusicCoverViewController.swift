@@ -14,6 +14,7 @@ class MusicCoverViewController: NSViewController {
   @IBOutlet weak var name: NSTextField!
   @IBOutlet weak var albumName: NSTextField!
   @IBOutlet weak var artistName: NSTextField!
+  @IBOutlet weak var playButton: NSButton!
   
   private let disposeBag = DisposeBag()
   public var viewModel: MusicCoverViewModel = MusicCoverViewModel()
@@ -38,6 +39,11 @@ class MusicCoverViewController: NSViewController {
     self.viewModel.artistName.subscribe(onNext: { [weak self] in
       self?.artistName.stringValue = $0 ?? ""
     }).disposed(by: self.disposeBag)
+    
+    self.viewModel.isPaused.map { $0 ? "paused" : "palying" }.subscribe(onNext: { [weak self] in
+      self?.playButton.title = $0
+      
+    }).disposed(by: self.disposeBag)
   }
   
   // MARK: IBActions
@@ -50,5 +56,6 @@ class MusicCoverViewController: NSViewController {
   }
   
   @IBAction func palyOrPause(sender: NSButton) {
+    self.viewModel.palyOrPause()
   }
 }

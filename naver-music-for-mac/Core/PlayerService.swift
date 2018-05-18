@@ -17,6 +17,7 @@ class PlayerService: NSObject {
   private let disposeBag = DisposeBag()
   public let playList: Playlist = Playlist.get(type: .my)
   public let playingMusicState = PublishSubject<MusicState?>()
+  public let isPaused = BehaviorSubject<Bool>(value: true)
   public let webPlayer: WebView = {
     return WebView()
   }()
@@ -46,10 +47,21 @@ class PlayerService: NSObject {
     }).disposed(by: self.disposeBag)
   }
   
+  public func togglePlay() {
+    if let isPaused = try? self.isPaused.value() {
+      if isPaused {
+        self.resume()
+      } else {
+        self.pause()
+      }
+    }
+  }
+  
   public func resume() {
-    if let currentTime = Int(self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.currentTime()")),
+    if let currentTime = Double(self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.currentTime()")),
       currentTime > 0 {
         self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.resume();")
+      self.isPaused.onNext(false)
     } else {
       self.next()
     }
@@ -57,6 +69,7 @@ class PlayerService: NSObject {
   
   public func pause() {
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.pause();")
+    self.isPaused.onNext(true)
   }
   
   public func next() {
@@ -99,6 +112,7 @@ class PlayerService: NSObject {
   
   private func play(id: String) {
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.play(" + id + ");")
+    self.isPaused.onNext(false)
   }
 }
 
