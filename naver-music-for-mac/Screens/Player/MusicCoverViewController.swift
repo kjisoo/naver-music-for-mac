@@ -11,6 +11,9 @@ import RxSwift
 
 class MusicCoverViewController: NSViewController {
   @IBOutlet weak var coverImage: NSImageView!
+  @IBOutlet weak var name: NSTextField!
+  @IBOutlet weak var albumName: NSTextField!
+  @IBOutlet weak var artistName: NSTextField!
   
   private let disposeBag = DisposeBag()
   public var viewModel: MusicCoverViewModel = MusicCoverViewModel()
@@ -22,6 +25,18 @@ class MusicCoverViewController: NSViewController {
   override func viewDidLoad() {
     self.viewModel.coverImageURLString.subscribe(onNext: { [weak self] in
       self?.coverImage.kf.setImage(with: $0)
+    }).disposed(by: self.disposeBag)
+    
+    self.viewModel.name.subscribe(onNext: { [weak self] in
+      self?.name.stringValue = $0 ?? ""
+    }).disposed(by: self.disposeBag)
+    
+    self.viewModel.albumeName.subscribe(onNext: { [weak self] in
+      self?.albumName.stringValue = $0 ?? ""
+    }).disposed(by: self.disposeBag)
+    
+    self.viewModel.artistName.subscribe(onNext: { [weak self] in
+      self?.artistName.stringValue = $0 ?? ""
     }).disposed(by: self.disposeBag)
   }
   
