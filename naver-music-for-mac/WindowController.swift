@@ -36,6 +36,7 @@ class WindowController: NSWindowController {
   lazy var contentTabViewController: NSTabViewController = {
     let tabViewController = NSTabViewController()
     tabViewController.tabStyle = .unspecified
+    tabViewController.view.translatesAutoresizingMaskIntoConstraints = true
     tabViewController.addTabViewItem(NSTabViewItem(viewController: PlayerController()))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: TOPViewController()))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: NSViewController()))
@@ -70,7 +71,7 @@ class WindowController: NSWindowController {
     let contentSplitViewItem = NSSplitViewItem(viewController: contentTabViewController)
     contentSplitViewItem.minimumThickness = 400
     splitViewController.addSplitViewItem(contentSplitViewItem)
-    
+
     let frameSize = window.contentRect(forFrameRect: window.frame).size
     splitViewController.view.setFrameSize(frameSize)
     window.contentViewController = splitViewController

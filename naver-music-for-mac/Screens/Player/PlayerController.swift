@@ -12,6 +12,8 @@ class PlayerController: SplitViewController {
   // MARK: Life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.view.translatesAutoresizingMaskIntoConstraints = true
+    self.splitView.translatesAutoresizingMaskIntoConstraints = true
     self.setupSplitView()
   }
   
@@ -25,10 +27,5 @@ class PlayerController: SplitViewController {
     musicCoverSplitViewItem.minimumThickness = 300
     musicCoverSplitViewItem.maximumThickness = 300
     self.addSplitViewItem(musicCoverSplitViewItem)
-  }
- 
-  override func splitViewDidResizeSubviews(_ notification: Notification) {
-    super.splitViewDidResizeSubviews(notification)
-    self.splitViewItems[1].isCollapsed = self.view.frame.width < 550
   }
 }
