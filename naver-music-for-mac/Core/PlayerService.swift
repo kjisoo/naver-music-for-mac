@@ -132,5 +132,6 @@ extension PlayerService: WebUIDelegate {
 extension PlayerService: WebFrameLoadDelegate {
   func webView(_ sender: WebView!, didFinishLoadFor frame: WebFrame!) {
     sender.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.options.callbacks.ended = function() { fEndedDrawUI(); MobilePlayerManager._bIsPlaying = false; alert('ENDED'); };")
+    sender.stringByEvaluatingJavaScript(from: "setTimeout(function() {MobilePlayerManager._playerCore.playerCoreSwitcher.audiopMusicWebPlayerCore.audiopMusicAPIFetch._fetchPlay = function (t,e,n,r,i){var o='AAC_320_ENC';this._fetchAPI(this.options.musicAPIStPlay.replace('{play.trackId}',t).replace('{play.serviceType}',e).replace('{deviceId}',n).replace('{mediaSourceType}',o),function(t){var i=t.moduleInfo,o=t.clientUI,u=i.trackPlayUrl,a={serviceType:e,trackId:i.trackId,totalTime:i.playTime,token:i.logToken,info:i.logInfo,deviceId:n},c={trackId:i.trackId,playTime:i.playTime&&i.playTime>0?i.playTime/1e3:0,oriPlayTime:i.oriPlayTime&&i.oriPlayTime>0?i.oriPlayTime/1e3:0},s={deviceId:n},f={playTime:i.playTime&&i.playTime>0?i.playTime/1e3:0,oriPlayTime:i.oriPlayTime&&i.oriPlayTime>0?i.oriPlayTime/1e3:0};r(u,f,c,s,a,{clientUI:o})},i)};}, 1000);")
   }
 }
