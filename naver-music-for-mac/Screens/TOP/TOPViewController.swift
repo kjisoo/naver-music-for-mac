@@ -21,6 +21,7 @@ class TOPViewController: NSViewController {
   @IBOutlet weak var tableView: NSTableView!
   @IBOutlet weak var topTypeSegmentedControl: NSSegmentedControl!
   @IBOutlet weak var addingViewHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var addButton: NSButton!
   
   override var nibName: NSNib.Name? {
     return NSNib.Name("TOPViewController")
@@ -61,6 +62,7 @@ class TOPViewController: NSViewController {
     if hidden {
       self.addingViewHeightConstraint.constant = 0
     } else {
+      self.addButton.title = String(format: "%d곡을 플레이 리스트에 추가합니다.", self.tableView.selectedRowIndexes.count)
       self.addingViewHeightConstraint.constant = 100
     }
   }

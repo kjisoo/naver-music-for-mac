@@ -10,6 +10,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="TOPViewController" customModule="naver_music_for_mac" customModuleProvider="target">
             <connections>
+                <outlet property="addButton" destination="qNC-NH-HGb" id="C8o-U2-csf"/>
                 <outlet property="addingViewHeightConstraint" destination="1kb-HW-tZ1" id="xQ8-ce-anl"/>
                 <outlet property="tableView" destination="oby-Qd-aD8" id="WK0-Rb-QCR"/>
                 <outlet property="topTypeSegmentedControl" destination="9lc-Ga-te7" id="Jv7-E3-DSo"/>
