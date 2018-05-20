@@ -17,17 +17,18 @@ enum PlayListType: String {
 }
 
 class Playlist: Object {
+  @objc dynamic var id = ""
   @objc dynamic var name = ""
   let musicStates = List<MusicState>()
   
   override class func primaryKey() -> String? {
-    return "name"
+    return "id"
   }
   
   public static func get(type: PlayListType) -> Playlist {
     var playList: Playlist!
     try? realm.write {
-      playList = realm.create(Playlist.self, value: ["name": type.rawValue], update: true)
+      playList = realm.create(Playlist.self, value: ["id": type.rawValue], update: true)
     }
     return playList
   }
