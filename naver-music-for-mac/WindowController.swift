@@ -78,7 +78,6 @@ class WindowController: NSWindowController {
   }
   
   private func setupPlayer() {
-    self.window?.contentView?.addSubview(PlayerService.shared().webPlayer)
     _ = PlayerService.shared().isPaused
       .map { $0 ? NSImage(named: NSImage.Name("play")) : NSImage(named: NSImage.Name("pause")) }
       .subscribe(onNext: { self.statusBarItems[1].image = $0 })
