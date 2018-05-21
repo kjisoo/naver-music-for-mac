@@ -37,6 +37,9 @@
 		E0ABE5F720AEB0FB00C28E77 /* SignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5F520AEB0FB00C28E77 /* SignViewController.swift */; };
 		E0ABE5F820AEB0FB00C28E77 /* SignViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE5F620AEB0FB00C28E77 /* SignViewController.xib */; };
 		E0ABE5FA20AEB39D00C28E77 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5F920AEB39D00C28E77 /* AuthService.swift */; };
+		E0ABE5FF20B26F7F00C28E77 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5FE20B26F7F00C28E77 /* Repository.swift */; };
+		E0ABE60120B274B700C28E77 /* MusicRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE60020B274B700C28E77 /* MusicRepository.swift */; };
+		E0ABE60320B289E400C28E77 /* PlayListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE60220B289E400C28E77 /* PlayListRepository.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -100,6 +103,9 @@
 		E0ABE5F520AEB0FB00C28E77 /* SignViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignViewController.swift; sourceTree = "<group>"; };
 		E0ABE5F620AEB0FB00C28E77 /* SignViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignViewController.xib; sourceTree = "<group>"; };
 		E0ABE5F920AEB39D00C28E77 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		E0ABE5FE20B26F7F00C28E77 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
+		E0ABE60020B274B700C28E77 /* MusicRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicRepository.swift; sourceTree = "<group>"; };
+		E0ABE60220B289E400C28E77 /* PlayListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListRepository.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -258,6 +264,16 @@
 			path = Sign;
 			sourceTree = "<group>";
 		};
+		E0ABE5FD20B26E8C00C28E77 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				E0ABE5FE20B26F7F00C28E77 /* Repository.swift */,
+				E0ABE60020B274B700C28E77 /* MusicRepository.swift */,
+				E0ABE60220B289E400C28E77 /* PlayListRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		E837903E20A086BE006BCBBF = {
 			isa = PBXGroup;
 			children = (
@@ -281,6 +297,7 @@
 		E837904920A086BE006BCBBF /* naver-music-for-mac */ = {
 			isa = PBXGroup;
 			children = (
+				E0ABE5FD20B26E8C00C28E77 /* Repository */,
 				E0ABE5DF20AD540B00C28E77 /* Utils */,
 				E0ABE5C520A9530700C28E77 /* Network */,
 				E85B8D5B20A73F20007D3C90 /* Core */,
@@ -608,6 +625,7 @@
 				E0ABE5F720AEB0FB00C28E77 /* SignViewController.swift in Sources */,
 				E85B8D5F20A7FEBA007D3C90 /* MusicBrowser.swift in Sources */,
 				E85B8D5720A715AA007D3C90 /* TOPViewController.swift in Sources */,
+				E0ABE5FF20B26F7F00C28E77 /* Repository.swift in Sources */,
 				E0ABE5D420AADB5800C28E77 /* PlayListCellView.swift in Sources */,
 				0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */,
 				E0ABE5C720A9534200C28E77 /* NaverPage.swift in Sources */,
@@ -617,7 +635,9 @@
 				0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
 				E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */,
+				E0ABE60320B289E400C28E77 /* PlayListRepository.swift in Sources */,
 				E8D9204720ADB97A001F18DC /* MusicState.swift in Sources */,
+				E0ABE60120B274B700C28E77 /* MusicRepository.swift in Sources */,
 				E85B8D4D20A6C39A007D3C90 /* Music.swift in Sources */,
 				0085C9F120A5AE1500CEFCA5 /* MusicCoverViewController.swift in Sources */,
 				0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */,
