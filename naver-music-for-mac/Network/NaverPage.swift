@@ -11,6 +11,8 @@ import Moya
 
 enum NaverPage {
   case top(domain: String, page: Int)
+  case myList
+  case listDetail(id: String)
 }
 
 extension NaverPage: TargetType {
@@ -18,6 +20,8 @@ extension NaverPage: TargetType {
     switch self {
     case .top:
       return URL(string: "http://music.naver.com")!
+    case .myList, .listDetail:
+      return URL(string: "http://m.music.naver.com")!
     }
   }
   
@@ -25,14 +29,15 @@ extension NaverPage: TargetType {
     switch self {
     case .top:
       return "/listen/top100.nhn"
+    case .myList:
+      return "/myMusic/myList.nhn"
+    case .listDetail:
+      return "/myMusic/myalbum.nhn"
     }
   }
   
   var method: Moya.Method {
-    switch self {
-    case .top:
-      return .get
-    }
+    return .get
   }
   
   var task: Task {
@@ -40,11 +45,21 @@ extension NaverPage: TargetType {
     case .top(let domain, let page):
       return .requestParameters(parameters: ["domain": domain, "page": page],
                                 encoding: URLEncoding.queryString)
+    case .listDetail(let id):
+      return .requestParameters(parameters: ["albumId": id],
+                                encoding: URLEncoding.queryString)
+    default:
+      return .requestPlain
     }
   }
   
   var headers: [String : String]? {
-    return nil
+    switch self {
+    case .myList, .listDetail:
+      return ["User-Agent": "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/66.0.3359.181 Mobile Safari/537.36"]
+    default:
+      return nil
+    }
   }
   
   var sampleData: Data {
