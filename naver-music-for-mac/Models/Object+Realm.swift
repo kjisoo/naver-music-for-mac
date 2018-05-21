@@ -11,10 +11,10 @@ import RealmSwift
 
 extension Object {
   var realm: Realm {
-    return Container.container.resolve(Realm.self)!
+    return try! Realm()
   }
   
   static var realm: Realm {
-    return Container.container.resolve(Realm.self)!
+    return try! Realm()
   }
 }

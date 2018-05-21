@@ -11,7 +11,6 @@ import Nimble
 import Moya
 import RxBlocking
 import RealmSwift
-import Swinject
 
 @testable import naver_music_for_mac
 
@@ -20,7 +19,10 @@ class MusicBrowserSpec: QuickSpec {
    
     var musicBrowser: MusicBrowser!
     var provider: MoyaProvider<NaverPage>!
-    var realm: Realm!
+    
+    beforeSuite {
+      Realm.Configuration.defaultConfiguration = Realm.Configuration(inMemoryIdentifier: "MusicBrowserSpec")
+    }
     
     beforeEach {
       let endpointClosure = { (target: NaverPage) -> Endpoint in
@@ -36,14 +38,7 @@ class MusicBrowserSpec: QuickSpec {
         return .immediate
       }
       provider = MoyaProvider<NaverPage>(endpointClosure: endpointClosure, stubClosure: stubClosure)
-      realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "MusicBrowserSpec"))
-      
-      let container = Swinject.Container()
-      container.register(Realm.self) { _ in
-        return realm
-      }
-      Container.container = container
-      musicBrowser = MusicBrowser(provider: provider, parser: TOPParser(), realm: realm)
+      musicBrowser = MusicBrowser(provider: provider, parser: TOPParser(), realm: try! Realm())
     }
     
     it("Response success") {
@@ -71,7 +66,7 @@ class MusicBrowserSpec: QuickSpec {
           return .immediate
         }
         let provider = MoyaProvider<NaverPage>(endpointClosure: endpointClosure, stubClosure:stubClosure)
-        musicBrowser = MusicBrowser(provider: provider, parser: TOPParser(), realm: realm)
+        musicBrowser = MusicBrowser(provider: provider, parser: TOPParser(), realm: try! Realm())
       }
       
       it("Response 400") {

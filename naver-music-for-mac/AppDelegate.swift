@@ -16,13 +16,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   var window: WindowController?
   let container: Swinject.Container = {
     let container = Swinject.Container()
-    container.register(Realm.self) { _ in try! Realm() }
     container.register(MoyaProvider<NaverPage>.self) { _ in MoyaProvider<NaverPage>() }
     container.register(TOPParser.self) { _ in TOPParser() }
     container.register(MusicBrowser.self) { r in
       return MusicBrowser(provider: r.resolve(MoyaProvider<NaverPage>.self)!,
                           parser: r.resolve(TOPParser.self)!,
-                          realm: r.resolve(Realm.self)!)
+                          realm: try! Realm())
     }
     container.register(WindowController.self) { r in
       let windowController = WindowController()

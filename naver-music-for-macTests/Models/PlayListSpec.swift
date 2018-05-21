@@ -8,7 +8,6 @@
 
 import Quick
 import Nimble
-import Swinject
 import RealmSwift
 
 @testable import naver_music_for_mac
@@ -16,18 +15,13 @@ import RealmSwift
 class PlayListSpec: QuickSpec {
   override func spec() {
     beforeSuite {
-      let container = Swinject.Container()
-      container.register(Realm.self) { _ in
-        let realm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: "AlbumSpec"))
-        return realm
-      }
-      Container.container = container
+      Realm.Configuration.defaultConfiguration = Realm.Configuration(inMemoryIdentifier: "PlayListSpec")
     }
     
     beforeEach {
-      let realm = Container.container.resolve(Realm.self)
-      try? realm?.write {
-        realm?.deleteAll()
+      let realm = try! Realm()
+      try? realm.write {
+        realm.deleteAll()
       }
     }
     
