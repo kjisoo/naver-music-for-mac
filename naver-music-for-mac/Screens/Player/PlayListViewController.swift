@@ -27,7 +27,7 @@ class PlayListViewController: NSViewController {
   // MARK: Life cycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    viewModel.playListViewModels.subscribe(onNext: { [weak self] in
+    viewModel.playListCellViewModels.subscribe(onNext: { [weak self] in
       self?.cellViewModels = $0
       self?.tableView.reloadData()
     }).disposed(by: self.disposeBag)

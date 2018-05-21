@@ -16,7 +16,10 @@ class PlayerService: NSObject {
   private static let instance = PlayerService()
   private let disposeBag = DisposeBag()
   private let webPlayer = WebView()
-  public let playList: Playlist = Playlist.get(type: .my)
+  private let musicStateRepository = Repository<MusicState>.factory()
+  private let playList: Playlist = Repository<Playlist>().getMyPlayList()
+  
+  public let playMusicStateList = Observable.collection(from: Repository<Playlist>().getMyPlayList().musicStates).map { $0.toArray() }
   public let playingMusicState = BehaviorSubject<MusicState?>(value: nil)
   public let isPaused = BehaviorSubject<Bool>(value: true)
 
@@ -152,16 +155,20 @@ setTimeout(function() {
   }
   
   public func stop() {
-    self.playList.playingMusicState()?.changePlaying(isPlaying: false)
+    if let state = self.playList.playingMusicState() {
+      musicStateRepository.changePlaying(object: state, isPlaying: false)
+    }
     self.playingMusicState.onNext(nil)
     self.pause()
   }
   
   public func play(index: Int) {
     self.addWebPlayerToWindow()
-    self.playList.playingMusicState()?.changePlaying(isPlaying: false)
+    if let state = self.playList.playingMusicState() {
+      musicStateRepository.changePlaying(object: state, isPlaying: false)
+    }
     let musicState = self.playList.musicStates[index]
-    musicState.changePlaying(isPlaying: true)
+    musicStateRepository.changePlaying(object: musicState, isPlaying: true)
     self.playingMusicState.onNext(musicState)
     play(id: musicState.music.id)
   }

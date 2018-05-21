@@ -13,22 +13,19 @@ import RxSwift
 
 class PlayListViewModel {
   private let disposeBag = DisposeBag()
-  private let playList: Playlist
   private let player: PlayerService
-  private var cellViewModels: [PlayListCellViewModel] = []
   
-  private(set) public var playListViewModels: Observable<[PlayListCellViewModel]>!
+  private(set) public var playListCellViewModels = BehaviorSubject<[PlayListCellViewModel]>(value: [])
   
   init(player: PlayerService = PlayerService.shared()) {
-    self.playList = player.playList
     self.player = player
     self.binding()
   }
   
   private func binding() {
-    self.playListViewModels = Observable.from(object: self.playList)
-      .map { $0.musicStates.map{ PlayListCellViewModel(musicState: $0) } }
-      .do(onNext: { [weak self] in self?.cellViewModels = $0 })
+    self.player.playMusicStateList.subscribe(onNext: { [weak self] in
+      self?.playListCellViewModels.onNext($0.map({PlayListCellViewModel(musicState: $0)}))
+    }).disposed(by: self.disposeBag)
   }
   
   public func play(index: Int) {
@@ -36,15 +33,21 @@ class PlayListViewModel {
   }
   
   public func selectAll() {
-    self.cellViewModels.forEach { $0.checked(checked: true) }
+    if let cellViewModels = try? self.playListCellViewModels.value() {
+      cellViewModels.forEach { $0.checked(checked: true) }
+    }
   }
   
   public func deselectAll() {
-    self.cellViewModels.forEach { $0.checked(checked: false) }
+    if let cellViewModels = try? self.playListCellViewModels.value() {
+      cellViewModels.forEach { $0.checked(checked: false) }
+    }
   }
   
   public func deleteSelectedList() {
-    self.playList.remove(at: self.cellViewModels.enumerated().filter({ $1.isChecked }).map({ $0.offset }))
+    if let cellViewModels = try? self.playListCellViewModels.value() {
+      Repository<Playlist>.factory().remove(at: cellViewModels.enumerated().filter({ $1.isChecked }).map({ $0.offset }))
+    }
   }
 }
 

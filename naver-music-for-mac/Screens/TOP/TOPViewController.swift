@@ -14,7 +14,7 @@ import Moya
 class TOPViewController: NSViewController {
   // MARK: Variables
   private var cellViewModels: [TOPCellViewModel] = []
-  private let viewModel = TOPViewModel(musicBrowser: MusicBrowser(provider: MoyaProvider<NaverPage>()))
+  private let viewModel = TOPViewModel(musicBrowser: MusicBrowser(provider: MoyaProvider<NaverPage>()), playListRepository: Repository<Playlist>())
   private let disposeBag = DisposeBag()
 
   // MARK: Outlets
@@ -35,13 +35,13 @@ class TOPViewController: NSViewController {
   }
   
   private func binding() {
-    self.viewModel.musicDatasource.subscribe(onNext: { [weak self] (viewModels) in
+    self.viewModel.musicDatasource.asDriver(onErrorJustReturn: []).drive(onNext: { [weak self] (viewModels) in
       self?.cellViewModels = viewModels
       self?.tableView.reloadData()
     }).disposed(by: self.disposeBag)
     
     self.topTypeSegmentedControl.rx.controlProperty(getter: { $0.selectedSegment }, setter: { _,_ in  })
-      .map { (index) -> PlayListType in
+      .map { (index) -> TOPType in
         if index == 0 {
           return .total
         } else if index == 1 {

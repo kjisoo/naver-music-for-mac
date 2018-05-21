@@ -20,8 +20,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     container.register(TOPParser.self) { _ in TOPParser() }
     container.register(MusicBrowser.self) { r in
       return MusicBrowser(provider: r.resolve(MoyaProvider<NaverPage>.self)!,
-                          parser: r.resolve(TOPParser.self)!,
-                          realm: try! Realm())
+                          parser: r.resolve(TOPParser.self)!)
     }
     container.register(WindowController.self) { r in
       let windowController = WindowController()

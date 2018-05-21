@@ -10,8 +10,12 @@ import Foundation
 import RealmSwift
 
 class Repository<T: Object> {
-  private var realm: Realm {
+  var realm: Realm {
     return try! Realm()
+  }
+  
+  public static func factory() -> Repository<T> {
+    return Repository<T>()
   }
   
   public func getAll() -> [T] {
@@ -21,17 +25,24 @@ class Repository<T: Object> {
     return realm.object(ofType: T.self, forPrimaryKey: identifier)
   }
   
-  public func create(object: T) {
-    if let pk = T.primaryKey(),
-      let oldObject = self.get(identifier: pk) {
-      for attribute in object.attributeKeys {
-        if object[attribute] == nil {
-          object[attribute] = oldObject[attribute]
-        }
+  public func getOrCreate(identifier: String) -> T {
+    if let object = self.get(identifier: identifier) {
+      return object
+    } else {
+      var object: T!
+      try! self.realm.write {
+        object = self.realm.create(T.self, value: [T.primaryKey()!: identifier], update: false)
       }
+      return object
     }
-    try? realm.write {
-      realm.add(object)
+  }
+  
+  public func update(object: T, value: [String: Any]) {
+    let pk = T.primaryKey()!
+    var valueDict = [pk: object[pk]]
+    valueDict.merge(value) { (current, _) in current }
+    try? self.realm.write {
+      self.realm.create(T.self, value: valueDict, update: true)
     }
   }
 }
