@@ -40,6 +40,8 @@
 		E0ABE60120B274B700C28E77 /* MusicStateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE60020B274B700C28E77 /* MusicStateRepository.swift */; };
 		E0ABE60320B289E400C28E77 /* PlayListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE60220B289E400C28E77 /* PlayListRepository.swift */; };
 		E0ABE60520B2A43000C28E77 /* MusicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE60420B2A43000C28E77 /* MusicList.swift */; };
+		E0ABE60920B2AE5C00C28E77 /* MusicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE60720B2AE5C00C28E77 /* MusicListViewController.swift */; };
+		E0ABE60A20B2AE5C00C28E77 /* MusicListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE60820B2AE5C00C28E77 /* MusicListViewController.xib */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -106,6 +108,8 @@
 		E0ABE60020B274B700C28E77 /* MusicStateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicStateRepository.swift; sourceTree = "<group>"; };
 		E0ABE60220B289E400C28E77 /* PlayListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListRepository.swift; sourceTree = "<group>"; };
 		E0ABE60420B2A43000C28E77 /* MusicList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicList.swift; sourceTree = "<group>"; };
+		E0ABE60720B2AE5C00C28E77 /* MusicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewController.swift; sourceTree = "<group>"; };
+		E0ABE60820B2AE5C00C28E77 /* MusicListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicListViewController.xib; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -156,6 +160,7 @@
 		0085C9DF20A592D800CEFCA5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E0ABE60620B2AE4200C28E77 /* MyList */,
 				E85B8D5420A7159A007D3C90 /* TOP */,
 				0085C9EA20A5AC9300CEFCA5 /* Player */,
 				E0ABE5EF20AEB0D000C28E77 /* Setting */,
@@ -272,6 +277,15 @@
 				E0ABE60220B289E400C28E77 /* PlayListRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		E0ABE60620B2AE4200C28E77 /* MyList */ = {
+			isa = PBXGroup;
+			children = (
+				E0ABE60720B2AE5C00C28E77 /* MusicListViewController.swift */,
+				E0ABE60820B2AE5C00C28E77 /* MusicListViewController.xib */,
+			);
+			path = MyList;
 			sourceTree = "<group>";
 		};
 		E837903E20A086BE006BCBBF = {
@@ -484,6 +498,7 @@
 			files = (
 				0085C9F220A5AE1500CEFCA5 /* MusicCoverViewController.xib in Resources */,
 				0085C9E420A5948900CEFCA5 /* SideMenuViewController.xib in Resources */,
+				E0ABE60A20B2AE5C00C28E77 /* MusicListViewController.xib in Resources */,
 				E85B8D5820A715AA007D3C90 /* TOPViewController.xib in Resources */,
 				E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */,
 				0085C9EE20A5AD7900CEFCA5 /* PlayListViewController.xib in Resources */,
@@ -620,6 +635,7 @@
 				E8D9204520AD9A7C001F18DC /* MusicCoverViewModel.swift in Sources */,
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */,
+				E0ABE60920B2AE5C00C28E77 /* MusicListViewController.swift in Sources */,
 				E0ABE5CC20AA714700C28E77 /* TOPViewModel.swift in Sources */,
 				E0ABE5F720AEB0FB00C28E77 /* SignViewController.swift in Sources */,
 				E85B8D5F20A7FEBA007D3C90 /* MusicBrowser.swift in Sources */,
