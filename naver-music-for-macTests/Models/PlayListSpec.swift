@@ -36,7 +36,7 @@ class PlayListSpec: QuickSpec {
       let playList = Playlist.get(type: .total)
       
       // Assert
-      expect(playList.name).to(equal(PlayListType.total.rawValue))
+      expect(playList.id).to(equal(PlayListType.total.rawValue))
     }
     
     describe("Add playlist") {
