@@ -39,4 +39,14 @@ class MusicBrowser {
         return []
     }
   }
+  
+  func fetchMyList() -> Single<[MusicList]> {
+    return self.provider.rx.request(.myList).map {
+      if let responseString = String(data: $0.data, encoding: .utf8) {
+        let result = MyListParser().parse(from: responseString)
+        return result.map { MusicList(value: $0) }
+      }
+      return []
+    }
+  }
 }
