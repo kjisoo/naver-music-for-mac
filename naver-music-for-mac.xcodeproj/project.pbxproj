@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */; };
-		0085C9E420A5948900CEFCA5 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0085C9E220A5948900CEFCA5 /* SideMenuViewController.xib */; };
 		0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */; };
 		0085C9E920A5A02300CEFCA5 /* ResponsiveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E820A5A02300CEFCA5 /* ResponsiveButton.swift */; };
 		0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9EB20A5AD7900CEFCA5 /* PlayListViewController.swift */; };
@@ -77,7 +76,6 @@
 
 /* Begin PBXFileReference section */
 		0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
-		0085C9E220A5948900CEFCA5 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		0085C9E820A5A02300CEFCA5 /* ResponsiveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponsiveButton.swift; sourceTree = "<group>"; };
 		0085C9EB20A5AD7900CEFCA5 /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 			children = (
 				E0ABE5E420AE762C00C28E77 /* SideMenuViewModel.swift */,
 				0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */,
-				0085C9E220A5948900CEFCA5 /* SideMenuViewController.xib */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -514,7 +511,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0085C9F220A5AE1500CEFCA5 /* MusicCoverViewController.xib in Resources */,
-				0085C9E420A5948900CEFCA5 /* SideMenuViewController.xib in Resources */,
 				E0ABE60A20B2AE5C00C28E77 /* MusicListViewController.xib in Resources */,
 				E85B8D5820A715AA007D3C90 /* TOPViewController.xib in Resources */,
 				E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */,

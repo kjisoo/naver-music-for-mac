@@ -31,7 +31,7 @@ class WindowController: NSWindowController {
   
   // MARK: Variables
   lazy var sideMenuViewController: SideMenuViewController = {
-    return SideMenuViewController()
+    return SideMenuViewController(viewModel: SideMenuViewModel())
   }()
   lazy var contentTabViewController: NSTabViewController = {
     let tabViewController = NSTabViewController()
@@ -53,7 +53,6 @@ class WindowController: NSWindowController {
     self.window?.backgroundColor = .white
     self.window?.titlebarAppearsTransparent = true
     self.window?.isMovableByWindowBackground = true
-    self.window?.backgroundColor = .clear
     self.window?.isOpaque = false
     self.setupSplitView()
     self.setupPlayer()
