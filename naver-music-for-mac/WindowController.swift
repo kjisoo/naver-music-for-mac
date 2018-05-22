@@ -51,6 +51,9 @@ class WindowController: NSWindowController {
     super.windowDidLoad()
     self.window?.titleVisibility = .hidden
     self.window?.backgroundColor = .white
+    self.window?.titlebarAppearsTransparent = true
+    self.window?.isMovableByWindowBackground = true
+
     self.setupSplitView()
     self.setupPlayer()
     self.setupAuthorizedState()
