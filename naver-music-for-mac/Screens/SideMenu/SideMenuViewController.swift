@@ -12,7 +12,7 @@ import SnapKit
 
 class SideMenuViewController: BaseViewController {
   private let viewModel: SideMenuViewModel
-  private var menuList: [String] = []
+  private var menuItems: [MenuItem] = []
   
   private lazy var menuListView: NSTableView = {
     let tableView = NSTableView()
@@ -51,9 +51,10 @@ class SideMenuViewController: BaseViewController {
   }
   
   override func bindWithViewModel() {
-    viewModel.menuList.subscribe(onNext: {[weak self] in
-      self?.menuList = $0
-      self?.menuListView.reloadData() }).disposed(by: self.disposeBag)
+    viewModel.menuItems.subscribe(onNext: {[weak self] in
+      self?.menuItems = $0
+      self?.menuListView.reloadData()
+    }).disposed(by: self.disposeBag)
   }
 }
 
@@ -64,28 +65,27 @@ extension SideMenuViewController: NSTableViewDataSource {
   }
   
   func numberOfRows(in tableView: NSTableView) -> Int {
-    return self.menuList.count
+    return self.menuItems.count
   }
   
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
     let view = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MenuCellView"), owner: self) as? MenuCellView ?? MenuCellView()
-    view.menuNameField.stringValue = menuList[row]
+    view.model = self.menuItems[row]
     return view
   }
 }
 
 extension SideMenuViewController: NSTableViewDelegate {
   func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
-//    NSApp.sendAction(Selector(("selectedWithIndex:")), to: nil, from: row)
-    print(row)
-    return true
+    self.viewModel.execute(at: row)
+    return false
   }
   
 }
 
 class MenuCellView: NSView {
-  public let iconImageView = NSImageView()
-  public let menuNameField: NSTextField = {
+  private let iconImageView = NSImageView()
+  private let menuNameField: NSTextField = {
     let textField = NSTextField()
     textField.isBordered = false
     textField.isEditable = false
@@ -94,6 +94,24 @@ class MenuCellView: NSView {
     textField.font = NSFont.systemFont(ofSize: 12, weight: .semibold)
     return textField
   }()
+  public var model: MenuItem? {
+    didSet {
+      self.menuNameField.stringValue = model?.name ?? ""
+      if let iconName = model?.iconNmae {
+        self.iconImageView.image = NSImage(named: NSImage.Name(rawValue: iconName))
+        self.iconImageView.isHidden = false
+      } else {
+        self.iconImageView.isHidden = true
+      }
+      if model?.isSelected == true {
+        self.menuNameField.textColor = .red
+        self.iconImageView.image = self.iconImageView.image?.tint(color: .red)
+      } else {
+        self.menuNameField.textColor = .darkGray
+        self.iconImageView.image = self.iconImageView.image?.tint(color: .darkGray)
+      }
+    }
+  }
   
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
@@ -104,6 +122,7 @@ class MenuCellView: NSView {
   required init?(coder decoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
   
   private func setupConstraint() {
     let stackView = NSStackView()

@@ -9,26 +9,39 @@
 import Foundation
 import RxSwift
 
+struct MenuItem {
+  let name: String?
+  let iconNmae: String?
+  let isSelected: Bool
+  let command: (() -> Void)?
+}
+
 class SideMenuViewModel {
-  // Variable
-  private let authService = AuthService.shared() // TODO: DI
-  
   // Outputs
-  public var menuList: Observable<[String]>!
-  public var signState: Observable<Bool>!
+  public let menuItems = BehaviorSubject<[MenuItem]>(value: [])
   
   init() {
     self.binding()
   }
   
   private func binding() {
-    self.signState = authService.changedAuthorizedState.asObservable()
-    self.menuList = self.signState.map {
-      if $0 {
-        return ["Player", "TOP100", "My list"]
-      } else {
-        return ["Player", "TOP100"]
-      }
-    }
+    self.menuItems.onNext([
+      MenuItem(name: "MENU", iconNmae: nil, isSelected: false, command: nil),
+      MenuItem(name: "TOP100", iconNmae: "play", isSelected: true, command: nil),
+      MenuItem(name: "Album", iconNmae: "play", isSelected: false, command: nil),
+      MenuItem(name: "Player", iconNmae: "play", isSelected: false, command: nil),
+      MenuItem(name: nil, iconNmae: nil, isSelected: false, command: nil),
+      MenuItem(name: "PLAYLISTS", iconNmae: nil, isSelected: false, command: nil),
+      MenuItem(name: "POP", iconNmae: "play", isSelected: false, command: nil),
+      MenuItem(name: "haha", iconNmae: "play", isSelected: false, command: nil)
+      ])
+  }
+  
+  public func replace(menuItems: [MenuItem]) {
+    self.menuItems.onNext(menuItems)
+  }
+  
+  public func execute(at row: Int) {
+    try? self.menuItems.value()[row].command?()
   }
 }
