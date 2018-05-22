@@ -46,6 +46,7 @@
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
+		E83A3DD320B47ECE00E18EC0 /* NSImage+tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83A3DD220B47ECE00E18EC0 /* NSImage+tint.swift */; };
 		E85B8D4D20A6C39A007D3C90 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D4C20A6C39A007D3C90 /* Music.swift */; };
 		E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D4E20A6C680007D3C90 /* Album.swift */; };
 		E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5020A6C696007D3C90 /* Artist.swift */; };
@@ -121,6 +122,7 @@
 		E837905720A086BE006BCBBF /* naver-music-for-macTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "naver-music-for-macTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = naver_music_for_macTests.swift; sourceTree = "<group>"; };
 		E837905D20A086BE006BCBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E83A3DD220B47ECE00E18EC0 /* NSImage+tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+tint.swift"; sourceTree = "<group>"; };
 		E85B8D4C20A6C39A007D3C90 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		E85B8D4E20A6C680007D3C90 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		E85B8D5020A6C696007D3C90 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 			children = (
 				E0ABE5E020AD541E00C28E77 /* Container.swift */,
 				E0ABE5F920AEB39D00C28E77 /* AuthService.swift */,
+				E83A3DD220B47ECE00E18EC0 /* NSImage+tint.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				E0ABE60E20B2B88000C28E77 /* MyListParser.swift in Sources */,
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E0ABE61220B2BF1C00C28E77 /* MusicListParser.swift in Sources */,
+				E83A3DD320B47ECE00E18EC0 /* NSImage+tint.swift in Sources */,
 				E85B8D5A20A71EA0007D3C90 /* TOPTableCellView.swift in Sources */,
 				E0ABE60920B2AE5C00C28E77 /* MusicListViewController.swift in Sources */,
 				E0ABE5CC20AA714700C28E77 /* TOPViewModel.swift in Sources */,
