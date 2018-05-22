@@ -27,6 +27,9 @@ target 'naver-music-for-mac' do
   # DI
   pod 'Swinject'
 
+  # UI
+  pod 'SnapKit'
+
   target 'naver-music-for-macTests' do
     inherit! :search_paths
     # Pods for testing

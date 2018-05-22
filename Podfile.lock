@@ -31,6 +31,7 @@ PODS:
   - RxSwift (4.1.2)
   - RxTest (4.1.2):
     - RxSwift (~> 4.0)
+  - SnapKit (4.0.0)
   - Swinject (2.4.0)
 
 DEPENDENCIES:
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - RxRealmDataSources
   - RxSwift (~> 4.0)
   - RxTest (~> 4.0)
+  - SnapKit
   - Swinject
 
 SPEC REPOS:
@@ -64,6 +66,7 @@ SPEC REPOS:
     - RxRealmDataSources
     - RxSwift
     - RxTest
+    - SnapKit
     - Swinject
 
 SPEC CHECKSUMS:
@@ -82,8 +85,9 @@ SPEC CHECKSUMS:
   RxRealmDataSources: 798303f1d7db18d80da9e95bab9605010378040e
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   Swinject: a1364b0f66c2736bb03c1c7cab54809e16df25da
 
-PODFILE CHECKSUM: ec0b5258960c11fa56866bb97dc55440c5407791
+PODFILE CHECKSUM: fa631c3d0cee33cff80dcbee233152a78055de49
 
 COCOAPODS: 1.5.0
