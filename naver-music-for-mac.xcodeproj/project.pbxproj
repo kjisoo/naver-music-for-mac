@@ -62,6 +62,7 @@
 		E874D24A20A9E650009534E3 /* AlbumSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E874D24920A9E650009534E3 /* AlbumSpec.swift */; };
 		E8D9204520AD9A7C001F18DC /* MusicCoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9204420AD9A7C001F18DC /* MusicCoverViewModel.swift */; };
 		E8D9204720ADB97A001F18DC /* MusicState.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9204620ADB97A001F18DC /* MusicState.swift */; };
+		E8D9204D20B44C8C001F18DC /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9204C20B44C8C001F18DC /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		E874D24920A9E650009534E3 /* AlbumSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSpec.swift; sourceTree = "<group>"; };
 		E8D9204420AD9A7C001F18DC /* MusicCoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCoverViewModel.swift; sourceTree = "<group>"; };
 		E8D9204620ADB97A001F18DC /* MusicState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicState.swift; sourceTree = "<group>"; };
+		E8D9204C20B44C8C001F18DC /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E9BAD0CA7CD569DB40407340 /* Pods-naver-music-for-mac.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.debug.xcconfig"; sourceTree = "<group>"; };
 		FE24D2F5A83349241FD9881F /* Pods-naver-music-for-macTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 		0085C9DF20A592D800CEFCA5 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				E8D9204B20B44C8C001F18DC /* Base */,
 				E0ABE60620B2AE4200C28E77 /* MyList */,
 				E85B8D5420A7159A007D3C90 /* TOP */,
 				0085C9EA20A5AC9300CEFCA5 /* Player */,
@@ -415,6 +418,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E8D9204B20B44C8C001F18DC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				E8D9204C20B44C8C001F18DC /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -658,6 +669,7 @@
 				E0ABE5E120AD541E00C28E77 /* Container.swift in Sources */,
 				0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
+				E8D9204D20B44C8C001F18DC /* BaseViewController.swift in Sources */,
 				E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */,
 				E0ABE60320B289E400C28E77 /* PlayListRepository.swift in Sources */,
 				E8D9204720ADB97A001F18DC /* MusicState.swift in Sources */,
