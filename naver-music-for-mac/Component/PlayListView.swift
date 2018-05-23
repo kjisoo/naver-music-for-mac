@@ -13,7 +13,7 @@ class PlayListView: NSView {
     let tableView = NSTableView()
     tableView.addTableColumn(NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "MenuName")))
     tableView.backgroundColor = .clear
-    tableView.rowHeight = 40
+    tableView.rowHeight = 44
     tableView.focusRingType = .none
     tableView.selectionHighlightStyle = .none
     tableView.headerView = nil

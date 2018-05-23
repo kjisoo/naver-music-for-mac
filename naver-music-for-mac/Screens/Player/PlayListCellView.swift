@@ -24,6 +24,7 @@ class PlayListCellView: NSView {
     let textField = NSTextField()
     textField.isEditable = false
     textField.isBordered = false
+    textField.backgroundColor = .clear
     textField.font = .systemFont(ofSize: 12, weight: .semibold)
     textField.textColor = .lightGray
     return textField
@@ -32,6 +33,7 @@ class PlayListCellView: NSView {
     let textField = NSTextField()
     textField.isEditable = false
     textField.isBordered = false
+    textField.backgroundColor = .clear
     textField.font = .systemFont(ofSize: 12, weight: .semibold)
     textField.textColor = .lightGray
     return textField
@@ -40,9 +42,23 @@ class PlayListCellView: NSView {
     let textField = NSTextField()
     textField.isEditable = false
     textField.isBordered = false
+    textField.backgroundColor = .clear
     textField.font = .systemFont(ofSize: 12, weight: .semibold)
     textField.textColor = .lightGray
     return textField
+  }()
+  private var shadowView: NSView =  {
+    let view = NSView()
+    view.wantsLayer = true
+    view.shadow = NSShadow()
+    view.layer?.backgroundColor = NSColor.white.cgColor
+    view.layer?.shadowRadius = 5
+    view.layer?.shadowOpacity = 0.1
+    view.layer?.shadowRadius = 4
+    view.layer?.cornerRadius = 4
+    view.layer?.masksToBounds = false
+    view.layer?.shadowColor = NSColor.gray.cgColor
+    return view
   }()
   
   private var disposeBag = DisposeBag()
@@ -68,13 +84,15 @@ class PlayListCellView: NSView {
       
       self.viewModel?.isPlaying.subscribe(onNext: { [weak self] in
         if $0 {
-          self?.musicName.textColor = .systemGray
-          self?.albumName.textColor = .systemGray
-          self?.artistName.textColor = .systemGray
+          self?.musicName.textColor = .violet
+          self?.albumName.textColor = .violet
+          self?.artistName.textColor = .violet
+          self?.shadowView.isHidden = false
         } else {
           self?.musicName.textColor = .lightGray
           self?.albumName.textColor = .lightGray
           self?.artistName.textColor = .lightGray
+          self?.shadowView.isHidden = true
         }
       }).disposed(by: self.disposeBag)
     }
@@ -96,13 +114,14 @@ class PlayListCellView: NSView {
   
   private func setupConstraint() {
     let stackView = NSStackView()
+    self.addSubview(shadowView)
     self.addSubview(stackView)
     self.addSubview(coverImage)
     
     coverImage.snp.makeConstraints { (make) in
       make.leading.equalToSuperview().offset(32)
-      make.top.equalToSuperview().offset(4)
-      make.bottom.equalToSuperview().offset(-4)
+      make.top.equalToSuperview().offset(8)
+      make.bottom.equalToSuperview().offset(-8)
       make.width.equalTo(coverImage.snp.height).multipliedBy(1)
     }
     
@@ -111,8 +130,16 @@ class PlayListCellView: NSView {
     stackView.addArrangedSubview(musicName)
     stackView.addArrangedSubview(artistName)
     stackView.snp.makeConstraints { (make) in
-      make.top.bottom.trailing.equalToSuperview()
+      make.top.bottom.equalToSuperview()
+      make.trailing.equalToSuperview().offset(-8)
       make.leading.equalTo(coverImage.snp.trailing).offset(8)
+    }
+    
+    shadowView.snp.makeConstraints { (make) in
+      make.top.equalTo(coverImage).offset(-2)
+      make.bottom.equalTo(coverImage).offset(2)
+      make.leading.equalTo(coverImage).offset(-12)
+      make.trailing.equalTo(stackView).offset(4)
     }
   }
 }
