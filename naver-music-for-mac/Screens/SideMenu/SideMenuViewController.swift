@@ -90,7 +90,6 @@ class MenuCellView: NSView {
     textField.isBordered = false
     textField.isEditable = false
     textField.backgroundColor = .clear
-    textField.textColor = .darkGray
     textField.font = NSFont.systemFont(ofSize: 12, weight: .semibold)
     return textField
   }()
@@ -104,11 +103,11 @@ class MenuCellView: NSView {
         self.iconImageView.isHidden = true
       }
       if model?.isSelected == true {
-        self.menuNameField.textColor = .red
-        self.iconImageView.image = self.iconImageView.image?.tint(color: .red)
+        self.menuNameField.textColor = .violet
+        self.iconImageView.image = self.iconImageView.image?.tint(color: .violet)
       } else {
-        self.menuNameField.textColor = .darkGray
-        self.iconImageView.image = self.iconImageView.image?.tint(color: .darkGray)
+        self.menuNameField.textColor = .systemGray
+        self.iconImageView.image = self.iconImageView.image?.tint(color: .systemGray)
       }
     }
   }
