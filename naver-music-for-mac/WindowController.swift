@@ -107,27 +107,27 @@ class WindowController: NSWindowController {
       .map({ (selectedIndex, isAuthorized, playlists) -> [MenuItem] in
         var menuList: [MenuItem] = [
           MenuItem(name: "MENU", iconNmae: nil, isSelected: selectedIndex == 0, command: nil),
-          MenuItem(name: "Player", iconNmae: "play", isSelected: selectedIndex == 1, command: {
+          MenuItem(name: "Player", iconNmae: "side_play", isSelected: selectedIndex == 1, command: {
             self.selectedIndex.onNext(1)
             self.changePage(url: "player")
           }),
-          MenuItem(name: "TOP100", iconNmae: "play", isSelected: selectedIndex == 2, command: {
+          MenuItem(name: "TOP100", iconNmae: "side_top", isSelected: selectedIndex == 2, command: {
             self.selectedIndex.onNext(2)
             self.changePage(url: "top100")
           }),
-          MenuItem(name: "Setting", iconNmae: "play", isSelected: selectedIndex == 3, command: {
+          MenuItem(name: "Setting", iconNmae: "side_setting", isSelected: selectedIndex == 3, command: {
             self.selectedIndex.onNext(3)
             self.changePage(url: "setting")
           }),
           ]
 
         if isAuthorized {
-          menuList.append(MenuItem(name: "Signout", iconNmae: "play", isSelected: selectedIndex == 4, command: {
+          menuList.append(MenuItem(name: "Signout", iconNmae: "side_sign", isSelected: selectedIndex == 4, command: {
             self.selectedIndex.onNext(4)
             self.changePage(url: "signout")
           }))
         } else {
-          menuList.append(MenuItem(name: "Signin", iconNmae: "play", isSelected: selectedIndex == 4, command: {
+          menuList.append(MenuItem(name: "Signin", iconNmae: "side_sign", isSelected: selectedIndex == 4, command: {
             self.selectedIndex.onNext(4)
             self.changePage(url: "signin")
           }))
@@ -136,7 +136,7 @@ class WindowController: NSWindowController {
         if playlists.count > 0 {
           menuList.append(MenuItem(name: "PLAYLISTS", iconNmae: nil, isSelected: selectedIndex == 6, command: nil))
           for (index, playlist) in playlists.enumerated() {
-            menuList.append(MenuItem(name: playlist.name, iconNmae: "play", isSelected: selectedIndex == 7+index, command: {
+            menuList.append(MenuItem(name: playlist.name, iconNmae: "side_musiclist", isSelected: selectedIndex == 7+index, command: {
               self.selectedIndex.onNext(7+index)
               self.changePage(url: "playlist/\(playlist.id)")
             }))

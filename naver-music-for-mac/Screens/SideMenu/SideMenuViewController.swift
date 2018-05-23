@@ -84,7 +84,11 @@ extension SideMenuViewController: NSTableViewDelegate {
 }
 
 class MenuCellView: NSView {
-  private let iconImageView = NSImageView()
+  private let iconImageView: NSImageView = {
+    let imageView = NSImageView()
+    imageView.imageScaling = .scaleProportionallyUpOrDown
+    return imageView
+  }()
   private let menuNameField: NSTextField = {
     let textField = NSTextField()
     textField.isBordered = false
@@ -128,11 +132,16 @@ class MenuCellView: NSView {
     self.addSubview(stackView)
 
     stackView.orientation = .horizontal
+    stackView.distribution = .fillEqually
     stackView.addArrangedSubview(iconImageView)
     stackView.addArrangedSubview(menuNameField)
     stackView.snp.makeConstraints { (make) in
-      make.bottom.trailing.equalToSuperview()
+      make.top.bottom.trailing.equalToSuperview()
       make.leading.equalToSuperview().offset(20)
+    }
+    
+    iconImageView.snp.makeConstraints { (make) in
+      make.width.height.equalTo(20)
     }
   }
 }
