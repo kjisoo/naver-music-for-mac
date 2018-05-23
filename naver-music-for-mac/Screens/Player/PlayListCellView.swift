@@ -60,7 +60,17 @@ class PlayListCellView: NSView {
     view.layer?.shadowColor = NSColor.gray.cgColor
     return view
   }()
-  
+  private lazy var selectedButton: NSButton = {
+    let button = NSButton()
+    button.title = ""
+    button.setButtonType(NSButton.ButtonType.momentaryChange)
+    button.isBordered = false
+    button.imageScaling = .scaleProportionallyUpOrDown
+    button.target = self
+    button.action = #selector(PlayListCellView.stateChange(sender:))
+    button.image = NSImage(named: NSImage.Name(rawValue: "circle"))?.tint(color: .lightGray)
+    return button
+  }()
   private var disposeBag = DisposeBag()
   public var viewModel: PlayListCellViewModel? {
     didSet {
@@ -95,6 +105,14 @@ class PlayListCellView: NSView {
           self?.shadowView.isHidden = true
         }
       }).disposed(by: self.disposeBag)
+      
+      self.viewModel?.isChecked.subscribe(onNext: { [weak self] in
+        if $0 {
+          self?.selectedButton.image = self?.selectedButton.image?.tint(color: .violet)
+        } else {
+          self?.selectedButton.image = self?.selectedButton.image?.tint(color: .lightGray)
+        }
+      }).disposed(by: self.disposeBag)
     }
   }
   
@@ -117,6 +135,7 @@ class PlayListCellView: NSView {
     self.addSubview(shadowView)
     self.addSubview(stackView)
     self.addSubview(coverImage)
+    self.addSubview(selectedButton)
     
     coverImage.snp.makeConstraints { (make) in
       make.leading.equalToSuperview().offset(32)
@@ -139,7 +158,19 @@ class PlayListCellView: NSView {
       make.top.equalTo(coverImage).offset(-2)
       make.bottom.equalTo(coverImage).offset(2)
       make.leading.equalTo(coverImage).offset(-12)
-      make.trailing.equalTo(stackView).offset(4)
+      make.trailing.equalTo(selectedButton).offset(4)
+    }
+    
+    selectedButton.snp.makeConstraints { (make) in
+      make.top.bottom.equalTo(coverImage)
+      make.width.equalTo(selectedButton.snp.height).multipliedBy(1).priority(.required)
+      make.trailing.equalToSuperview().offset(-8)
+    }
+  }
+  
+  @objc private func stateChange(sender: NSButton) {
+    if let viewModel = self.viewModel {
+      viewModel.isChecked.onNext(!(try! viewModel.isChecked.value()))
     }
   }
 }
