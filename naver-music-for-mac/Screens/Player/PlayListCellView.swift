@@ -10,44 +10,6 @@ import Cocoa
 import RxSwift
 import Kingfisher
 
-//class PlayListCellView: NSTableCellView {
-//  // MARK: IBOutlets
-//  @IBOutlet weak var name: NSTextField!
-//  @IBOutlet weak var checkButton: NSButton!
-//  
-//  // MARK: Variables
-//  private var disposeBag = DisposeBag()
-//  public var viewModel: PlayListCellViewModel? {
-//    didSet {
-//      self.disposeBag = DisposeBag()
-////      self.updateCheckBox()
-//
-//      self.viewModel?.name.subscribe(onNext: { [weak self] in
-//        self?.name.stringValue = $0
-//      }).disposed(by: self.disposeBag)
-//      
-//      self.viewModel?.isPlaying.subscribe(onNext: { [weak self] in
-//        self?.name.textColor = $0 ? NSColor.green : NSColor.black
-//      }).disposed(by: self.disposeBag)
-//      
-////      self.viewModel?.propertyChanged.subscribe(onNext: { [weak self] _ in
-////        self?.updateCheckBox()
-////      }).disposed(by: self.disposeBag)
-////
-////      self.checkButton.rx.controlProperty(getter: { (button) -> Void in
-////        self.viewModel?.checked(checked: button.state == .on)
-////      }, setter: {_,_ in }).subscribe().disposed(by: self.disposeBag)
-//    }
-//  }
-////
-////  private func updateCheckBox() {
-////    if self.viewModel?.isChecked == true {
-////      self.checkButton.state = .on
-////    } else {
-////      self.checkButton.state = .off
-////    }
-////  }
-//}
 
 class PlayListCellView: NSView {
   private var coverImage: NSImageView = {
@@ -130,7 +92,6 @@ class PlayListCellView: NSView {
   
   override func draw(_ dirtyRect: NSRect) {
     super.draw(dirtyRect)
-    print(dirtyRect.width)
   }
   
   private func setupConstraint() {
