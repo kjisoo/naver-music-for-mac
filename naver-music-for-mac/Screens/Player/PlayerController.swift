@@ -74,6 +74,20 @@ class PlayerController: BaseViewController {
       self?.playListView.tableView.reloadData()
     }).disposed(by: self.disposeBag)
   }
+  
+  
+  // MARK: Action
+  @IBAction func cancle(sender: NSButton) {
+    self.viewModel.deselectAll()
+  }
+  
+  @objc func delete(sender: NSButton) {
+    self.viewModel.deleteSelectedList()
+  }
+  
+  @objc func selectAll(sender: NSButton) {
+    self.viewModel.selectAll()
+  }
 }
 
 extension PlayerController: NSTableViewDataSource {

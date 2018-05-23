@@ -77,7 +77,7 @@ class WindowController: NSWindowController {
     splitViewController.addSplitViewItem(sideMenuSplitViewItem)
     
     let contentSplitViewItem = NSSplitViewItem(viewController: contentTabViewController)
-    contentSplitViewItem.minimumThickness = 400
+    contentSplitViewItem.minimumThickness = 700
     splitViewController.addSplitViewItem(contentSplitViewItem)
 
     let frameSize = window.contentRect(forFrameRect: window.frame).size
