@@ -190,8 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */,
-				E0ABE61320B5572B00C28E77 /* CoverView.swift */,
-				E0ABE61520B5574A00C28E77 /* PlayListView.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -199,12 +197,14 @@
 		0085C9EA20A5AC9300CEFCA5 /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */,
-				E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */,
+				E0ABE61320B5572B00C28E77 /* CoverView.swift */,
+				E0ABE61520B5574A00C28E77 /* PlayListView.swift */,
 				E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */,
+				E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */,
 				E8D9204420AD9A7C001F18DC /* MusicCoverViewModel.swift */,
 				0085C9EF20A5AE1500CEFCA5 /* MusicCoverViewController.swift */,
 				0085C9F020A5AE1500CEFCA5 /* MusicCoverViewController.xib */,
+				E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */,
 				0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */,
 			);
 			path = Player;
