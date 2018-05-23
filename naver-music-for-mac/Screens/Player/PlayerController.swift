@@ -7,25 +7,48 @@
 //
 
 import Cocoa
+import SnapKit
 
-class PlayerController: SplitViewController {
+class PlayerController: BaseViewController {
+  // MARK: UI Variables
+  private let playListView = PlayListView()
+  private let coverView = CoverView()
+  
+  
+  // MARK: Variables
+  private let viewModel: PlayListViewModel
+  
+  
   // MARK: Life cycle
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.view.translatesAutoresizingMaskIntoConstraints = true
-    self.splitView.translatesAutoresizingMaskIntoConstraints = true
-    self.setupSplitView()
+  init(viewModel: PlayListViewModel) {
+    self.viewModel = viewModel
+    super.init(nibName: nil, bundle: nil)
   }
   
-  // MARK: Private methods
-  private func setupSplitView() {
-    let playListSplitViewItem = NSSplitViewItem(viewController: Container.container.resolve(PlayListViewController.self)!)
-    playListSplitViewItem.minimumThickness = 200
-    self.addSplitViewItem(playListSplitViewItem)
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  
+  // MARK: setup
+  override func setupConstraint() {
+    super.setupConstraint()
+    self.view.addSubview(playListView)
+    self.view.addSubview(coverView)
     
-    let musicCoverSplitViewItem = NSSplitViewItem(sidebarWithViewController: MusicCoverViewController())
-    musicCoverSplitViewItem.minimumThickness = 300
-    musicCoverSplitViewItem.maximumThickness = 300
-    self.addSplitViewItem(musicCoverSplitViewItem)
+    coverView.snp.makeConstraints { (make) in
+      make.top.trailing.bottom.equalToSuperview()
+      make.width.equalTo(300)
+    }
+    
+    playListView.snp.makeConstraints { (make) in
+      make.top.leading.bottom.equalToSuperview()
+      make.trailing.equalTo(coverView.snp.leading)
+      make.width.width.greaterThanOrEqualTo(300)
+    }
+  }
+
+  override func bindWithViewModel() {
+    
   }
 }

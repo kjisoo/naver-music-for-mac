@@ -42,7 +42,7 @@ class WindowController: NSWindowController {
     let tabViewController = NSTabViewController()
     tabViewController.tabStyle = .unspecified
     tabViewController.view.translatesAutoresizingMaskIntoConstraints = true
-    tabViewController.addTabViewItem(NSTabViewItem(viewController: PlayerController()))
+    tabViewController.addTabViewItem(NSTabViewItem(viewController: PlayerController(viewModel: PlayListViewModel())))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: TOPViewController()))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: MusicListViewController()))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: SettingViewController()))
