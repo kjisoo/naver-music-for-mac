@@ -32,7 +32,6 @@ PODS:
   - RxTest (4.1.2):
     - RxSwift (~> 4.0)
   - SnapKit (4.0.0)
-  - Swinject (2.4.0)
 
 DEPENDENCIES:
   - Kanna (~> 4.0.0)
@@ -47,7 +46,6 @@ DEPENDENCIES:
   - RxSwift (~> 4.0)
   - RxTest (~> 4.0)
   - SnapKit
-  - Swinject
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -67,7 +65,6 @@ SPEC REPOS:
     - RxSwift
     - RxTest
     - SnapKit
-    - Swinject
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
@@ -86,8 +83,7 @@ SPEC CHECKSUMS:
   RxSwift: e49536837d9901277638493ea537394d4b55f570
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
-  Swinject: a1364b0f66c2736bb03c1c7cab54809e16df25da
 
-PODFILE CHECKSUM: fa631c3d0cee33cff80dcbee233152a78055de49
+PODFILE CHECKSUM: c340b0d755aa06b02a939a5afe119ebcad7fde99
 
 COCOAPODS: 1.5.0

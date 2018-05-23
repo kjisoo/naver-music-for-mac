@@ -24,7 +24,6 @@
 		E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */; };
 		E0ABE5D420AADB5800C28E77 /* PlayListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */; };
 		E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */; };
-		E0ABE5E120AD541E00C28E77 /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5E020AD541E00C28E77 /* Container.swift */; };
 		E0ABE5E320AD7AA000C28E77 /* PlayListSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5E220AD7AA000C28E77 /* PlayListSpec.swift */; };
 		E0ABE5E520AE762C00C28E77 /* SideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5E420AE762C00C28E77 /* SideMenuViewModel.swift */; };
 		E0ABE5F220AEB0E500C28E77 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5F020AEB0E500C28E77 /* SettingViewController.swift */; };
@@ -95,7 +94,6 @@
 		E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewModel.swift; sourceTree = "<group>"; };
 		E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellView.swift; sourceTree = "<group>"; };
 		E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListCellViewModel.swift; sourceTree = "<group>"; };
-		E0ABE5E020AD541E00C28E77 /* Container.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
 		E0ABE5E220AD7AA000C28E77 /* PlayListSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListSpec.swift; sourceTree = "<group>"; };
 		E0ABE5E420AE762C00C28E77 /* SideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewModel.swift; sourceTree = "<group>"; };
 		E0ABE5F020AEB0E500C28E77 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -250,7 +248,6 @@
 		E0ABE5DF20AD540B00C28E77 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				E0ABE5E020AD541E00C28E77 /* Container.swift */,
 				E0ABE5F920AEB39D00C28E77 /* AuthService.swift */,
 				E83A3DD220B47ECE00E18EC0 /* NSImage+tint.swift */,
 				E83A3DD420B597B400E18EC0 /* NSColor+newColor.swift */,
@@ -572,7 +569,6 @@
 				"${BUILT_PRODUCTS_DIR}/RxRealmDataSources/RxRealmDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -588,7 +584,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRealmDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -670,7 +665,6 @@
 				E0ABE60520B2A43000C28E77 /* MusicList.swift in Sources */,
 				E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
-				E0ABE5E120AD541E00C28E77 /* Container.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
 				E8D9204D20B44C8C001F18DC /* BaseViewController.swift in Sources */,
 				E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */,

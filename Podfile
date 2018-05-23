@@ -24,9 +24,6 @@ target 'naver-music-for-mac' do
   # HTML Parser
   pod 'Kanna', '~> 4.0.0'
 
-  # DI
-  pod 'Swinject'
-
   # UI
   pod 'SnapKit'
 
