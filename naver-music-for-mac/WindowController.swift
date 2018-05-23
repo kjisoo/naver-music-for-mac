@@ -7,6 +7,8 @@
 //
 
 import Cocoa
+import Moya
+import RxSwift
 
 class WindowController: NSWindowController {
   override var windowNibName: NSNib.Name? {
@@ -30,8 +32,11 @@ class WindowController: NSWindowController {
   }()
   
   // MARK: Variables
-  lazy var sideMenuViewController: SideMenuViewController = {
-    return SideMenuViewController(viewModel: SideMenuViewModel())
+  private let musicBrowser = MusicBrowser(provider: MoyaProvider<NaverPage>())
+  private let selectedIndex = BehaviorSubject<Int>(value: 1)
+  private let sideMenuViewModel = SideMenuViewModel()
+  private lazy var sideMenuViewController: SideMenuViewController = {
+    return SideMenuViewController(viewModel: self.sideMenuViewModel)
   }()
   lazy var contentTabViewController: NSTabViewController = {
     let tabViewController = NSTabViewController()
@@ -45,7 +50,6 @@ class WindowController: NSWindowController {
     return tabViewController
   }()
   
-  
   // MARK: Life cycle
   override func windowDidLoad() {
     super.windowDidLoad()
@@ -57,6 +61,7 @@ class WindowController: NSWindowController {
     self.setupSplitView()
     self.setupPlayer()
     self.setupAuthorizedState()
+    self.setupMenuList()
   }
   
   // MARK: Private Methods
@@ -88,30 +93,78 @@ class WindowController: NSWindowController {
 
   private func setupAuthorizedState() {
     _ = AuthService.shared().changedAuthorizedState.subscribe(onNext: {
-      if $0, self.contentTabViewController.selectedTabViewItemIndex == 4 {
-        self.contentTabViewController.selectedTabViewItemIndex = 1
-      } else if $0 == false, self.contentTabViewController.selectedTabViewItemIndex == 2 {
-        self.contentTabViewController.selectedTabViewItemIndex = 4
+      if $0 {
+        self.selectedIndex.onNext(1)
+        self.changePage(url: "player")
       }
     })
   }
   
-  // IBActions
-  @IBAction func settting(sender: NSButton) {
-    self.contentTabViewController.selectedTabViewItemIndex = 3
+  private func setupMenuList() {
+    _ = Observable.combineLatest(self.selectedIndex.distinctUntilChanged(),
+                                 AuthService.shared().changedAuthorizedState,
+                                 AuthService.shared().changedAuthorizedState.flatMapLatest { return $0 ? self.musicBrowser.fetchMyList().asObservable() : Observable<[MusicList]>.just([]) })
+      .map({ (selectedIndex, isAuthorized, playlists) -> [MenuItem] in
+        var menuList: [MenuItem] = [
+          MenuItem(name: "MENU", iconNmae: nil, isSelected: selectedIndex == 0, command: nil),
+          MenuItem(name: "Player", iconNmae: "play", isSelected: selectedIndex == 1, command: {
+            self.selectedIndex.onNext(1)
+            self.changePage(url: "player")
+          }),
+          MenuItem(name: "TOP100", iconNmae: "play", isSelected: selectedIndex == 2, command: {
+            self.selectedIndex.onNext(2)
+            self.changePage(url: "top100")
+          }),
+          MenuItem(name: "Setting", iconNmae: "play", isSelected: selectedIndex == 3, command: {
+            self.selectedIndex.onNext(3)
+            self.changePage(url: "setting")
+          }),
+          ]
+
+        if isAuthorized {
+          menuList.append(MenuItem(name: "Signout", iconNmae: "play", isSelected: selectedIndex == 4, command: {
+            self.selectedIndex.onNext(4)
+            self.changePage(url: "signout")
+          }))
+        } else {
+          menuList.append(MenuItem(name: "Signin", iconNmae: "play", isSelected: selectedIndex == 4, command: {
+            self.selectedIndex.onNext(4)
+            self.changePage(url: "signin")
+          }))
+        }
+        menuList.append(MenuItem(name: "", iconNmae: nil, isSelected: selectedIndex == 5, command: nil))
+        if playlists.count > 0 {
+          menuList.append(MenuItem(name: "PLAYLISTS", iconNmae: nil, isSelected: selectedIndex == 6, command: nil))
+          for (index, playlist) in playlists.enumerated() {
+            menuList.append(MenuItem(name: playlist.name, iconNmae: "play", isSelected: selectedIndex == 7+index, command: {
+              self.selectedIndex.onNext(7+index)
+              self.changePage(url: "playlist/\(playlist.id)")
+            }))
+          }
+        }
+        return menuList
+      })
+      .subscribe(onNext: {
+        self.sideMenuViewModel.replace(menuItems: $0)
+      })
   }
   
-  @IBAction func sign(sender: NSButton) {
-    if try! AuthService.shared().changedAuthorizedState.value() == true {
-      AuthService.shared().signout()
-    } else {
-      self.contentTabViewController.selectedTabViewItemIndex = 4
-    }
-  }
-  
-  @objc public func selected(index: Any) {
-    if let index = index as? Int {
+  private func changePage(url: String) {
+    let tokens = url.lowercased().split(separator: "/")
+    let page = tokens.first ?? ""
+    let selectedType = ["player": PlayerController.self,
+                        "top100": TOPViewController.self,
+                        "setting": SettingViewController.self,
+                        "signin": SignViewController.self,
+                        "signout": SignViewController.self,
+                        "playlist": PlayListViewController.self][page, default: nil]
+    if let index = self.contentTabViewController.childViewControllers.enumerated().first(where: { type(of: $0.element.self) == selectedType })?.offset {
       self.contentTabViewController.selectedTabViewItemIndex = index
+    }
+    if page == "signout" {
+      AuthService.shared().signout()
+    } else if page == "playlist", let id = tokens.last {
+      
     }
   }
   
