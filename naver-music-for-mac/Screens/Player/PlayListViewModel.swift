@@ -34,19 +34,19 @@ class PlayListViewModel {
   
   public func selectAll() {
     if let cellViewModels = try? self.playListCellViewModels.value() {
-      cellViewModels.forEach { $0.checked(checked: true) }
+      cellViewModels.forEach { $0.isChecked.onNext(true) }
     }
   }
   
   public func deselectAll() {
     if let cellViewModels = try? self.playListCellViewModels.value() {
-      cellViewModels.forEach { $0.checked(checked: false) }
+      cellViewModels.forEach { $0.isChecked.onNext(false) }
     }
   }
   
   public func deleteSelectedList() {
     if let cellViewModels = try? self.playListCellViewModels.value() {
-      Repository<Playlist>.factory().remove(at: cellViewModels.enumerated().filter({ $1.isChecked }).map({ $0.offset }))
+      Repository<Playlist>.factory().remove(at: cellViewModels.enumerated().filter({ try! $1.isChecked.value() }).map({ $0.offset }))
     }
   }
 }

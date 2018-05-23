@@ -14,20 +14,17 @@ class PlayListCellViewModel {
   // MARK: Output
   public let name: Observable<String>
   public let isPlaying: Observable<Bool>
-  public var isChecked = false
-  public var propertyChanged: Observable<Void> {
-    return _propertyChanged.asObservable()
-  }
-  private let _propertyChanged = PublishSubject<Void>()
+  public let artistName: Observable<String?>
+  public let albumName: Observable<String?>
+  public let albumImage: Observable<URL?>
+  public let isChecked = BehaviorSubject<Bool>(value: false)
   
   init(musicState: MusicState) {
     let musicStateObservable = Observable.from(object: musicState)
     self.isPlaying = musicStateObservable.map({$0.isPlaying})
     self.name = musicStateObservable.map({$0.music!.name!})
-  }
-  
-  public func checked(checked: Bool) {
-    self.isChecked = checked
-    self._propertyChanged.onNext(Void())
+    self.artistName = musicStateObservable.map({$0.music?.artist?.name})
+    self.albumName = musicStateObservable.map({$0.music?.album?.name})
+    self.albumImage = musicStateObservable.map({$0.music?.album?.coverImageURL(size: .small)})
   }
 }

@@ -27,11 +27,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     container.register(PlayListViewModel.self) { r in
       return PlayListViewModel()
     }
-    container.register(PlayListViewController.self) { r in
-      let playListViewController = PlayListViewController()
-      playListViewController.viewModel = r.resolve(PlayListViewModel.self)
-      return playListViewController
-    }
     return container
   }()
   

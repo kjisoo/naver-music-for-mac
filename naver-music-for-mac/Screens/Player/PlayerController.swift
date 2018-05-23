@@ -11,11 +11,26 @@ import SnapKit
 
 class PlayerController: BaseViewController {
   // MARK: UI Variables
-  private let playListView = PlayListView()
+  private lazy var playListView: PlayListView = {
+    let playListView = PlayListView()
+    playListView.tableView.delegate = self
+    playListView.tableView.dataSource = self
+    return playListView
+  }()
+  private let playlistLabel: NSTextField = {
+    let textField = NSTextField()
+    textField.isEditable = false
+    textField.isBordered = false
+    textField.font = .systemFont(ofSize: 18, weight: .bold)
+    textField.textColor = .darkGray
+    textField.stringValue = "Playlist"
+    return textField
+  }()
   private let coverView = CoverView()
   
   
   // MARK: Variables
+  private var cellViewModels: [PlayListCellViewModel] = []
   private let viewModel: PlayListViewModel
   
   
@@ -35,20 +50,47 @@ class PlayerController: BaseViewController {
     super.setupConstraint()
     self.view.addSubview(playListView)
     self.view.addSubview(coverView)
-    
+    self.view.addSubview(playlistLabel)
     coverView.snp.makeConstraints { (make) in
       make.top.trailing.bottom.equalToSuperview()
       make.width.equalTo(300)
     }
     
+    playlistLabel.snp.makeConstraints { (make) in
+      make.leading.equalToSuperview().offset(32)
+      make.top.equalToSuperview().offset(32)
+    }
+    
     playListView.snp.makeConstraints { (make) in
-      make.top.leading.bottom.equalToSuperview()
+      make.top.equalTo(playlistLabel.snp.bottom).offset(16)
+      make.leading.bottom.equalToSuperview()
       make.trailing.equalTo(coverView.snp.leading)
-      make.width.width.greaterThanOrEqualTo(300)
     }
   }
 
   override func bindWithViewModel() {
-    
+    self.viewModel.playListCellViewModels.subscribe(onNext: { [weak self] in
+      self?.cellViewModels = $0
+      self?.playListView.tableView.reloadData()
+    }).disposed(by: self.disposeBag)
+  }
+}
+
+extension PlayerController: NSTableViewDataSource {
+  func numberOfRows(in tableView: NSTableView) -> Int {
+    return cellViewModels.count
+  }
+  
+  func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    let a = PlayListCellView()
+    a.viewModel = self.cellViewModels[row]
+    return a
+  }
+}
+
+extension PlayerController: NSTableViewDelegate {
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    self.viewModel.play(index: row)
+    return false
   }
 }

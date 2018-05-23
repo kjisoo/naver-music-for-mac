@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */; };
 		0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */; };
-		0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9EB20A5AD7900CEFCA5 /* PlayListViewController.swift */; };
-		0085C9EE20A5AD7900CEFCA5 /* PlayListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0085C9EC20A5AD7900CEFCA5 /* PlayListViewController.xib */; };
 		0085C9F120A5AE1500CEFCA5 /* MusicCoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9EF20A5AE1500CEFCA5 /* MusicCoverViewController.swift */; };
 		0085C9F220A5AE1500CEFCA5 /* MusicCoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0085C9F020A5AE1500CEFCA5 /* MusicCoverViewController.xib */; };
 		0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */; };
@@ -79,8 +77,6 @@
 /* Begin PBXFileReference section */
 		0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
-		0085C9EB20A5AD7900CEFCA5 /* PlayListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListViewController.swift; sourceTree = "<group>"; };
-		0085C9EC20A5AD7900CEFCA5 /* PlayListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayListViewController.xib; sourceTree = "<group>"; };
 		0085C9EF20A5AE1500CEFCA5 /* MusicCoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCoverViewController.swift; sourceTree = "<group>"; };
 		0085C9F020A5AE1500CEFCA5 /* MusicCoverViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MusicCoverViewController.xib; sourceTree = "<group>"; };
 		0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
@@ -202,8 +198,6 @@
 			isa = PBXGroup;
 			children = (
 				E0ABE5D120AADA6A00C28E77 /* PlayListViewModel.swift */,
-				0085C9EB20A5AD7900CEFCA5 /* PlayListViewController.swift */,
-				0085C9EC20A5AD7900CEFCA5 /* PlayListViewController.xib */,
 				E0ABE5D520AADDC400C28E77 /* PlayListCellViewModel.swift */,
 				E0ABE5D320AADB5800C28E77 /* PlayListCellView.swift */,
 				E8D9204420AD9A7C001F18DC /* MusicCoverViewModel.swift */,
@@ -520,7 +514,6 @@
 				E0ABE60A20B2AE5C00C28E77 /* MusicListViewController.xib in Resources */,
 				E85B8D5820A715AA007D3C90 /* TOPViewController.xib in Resources */,
 				E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */,
-				0085C9EE20A5AD7900CEFCA5 /* PlayListViewController.xib in Resources */,
 				E0ABE5C420A57A8800C28E77 /* WindowController.xib in Resources */,
 				E0ABE5A620A5795900C28E77 /* MainMenu.xib in Resources */,
 				E0ABE5F820AEB0FB00C28E77 /* SignViewController.xib in Resources */,
@@ -674,7 +667,6 @@
 				E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
 				E0ABE5E120AD541E00C28E77 /* Container.swift in Sources */,
-				0085C9ED20A5AD7900CEFCA5 /* PlayListViewController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
 				E8D9204D20B44C8C001F18DC /* BaseViewController.swift in Sources */,
 				E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */,

@@ -157,7 +157,7 @@ class WindowController: NSWindowController {
                         "setting": SettingViewController.self,
                         "signin": SignViewController.self,
                         "signout": SignViewController.self,
-                        "playlist": PlayListViewController.self][page, default: nil]
+                        "playlist": PlayerController.self][page, default: nil]
     if let index = self.contentTabViewController.childViewControllers.enumerated().first(where: { type(of: $0.element.self) == selectedType })?.offset {
       self.contentTabViewController.selectedTabViewItemIndex = index
     }
