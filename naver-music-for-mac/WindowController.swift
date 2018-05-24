@@ -35,6 +35,7 @@ class WindowController: NSWindowController {
   private let musicBrowser = MusicBrowser(provider: MoyaProvider<NaverPage>())
   private let selectedIndex = BehaviorSubject<Int>(value: 1)
   private let sideMenuViewModel = SideMenuViewModel()
+  private let myListViewModel = MusicListViewModel()
   private lazy var sideMenuViewController: SideMenuViewController = {
     return SideMenuViewController(viewModel: self.sideMenuViewModel)
   }()
@@ -44,7 +45,7 @@ class WindowController: NSWindowController {
     tabViewController.view.translatesAutoresizingMaskIntoConstraints = true
     tabViewController.addTabViewItem(NSTabViewItem(viewController: PlayerController(viewModel: PlayListViewModel())))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: TOPViewController()))
-    tabViewController.addTabViewItem(NSTabViewItem(viewController: MusicListViewController()))
+    tabViewController.addTabViewItem(NSTabViewItem(viewController: MusicListViewController(viewModel: self.myListViewModel)))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: SettingViewController()))
     tabViewController.addTabViewItem(NSTabViewItem(viewController: SignViewController()))
     return tabViewController
@@ -138,7 +139,7 @@ class WindowController: NSWindowController {
           for (index, playlist) in playlists.enumerated() {
             menuList.append(MenuItem(name: playlist.name, iconNmae: "side_musiclist", isSelected: selectedIndex == 7+index, command: {
               self.selectedIndex.onNext(7+index)
-              self.changePage(url: "playlist/\(playlist.id)")
+              self.changePage(url: "playlist/\(playlist.id)/\(playlist.name)")
             }))
           }
         }
@@ -157,14 +158,16 @@ class WindowController: NSWindowController {
                         "setting": SettingViewController.self,
                         "signin": SignViewController.self,
                         "signout": SignViewController.self,
-                        "playlist": PlayerController.self][page, default: nil]
+                        "playlist": MusicListViewController.self][page, default: nil]
     if let index = self.contentTabViewController.childViewControllers.enumerated().first(where: { type(of: $0.element.self) == selectedType })?.offset {
       self.contentTabViewController.selectedTabViewItemIndex = index
     }
     if page == "signout" {
       AuthService.shared().signout()
-    } else if page == "playlist", let id = tokens.last {
-      
+    } else if page == "playlist" {
+      if tokens.count >= 3 {
+        self.myListViewModel.changeTitle(title: String(tokens[2]))
+      }
     }
   }
   

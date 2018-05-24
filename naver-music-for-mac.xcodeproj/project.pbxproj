@@ -14,6 +14,7 @@
 		1DEBEF20739C8892B0655037 /* Pods_naver_music_for_macTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */; };
 		E0857E7020B716AE00974987 /* MusicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0857E6F20B716AE00974987 /* MusicCellView.swift */; };
 		E0857E7220B7194800974987 /* MusicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0857E7120B7194800974987 /* MusicCellViewModel.swift */; };
+		E0857E7620B72E8800974987 /* MusicListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0857E7520B72E8800974987 /* MusicListViewModel.swift */; };
 		E0ABE5A620A5795900C28E77 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE5A520A5795900C28E77 /* MainMenu.xib */; };
 		E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE5C120A57A8800C28E77 /* WindowController.swift */; };
 		E0ABE5C420A57A8800C28E77 /* WindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E0ABE5C220A57A8800C28E77 /* WindowController.xib */; };
@@ -78,6 +79,7 @@
 		83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_naver_music_for_macTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0857E6F20B716AE00974987 /* MusicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellView.swift; sourceTree = "<group>"; };
 		E0857E7120B7194800974987 /* MusicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicCellViewModel.swift; sourceTree = "<group>"; };
+		E0857E7520B72E8800974987 /* MusicListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicListViewModel.swift; sourceTree = "<group>"; };
 		E0ABE5A520A5795900C28E77 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		E0ABE5C120A57A8800C28E77 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		E0ABE5C220A57A8800C28E77 /* WindowController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WindowController.xib; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				E0ABE60720B2AE5C00C28E77 /* MusicListViewController.swift */,
+				E0857E7520B72E8800974987 /* MusicListViewModel.swift */,
 			);
 			path = MyList;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0857E7620B72E8800974987 /* MusicListViewModel.swift in Sources */,
 				E0ABE5F220AEB0E500C28E77 /* SettingViewController.swift in Sources */,
 				E0ABE5FA20AEB39D00C28E77 /* AuthService.swift in Sources */,
 				E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */,
