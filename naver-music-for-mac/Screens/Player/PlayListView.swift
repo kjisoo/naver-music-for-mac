@@ -22,6 +22,7 @@ class PlayListView: NSView {
   
   public var actionButtnWrapper: NSView = {
     let view = NSView()
+    view.isHidden = true
     return view
   }()
   
@@ -139,5 +140,9 @@ class PlayListView: NSView {
     self.selectAllButton.snp.makeConstraints { (make) in
       make.width.height.equalTo(self.cancleButton)
     }
+  }
+  
+  public func isHiddenButtons(isHidden: Bool) {
+    self.actionButtnWrapper.isHidden = isHidden
   }
 }

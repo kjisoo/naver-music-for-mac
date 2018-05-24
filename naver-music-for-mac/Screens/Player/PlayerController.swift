@@ -73,6 +73,10 @@ class PlayerController: BaseViewController {
       self?.cellViewModels = $0
       self?.playListView.tableView.reloadData()
     }).disposed(by: self.disposeBag)
+    
+    self.viewModel.isExistingSelectedCell.subscribe(onNext: { [weak self] in
+      self?.playListView.isHiddenButtons(isHidden: !$0)
+    }).disposed(by: self.disposeBag)
   }
   
   
