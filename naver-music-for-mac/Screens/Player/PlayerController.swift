@@ -101,6 +101,22 @@ class PlayerController: BaseViewController {
     self.viewModel.artistName.subscribe(onNext: { [weak self] in
       self?.coverView.artistNameField.stringValue = $0 ?? ""
     }).disposed(by: self.disposeBag)
+    
+    self.coverView.prevButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
+      self?.viewModel.prev()
+    }).disposed(by: self.disposeBag)
+    
+    self.coverView.nextButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
+      self?.viewModel.next()
+    }).disposed(by: self.disposeBag)
+    
+    self.coverView.playButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
+      self?.viewModel.play()
+    }).disposed(by: self.disposeBag)
+    
+    self.viewModel.isPaused.subscribe(onNext: { [weak self] in
+      self?.coverView.setPaused(isPuased: $0)
+    }).disposed(by: self.disposeBag)
   }
 }
 

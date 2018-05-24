@@ -51,6 +51,18 @@ class PlayListViewModel {
     self.player.play(index: index)
   }
   
+  public func play() {
+    self.player.togglePlay()
+  }
+  
+  public func prev() {
+    self.player.prev()
+  }
+  
+  public func next() {
+    self.player.next()
+  }
+  
   public func selectAll() {
     if let cellViewModels = try? self.playListCellViewModels.value() {
       cellViewModels.forEach { $0.isChecked.onNext(true) }

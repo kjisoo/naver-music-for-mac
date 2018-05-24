@@ -45,6 +45,36 @@ class CoverView: NSView {
     return textField
   }()
   
+  let prevButton: NSButton = {
+    let button = NSButton()
+    button.title = ""
+    button.setButtonType(NSButton.ButtonType.momentaryChange)
+    button.isBordered = false
+    button.imageScaling = .scaleProportionallyUpOrDown
+    button.image = NSImage(named: NSImage.Name(rawValue: "cover_prev"))?.tint(color: .lightGray)
+    return button
+  }()
+  
+  let playButton: NSButton = {
+    let button = NSButton()
+    button.title = ""
+    button.setButtonType(NSButton.ButtonType.momentaryChange)
+    button.isBordered = false
+    button.imageScaling = .scaleProportionallyUpOrDown
+    button.image = NSImage(named: NSImage.Name(rawValue: "cover_play"))?.tint(color: .lightGray)
+    return button
+  }()
+  
+  let nextButton: NSButton = {
+    let button = NSButton()
+    button.title = ""
+    button.setButtonType(NSButton.ButtonType.momentaryChange)
+    button.isBordered = false
+    button.imageScaling = .scaleProportionallyUpOrDown
+    button.image = NSImage(named: NSImage.Name(rawValue: "cover_next"))?.tint(color: .lightGray)
+    return button
+  }()
+  
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
     self.setupConstraint()
@@ -59,6 +89,9 @@ class CoverView: NSView {
     self.addSubview(musicNameField)
     self.addSubview(albumNameField)
     self.addSubview(artistNameField)
+    self.addSubview(prevButton)
+    self.addSubview(playButton)
+    self.addSubview(nextButton)
     
     self.coverImageView.snp.makeConstraints { (make) in
       make.top.equalToSuperview().offset(64)
@@ -75,6 +108,32 @@ class CoverView: NSView {
     self.artistNameField.snp.makeConstraints { (make) in
       make.top.equalTo(self.musicNameField.snp.bottom).offset(8)
       make.left.right.equalTo(self.coverImageView)
+    }
+    
+    playButton.snp.makeConstraints { (make) in
+      make.centerX.equalToSuperview()
+      make.top.equalTo(self.artistNameField.snp.bottom).offset(32)
+      make.width.height.equalTo(50)
+    }
+    
+    prevButton.snp.makeConstraints { (make) in
+      make.trailing.equalTo(self.playButton.snp.leading).offset(-16)
+      make.centerY.equalTo(self.playButton)
+      make.width.height.equalTo(40)
+    }
+    
+    nextButton.snp.makeConstraints { (make) in
+      make.leading.equalTo(self.playButton.snp.trailing).offset(16)
+      make.centerY.equalTo(self.playButton)
+      make.width.height.equalTo(40)
+    }
+  }
+  
+  public func setPaused(isPuased: Bool) {
+    if isPuased {
+      self.playButton.image = NSImage(named: NSImage.Name(rawValue: "cover_play"))?.tint(color: .lightGray)
+    } else {
+      self.playButton.image = NSImage(named: NSImage.Name(rawValue: "cover_pause"))?.tint(color: .lightGray)
     }
   }
 }
