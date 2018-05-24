@@ -126,9 +126,9 @@ extension PlayerController: NSTableViewDataSource {
   }
   
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-    let a = PlayListCellView()
-    a.viewModel = self.cellViewModels[row]
-    return a
+    let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "PlayListCellView"), owner: self) as? PlayListCellView ?? PlayListCellView()
+    cell.viewModel = self.cellViewModels[row]
+    return cell
   }
 }
 
