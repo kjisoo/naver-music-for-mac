@@ -8,8 +8,5 @@
 
 import Cocoa
 
-class MusicListViewController: NSViewController {
-  override var nibName: NSNib.Name? {
-    return NSNib.Name("MusicListViewController")
-  }
+class MusicListViewController: BaseViewController {
 }

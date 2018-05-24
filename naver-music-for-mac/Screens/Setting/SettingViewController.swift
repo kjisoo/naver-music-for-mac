@@ -8,8 +8,13 @@
 
 import Cocoa
 
-class SettingViewController: NSViewController {
-  override var nibName: NSNib.Name? {
-    return NSNib.Name("SettingViewController")
+class SettingViewController: BaseViewController {
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    self.title = "Setting"
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }

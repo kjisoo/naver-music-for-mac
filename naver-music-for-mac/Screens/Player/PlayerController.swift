@@ -17,15 +17,6 @@ class PlayerController: BaseViewController {
     playListView.tableView.dataSource = self
     return playListView
   }()
-  private let playlistLabel: NSTextField = {
-    let textField = NSTextField()
-    textField.isEditable = false
-    textField.isBordered = false
-    textField.font = .systemFont(ofSize: 21, weight: .bold)
-    textField.textColor = .darkGray
-    textField.stringValue = "Playlist"
-    return textField
-  }()
   private let coverView = CoverView()
   
   
@@ -48,21 +39,16 @@ class PlayerController: BaseViewController {
   // MARK: setup
   override func setupConstraint() {
     super.setupConstraint()
+    self.title = "Playlist"
     self.view.addSubview(playListView)
     self.view.addSubview(coverView)
-    self.view.addSubview(playlistLabel)
     coverView.snp.makeConstraints { (make) in
       make.top.trailing.bottom.equalToSuperview()
       make.width.equalTo(300)
     }
     
-    playlistLabel.snp.makeConstraints { (make) in
-      make.leading.equalToSuperview().offset(32)
-      make.top.equalToSuperview().offset(32)
-    }
-    
     playListView.snp.makeConstraints { (make) in
-      make.top.equalTo(playlistLabel.snp.bottom).offset(16)
+      make.top.equalTo(titleLabel.snp.bottom).offset(16)
       make.leading.bottom.equalToSuperview()
       make.trailing.equalTo(coverView.snp.leading)
     }

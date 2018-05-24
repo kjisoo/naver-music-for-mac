@@ -17,16 +17,6 @@ class TOPViewController: BaseViewController {
   private let viewModel = TOPViewModel(musicBrowser: MusicBrowser(provider: MoyaProvider<NaverPage>()), playListRepository: Repository<Playlist>())
 
   // MARK: UI Variables
-  private let titleLabel: NSTextField = {
-    let textField = NSTextField()
-    textField.isEditable = false
-    textField.isBordered = false
-    textField.font = .systemFont(ofSize: 21, weight: .bold)
-    textField.textColor = .darkGray
-    textField.stringValue = "TOP100"
-    return textField
-  }()
-  
   private let totalButton: NSButton = {
     let button = NSButton(title: "종합", target: nil, action: nil)
     button.isBordered = false
@@ -58,7 +48,8 @@ class TOPViewController: BaseViewController {
   
   
   override func setupConstraint() {
-    self.view.addSubview(self.titleLabel)
+    super.setupConstraint()
+    self.title = "TOP100"
     self.view.addSubview(self.totalButton)
     self.view.addSubview(self.domesticButton)
     self.view.addSubview(self.overseaButton)
@@ -67,11 +58,6 @@ class TOPViewController: BaseViewController {
     scrollView.contentView = clipView
     clipView.documentView = self.tableView
     self.view.addSubview(scrollView)
-    
-    titleLabel.snp.makeConstraints { (make) in
-      make.leading.equalToSuperview().offset(32)
-      make.top.equalToSuperview().offset(32)
-    }
     
     overseaButton.snp.makeConstraints { (make) in
       make.centerY.equalTo(self.titleLabel)
