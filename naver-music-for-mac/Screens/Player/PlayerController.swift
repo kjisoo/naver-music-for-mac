@@ -21,7 +21,7 @@ class PlayerController: BaseViewController {
     let textField = NSTextField()
     textField.isEditable = false
     textField.isBordered = false
-    textField.font = .systemFont(ofSize: 18, weight: .bold)
+    textField.font = .systemFont(ofSize: 21, weight: .bold)
     textField.textColor = .darkGray
     textField.stringValue = "Playlist"
     return textField
