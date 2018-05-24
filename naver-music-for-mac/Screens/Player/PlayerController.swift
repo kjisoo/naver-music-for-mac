@@ -89,6 +89,18 @@ class PlayerController: BaseViewController {
     self.playListView.deleteButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
       self?.viewModel.deleteSelectedList()
     }).disposed(by: self.disposeBag)
+    
+    self.viewModel.coverImageURLString.subscribe(onNext: { [weak self] in
+      self?.coverView.coverImageView.kf.setImage(with: $0)
+    }).disposed(by: self.disposeBag)
+    
+    self.viewModel.musicName.subscribe(onNext: { [weak self] in
+      self?.coverView.musicNameField.stringValue = $0 ?? ""
+    }).disposed(by: self.disposeBag)
+    
+    self.viewModel.artistName.subscribe(onNext: { [weak self] in
+      self?.coverView.artistNameField.stringValue = $0 ?? ""
+    }).disposed(by: self.disposeBag)
   }
 }
 

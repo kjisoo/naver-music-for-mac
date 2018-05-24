@@ -15,8 +15,14 @@ class PlayListViewModel {
   private let disposeBag = DisposeBag()
   private let player: PlayerService
   
+  // Output
   private(set) public var playListCellViewModels = BehaviorSubject<[PlayListCellViewModel]>(value: [])
   private(set) public var isExistingSelectedCell: Observable<Bool>!
+  public var coverImageURLString: Observable<URL?>!
+  public var musicName: Observable<String?>!
+  public var albumeName: Observable<String?>!
+  public var artistName: Observable<String?>!
+  public var isPaused: Observable<Bool>!
   
   init(player: PlayerService = PlayerService.shared()) {
     self.player = player
@@ -33,6 +39,12 @@ class PlayListViewModel {
       .map { _ -> Bool in let index = try! self.playListCellViewModels.value().index(where: { try! $0.isChecked.value() == true })
         return index != nil
     }
+    
+    self.coverImageURLString = player.playingMusicState.map { $0?.music.album?.coverImageURL(size: .large) }
+    self.musicName = player.playingMusicState.map { $0?.music.name }
+    self.albumeName = player.playingMusicState.map { $0?.music.album?.name }
+    self.artistName = player.playingMusicState.map { $0?.music.artist?.name }
+    self.isPaused = player.isPaused.asObservable().distinctUntilChanged()
   }
   
   public func play(index: Int) {
