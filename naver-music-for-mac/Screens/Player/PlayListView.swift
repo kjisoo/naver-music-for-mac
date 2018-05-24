@@ -26,7 +26,7 @@ class PlayListView: NSView {
     return view
   }()
   
-  private var cancleButton: NSButton = {
+  public var cancleButton: NSButton = {
     let button = NSButton()
     let paragraph = NSMutableParagraphStyle()
     paragraph.alignment = .center
@@ -47,7 +47,7 @@ class PlayListView: NSView {
     button.layer?.shadowColor = NSColor.black.cgColor
     return button
   }()
-  private var deleteButton: NSButton = {
+  public var deleteButton: NSButton = {
     let button = NSButton()
     let paragraph = NSMutableParagraphStyle()
     paragraph.alignment = .center
@@ -68,7 +68,7 @@ class PlayListView: NSView {
     button.layer?.shadowColor = NSColor.black.cgColor
     return button
   }()
-  private var selectAllButton: NSButton = {
+  public var selectAllButton: NSButton = {
     let button = NSButton()
     let paragraph = NSMutableParagraphStyle()
     paragraph.alignment = .center

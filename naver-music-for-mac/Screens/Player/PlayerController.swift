@@ -77,20 +77,18 @@ class PlayerController: BaseViewController {
     self.viewModel.isExistingSelectedCell.subscribe(onNext: { [weak self] in
       self?.playListView.isHiddenButtons(isHidden: !$0)
     }).disposed(by: self.disposeBag)
-  }
-  
-  
-  // MARK: Action
-  @IBAction func cancle(sender: NSButton) {
-    self.viewModel.deselectAll()
-  }
-  
-  @objc func delete(sender: NSButton) {
-    self.viewModel.deleteSelectedList()
-  }
-  
-  @objc func selectAll(sender: NSButton) {
-    self.viewModel.selectAll()
+    
+    self.playListView.cancleButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
+      self?.viewModel.deselectAll()
+    }).disposed(by: self.disposeBag)
+    
+    self.playListView.selectAllButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
+      self?.viewModel.selectAll()
+    }).disposed(by: self.disposeBag)
+    
+    self.playListView.deleteButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
+      self?.viewModel.deleteSelectedList()
+    }).disposed(by: self.disposeBag)
   }
 }
 
