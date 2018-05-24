@@ -21,13 +21,13 @@ class TOPViewModel {
   public let topType = PublishSubject<TOPType>()
   
   // MARK: Output
-  private(set) public var musicDatasource: Observable<[TOPCellViewModel]>!
+  private(set) public var musicDatasource: Observable<[MusicCellViewModel]>!
   
   init(musicBrowser: MusicBrowser, playListRepository: Repository<Playlist>) {
     self.musicBrowser = musicBrowser
     self.playListRepository = playListRepository
 
-    self.musicDatasource = self.musicList.map({ $0.enumerated().map { TOPCellViewModel(music: $0.element, rank: $0.offset + 1) }})
+    self.musicDatasource = self.musicList.map({ $0.enumerated().map { MusicCellViewModel(music: $0.element) }})
     
     self.topType.subscribe(onNext: { [weak self] type in
       if let `self` = self {

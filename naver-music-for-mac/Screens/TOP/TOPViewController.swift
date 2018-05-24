@@ -11,69 +11,117 @@ import RxSwift
 import RxCocoa
 import Moya
 
-class TOPViewController: NSViewController {
+class TOPViewController: BaseViewController {
   // MARK: Variables
-  private var cellViewModels: [TOPCellViewModel] = []
+  private var cellViewModels: [MusicCellViewModel] = []
   private let viewModel = TOPViewModel(musicBrowser: MusicBrowser(provider: MoyaProvider<NaverPage>()), playListRepository: Repository<Playlist>())
-  private let disposeBag = DisposeBag()
 
-  // MARK: Outlets
-  @IBOutlet weak var tableView: NSTableView!
-  @IBOutlet weak var topTypeSegmentedControl: NSSegmentedControl!
-  @IBOutlet weak var addingViewHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var addButton: NSButton!
+  // MARK: UI Variables
+  private let titleLabel: NSTextField = {
+    let textField = NSTextField()
+    textField.isEditable = false
+    textField.isBordered = false
+    textField.font = .systemFont(ofSize: 21, weight: .bold)
+    textField.textColor = .darkGray
+    textField.stringValue = "TOP100"
+    return textField
+  }()
   
-  override var nibName: NSNib.Name? {
-    return NSNib.Name("TOPViewController")
-  }
+  private let totalButton: NSButton = {
+    let button = NSButton(title: "종합", target: nil, action: nil)
+    button.isBordered = false
+    return button
+  }()
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.binding()
-    self.view.wantsLayer = true
-    self.view.layer?.backgroundColor = NSColor.white.cgColor
-  }
+  private let domesticButton: NSButton = {
+    let button = NSButton(title: "국내", target: nil, action: nil)
+    button.isBordered = false
+    return button
+  }()
   
-  private func binding() {
-    self.viewModel.musicDatasource.asDriver(onErrorJustReturn: []).drive(onNext: { [weak self] (viewModels) in
-      self?.cellViewModels = viewModels
-      self?.tableView.reloadData()
-    }).disposed(by: self.disposeBag)
+  private let overseaButton: NSButton = {
+    let button = NSButton(title: "해외", target: nil, action: nil)
+    button.isBordered = false
+    return button
+  }()
+  
+  private lazy var tableView: NSTableView = {
+    let tableView = NSTableView()
+    tableView.headerView = nil
+    tableView.dataSource = self
+    tableView.delegate = self
+    tableView.rowHeight = 100
+    tableView.addTableColumn(NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "MusicColumn")))
+    return tableView
+  }()
+  
+  
+  override func setupConstraint() {
+    self.view.addSubview(self.titleLabel)
+    self.view.addSubview(self.totalButton)
+    self.view.addSubview(self.domesticButton)
+    self.view.addSubview(self.overseaButton)
+    let scrollView = NSScrollView()
+    let clipView = NSClipView()
+    scrollView.contentView = clipView
+    clipView.documentView = self.tableView
+    self.view.addSubview(scrollView)
     
-    self.topTypeSegmentedControl.rx.controlProperty(getter: { $0.selectedSegment }, setter: { _,_ in  })
-      .map { (index) -> TOPType in
-        if index == 0 {
-          return .total
-        } else if index == 1 {
-          return .domestic
-        } else if index == 2 {
-          return .oversea
-        } else {
-          return .total
-        }
-      }
-      .subscribe(onNext: { [weak self] type in
-        self?.viewModel.topType.onNext(type)
-      })
-      .disposed(by: self.disposeBag)
-  }
-  
-  private func hiddenAddingList(hidden: Bool) {
-    if hidden {
-      self.addingViewHeightConstraint.constant = 0
-    } else {
-      self.addButton.title = String(format: "%d곡을 플레이 리스트에 추가합니다.", self.tableView.selectedRowIndexes.count)
-      self.addingViewHeightConstraint.constant = 100
+    titleLabel.snp.makeConstraints { (make) in
+      make.leading.equalToSuperview().offset(32)
+      make.top.equalToSuperview().offset(32)
+    }
+    
+    overseaButton.snp.makeConstraints { (make) in
+      make.centerY.equalTo(self.titleLabel)
+      make.trailing.equalToSuperview().offset(-32)
+    }
+    
+    domesticButton.snp.makeConstraints { (make) in
+      make.centerY.equalTo(self.overseaButton)
+      make.trailing.equalTo(self.overseaButton.snp.leading).offset(-16)
+    }
+    
+    totalButton.snp.makeConstraints { (make) in
+      make.centerY.equalTo(self.overseaButton)
+      make.trailing.equalTo(self.domesticButton.snp.leading).offset(-16)
+    }
+    
+    scrollView.snp.makeConstraints { (make) in
+      make.top.equalTo(self.titleLabel.snp.bottom).offset(16)
+      make.bottom.leading.trailing.equalToSuperview()
     }
   }
   
-  @IBAction func addingList(sender: NSButton) {
-    self.viewModel.addMusicToList(indexs: Array(self.tableView.selectedRowIndexes))
-    self.tableView.deselectAll(nil)
+  override func bindWithViewModel() {
+    self.viewModel.musicDatasource.asDriver(onErrorJustReturn: []).drive(onNext: { [weak self] (viewModels) in
+      self?.cellViewModels = viewModels
+      self?.tableView.reloadData()
+      self?.tableView.scrollRowToVisible(0)
+    }).disposed(by: self.disposeBag)
+    
+    Observable<Int>.merge(
+      Observable.just(0),
+      self.totalButton.rx.controlEvent.map { 0 },
+      self.domesticButton.rx.controlEvent.map { 1 },
+      self.overseaButton.rx.controlEvent.map { 2 }
+      ).subscribe(onNext: { [weak self] in
+        if let `self` = self {
+          self.selectedType(index: $0, buttons: [self.totalButton, self.domesticButton, self.overseaButton])
+        }
+      }).disposed(by: self.disposeBag)
   }
   
-  @IBAction func selectAllMusic(sender: NSButton) {
-    self.tableView.selectAll(nil)
+  private func selectedType(index: Int, buttons: [NSButton]) {
+    buttons.forEach { button in
+      button.attributedTitle = NSAttributedString(string: button.title,
+                                                  attributes: [.foregroundColor: NSColor.lightGray,
+                                                               .font: NSFont.systemFont(ofSize: 16, weight: .semibold)])
+    }
+    buttons[index].attributedTitle = NSAttributedString(string: buttons[index].title,
+                                                        attributes: [.foregroundColor: NSColor.darkGray,
+                                                                     .font: NSFont.systemFont(ofSize: 16, weight: .semibold)])
+    self.viewModel.topType.onNext([TOPType.total, TOPType.domestic, TOPType.oversea][index])
   }
 }
 
@@ -83,14 +131,14 @@ extension TOPViewController: NSTableViewDataSource {
   }
   
   func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-    let view: TOPTableCellView = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "TOPTableCellView"), owner: self) as! TOPTableCellView
-    view.viewModel = self.cellViewModels[row]
-    return view
+    let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "MusicCellView"), owner: self) as? MusicCellView ?? MusicCellView()
+    cell.viewModel = self.cellViewModels[row]
+    cell.rank.stringValue = "\(row+1)"
+    return cell
   }
 }
 
 extension TOPViewController: NSTableViewDelegate {
   func tableViewSelectionDidChange(_ notification: Notification) {
-    self.hiddenAddingList(hidden: self.tableView.selectedRowIndexes.count == 0)
   }
 }
