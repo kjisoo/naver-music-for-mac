@@ -51,6 +51,7 @@ class TOPViewController: BaseViewController {
     tableView.dataSource = self
     tableView.delegate = self
     tableView.rowHeight = 100
+    tableView.intercellSpacing = NSSize.zero
     tableView.addTableColumn(NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "MusicColumn")))
     return tableView
   }()
@@ -139,6 +140,10 @@ extension TOPViewController: NSTableViewDataSource {
 }
 
 extension TOPViewController: NSTableViewDelegate {
-  func tableViewSelectionDidChange(_ notification: Notification) {
+  func tableView(_ tableView: NSTableView, shouldSelectRow row: Int) -> Bool {
+    if let isChecked = try? self.cellViewModels[row].isChecked.value() {
+      self.cellViewModels[row].isChecked.onNext(!isChecked)
+    }
+    return false
   }
 }

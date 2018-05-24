@@ -24,7 +24,7 @@ class MusicCellView: NSView {
     imageView.imageScaling = .scaleProportionallyUpOrDown
     imageView.wantsLayer = true
     imageView.layer?.masksToBounds = true
-    imageView.layer?.cornerRadius = 4
+    imageView.layer?.cornerRadius = 8
     return imageView
   }()
   private var musicName: NSTextField = {
