@@ -18,7 +18,9 @@ class PlayerController: BaseViewController {
     return playListView
   }()
   private let coverView = CoverView()
-  
+  private let buttonGroupView = ButtonGroupView(buttonTitles: [("취소", NSColor.darkGray),
+                                                               ("삭제", NSColor.red),
+                                                               ("전체선택", NSColor.darkGray)])
   
   // MARK: Variables
   private var cellViewModels: [PlayListCellViewModel] = []
@@ -42,6 +44,8 @@ class PlayerController: BaseViewController {
     self.title = "Playlist"
     self.view.addSubview(playListView)
     self.view.addSubview(coverView)
+    self.view.addSubview(buttonGroupView)
+    
     coverView.snp.makeConstraints { (make) in
       make.top.trailing.bottom.equalToSuperview()
       make.width.equalTo(300)
@@ -52,6 +56,13 @@ class PlayerController: BaseViewController {
       make.leading.bottom.equalToSuperview()
       make.trailing.equalTo(coverView.snp.leading)
     }
+    
+    buttonGroupView.snp.makeConstraints { (make) in
+      make.centerX.equalTo(playListView)
+      make.width.equalTo(300)
+      make.height.equalTo(70)
+      make.bottom.equalTo(playListView).offset(-50)
+    }
   }
 
   override func bindWithViewModel() {
@@ -61,19 +72,7 @@ class PlayerController: BaseViewController {
     }).disposed(by: self.disposeBag)
     
     self.viewModel.isExistingSelectedCell.subscribe(onNext: { [weak self] in
-      self?.playListView.isHiddenButtons(isHidden: !$0)
-    }).disposed(by: self.disposeBag)
-    
-    self.playListView.cancleButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
-      self?.viewModel.deselectAll()
-    }).disposed(by: self.disposeBag)
-    
-    self.playListView.selectAllButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
-      self?.viewModel.selectAll()
-    }).disposed(by: self.disposeBag)
-    
-    self.playListView.deleteButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
-      self?.viewModel.deleteSelectedList()
+      self?.buttonGroupView.isHidden = !$0
     }).disposed(by: self.disposeBag)
     
     self.viewModel.coverImageURLString.subscribe(onNext: { [weak self] in
@@ -102,6 +101,10 @@ class PlayerController: BaseViewController {
     
     self.viewModel.isPaused.subscribe(onNext: { [weak self] in
       self?.coverView.setPaused(isPuased: $0)
+    }).disposed(by: self.disposeBag)
+    
+    self.buttonGroupView.selectedButtonIndex.subscribe(onNext: { [weak self] in
+      [self?.viewModel.deselectAll, self?.viewModel.deleteSelectedList, self?.viewModel.selectAll][$0]?()
     }).disposed(by: self.disposeBag)
   }
 }
