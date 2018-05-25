@@ -86,7 +86,7 @@ class TOPViewController: BaseViewController {
     
     buttonGroupView.snp.makeConstraints { (make) in
       make.centerX.equalTo(scrollView)
-      make.width.equalTo(300)
+      make.width.equalTo(400)
       make.height.equalTo(70)
       make.bottom.equalTo(scrollView).offset(-50)
     }
