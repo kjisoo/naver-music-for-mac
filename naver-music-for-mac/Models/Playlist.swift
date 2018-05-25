@@ -29,4 +29,35 @@ class Playlist: Object {
   public func playingMusicState() -> MusicState? {
     return self.musicStates.filter({ $0.isPlaying }).first
   }
+  
+  class func getMyPlayList() -> Playlist {
+    var playList: Playlist!
+    let realm = try! Realm()
+    try? realm.write {
+      playList = realm.create(Playlist.self, value: ["id": "MY"], update: true)
+    }
+    return playList
+  }
+  
+  func appendMusic(musics: [Music]) {
+    try? self.realm?.write {
+      self.musicStates.append(objectsIn: musics.map { MusicState(value: ["music": $0]) })
+    }
+  }
+  
+  func remove(at index: Int) {
+    try? self.realm?.write {
+      if index < self.musicStates.count {
+        self.musicStates.remove(at: index)
+      }
+    }
+  }
+  
+  func remove(at indexs: [Int]) {
+    self.realm?.beginWrite()
+    for index in indexs.sorted().reversed().filter({ $0 < self.musicStates.count }) {
+      self.musicStates.remove(at: index)
+    }
+    try? self.realm?.commitWrite()
+  }
 }

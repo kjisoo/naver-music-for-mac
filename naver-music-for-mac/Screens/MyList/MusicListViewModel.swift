@@ -11,7 +11,6 @@ import RxSwift
 
 class MusicListViewModel {
   // MARK: Varibales
-  private let playListRepository: Repository<Playlist>
   private let disposeBag = DisposeBag()
   private let musicList = BehaviorSubject<[Music]>(value: [])
   
@@ -23,8 +22,7 @@ class MusicListViewModel {
   private(set) public var isExistingSelectedCell: Observable<Bool>!
   private(set) public var title: Observable<String> = BehaviorSubject<String>(value: "")
 
-  init(musicBrowser: MusicBrowser, playListRepository: Repository<Playlist>) {
-    self.playListRepository = playListRepository
+  init(musicBrowser: MusicBrowser) {
     musicListID.flatMapLatest(musicBrowser.fetchMusicList)
       .map{ [weak self] musics -> [MusicCellViewModel] in
         self?.musicList.onNext(musics)
@@ -68,6 +66,6 @@ class MusicListViewModel {
   }
   
   public func addMusicToList(indexs: [Int]) {
-    self.playListRepository.appendMusic(musics: indexs.map { try! self.musicList.value()[$0] })
+    Playlist.getMyPlayList().appendMusic(musics: indexs.map { try! self.musicList.value()[$0] })
   }
 }

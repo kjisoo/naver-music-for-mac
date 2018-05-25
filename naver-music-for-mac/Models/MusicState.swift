@@ -16,4 +16,12 @@ class MusicState: Object {
   override class func primaryKey() -> String? {
     return "id"
   }
+  
+  func changePlaying(isPlaying: Bool) {
+    if self.isPlaying != isPlaying {
+      try? self.realm?.write {
+        self.isPlaying = isPlaying
+      }
+    }
+  }
 }

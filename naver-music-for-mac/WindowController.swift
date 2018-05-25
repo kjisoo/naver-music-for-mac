@@ -35,7 +35,7 @@ class WindowController: NSWindowController {
   private let musicBrowser = MusicBrowser(provider: MoyaProvider<NaverPage>())
   private let selectedIndex = BehaviorSubject<Int>(value: 1)
   private let sideMenuViewModel = SideMenuViewModel()
-  private lazy var myListViewModel = MusicListViewModel(musicBrowser: musicBrowser, playListRepository: Repository<Playlist>.factory())
+  private lazy var myListViewModel = MusicListViewModel(musicBrowser: musicBrowser)
   private lazy var sideMenuViewController = SideMenuViewController(viewModel: sideMenuViewModel)
   lazy var contentTabViewController: NSTabViewController = {
     let tabViewController = NSTabViewController()

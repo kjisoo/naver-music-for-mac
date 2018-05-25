@@ -14,7 +14,7 @@ import Moya
 class TOPViewController: BaseViewController {
   // MARK: Variables
   private var cellViewModels: [MusicCellViewModel] = []
-  private let viewModel = TOPViewModel(musicBrowser: MusicBrowser(provider: MoyaProvider<NaverPage>()), playListRepository: Repository<Playlist>())
+  private let viewModel = TOPViewModel(musicBrowser: MusicBrowser(provider: MoyaProvider<NaverPage>()))
 
   // MARK: UI Variables
   private let totalButton: NSButton = {

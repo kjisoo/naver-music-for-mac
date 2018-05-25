@@ -13,7 +13,6 @@ import RealmSwift
 class TOPViewModel {
   // MARK: Varibales
   private let musicBrowser: MusicBrowser
-  private let playListRepository: Repository<Playlist>
   private let disposeBag = DisposeBag()
   private let musicList = BehaviorSubject<[Music]>(value: [])
   
@@ -24,9 +23,8 @@ class TOPViewModel {
   private(set) public var musicDatasource = BehaviorSubject<[MusicCellViewModel]>(value: [])
   private(set) public var isExistingSelectedCell: Observable<Bool>!
   
-  init(musicBrowser: MusicBrowser, playListRepository: Repository<Playlist>) {
+  init(musicBrowser: MusicBrowser) {
     self.musicBrowser = musicBrowser
-    self.playListRepository = playListRepository
 
     self.musicList.map({ $0.enumerated().map { MusicCellViewModel(music: $0.element) }}).subscribe(onNext: { [weak self] in
       self?.musicDatasource.onNext($0)
@@ -70,6 +68,6 @@ class TOPViewModel {
   }
   
   public func addMusicToList(indexs: [Int]) {
-    self.playListRepository.appendMusic(musics: indexs.map { try! self.musicList.value()[$0] })
+    Playlist.getMyPlayList().appendMusic(musics: indexs.map { try! self.musicList.value()[$0] })
   }
 }

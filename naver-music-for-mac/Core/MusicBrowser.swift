@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import RealmSwift
 import Moya
 
 
@@ -19,9 +20,11 @@ enum TOPType: String {
 
 class MusicBrowser {
   private let provider: MoyaProvider<NaverPage>
+  private let realm: Realm
   
-  init(provider: MoyaProvider<NaverPage>) {
+  init(provider: MoyaProvider<NaverPage>, realm: Realm = try! Realm()) {
     self.provider = provider
+    self.realm = realm
   }
   
   func fetchTOPMusics(top type: TOPType) -> Single<[Music]> {
@@ -32,7 +35,13 @@ class MusicBrowser {
           let secondResponseString = String(data: secondResponse.data, encoding: .utf8) {
           let parser = TOPParser()
           let result = parser.parse(from: firstResponseString) + parser.parse(from: secondResponseString)
-          return result.map { Music(value: $0) }
+          return result.map { value in
+            var music: Music!
+            try? self.realm.write {
+              music = self.realm.create(Music.self, value: value, update: true)
+            }
+            return music
+          }
         }
         return []
     }
@@ -42,7 +51,13 @@ class MusicBrowser {
     return self.provider.rx.request(.myList).map {
       if let responseString = String(data: $0.data, encoding: .utf8) {
         let result = MyListParser().parse(from: responseString)
-        return result.map { MusicList(value: $0) }
+        return result.map { value in
+          var musicList: MusicList!
+          try? self.realm.write {
+            musicList = self.realm.create(MusicList.self, value: value, update: true)
+          }
+          return musicList
+        }
       }
       return []
     }
@@ -52,7 +67,13 @@ class MusicBrowser {
     return self.provider.rx.request(.listDetail(id: listId)).map {
       if let responseString = String(data: $0.data, encoding: .utf8) {
         let result = MusicListParser().parse(from: responseString)
-        return result.map { Music(value: $0) }
+        return result.map { value in
+          var music: Music!
+          try? self.realm.write {
+            music = self.realm.create(Music.self, value: value, update: true)
+          }
+          return music
+        }
       }
       return []
     }
