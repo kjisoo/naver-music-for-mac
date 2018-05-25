@@ -15,17 +15,20 @@ class WindowController: NSWindowController {
     return NSNib.Name("WindowController")
   }
   
-  let statusBarItems: [NSStatusItem] = {
+  lazy var statusBarItems: [NSStatusItem] = {
     let nextItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let playItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let prevItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     
+    nextItem.target = self
     nextItem.action = #selector(WindowController.next(sender:))
     nextItem.image = NSImage(named: NSImage.Name("next"))
     
+    playItem.target = self
     playItem.action = #selector(WindowController.palyOrPause(sender:))
     playItem.image = NSImage(named: NSImage.Name("play"))
     
+    prevItem.target = self
     prevItem.action = #selector(WindowController.prev(sender:))
     prevItem.image = NSImage(named: NSImage.Name("prev"))
     return [nextItem, playItem, prevItem]
