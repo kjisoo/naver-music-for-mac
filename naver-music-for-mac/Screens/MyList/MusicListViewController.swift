@@ -23,6 +23,10 @@ class MusicListViewController: BaseViewController {
     return tableView
   }()
   
+  private let buttonGroupView = ButtonGroupView(buttonTitles: [("취소", NSColor.darkGray),
+                                                               ("플레이리스트에 추가", NSColor.darkGray),
+                                                               ("전체선택", NSColor.darkGray)])
+  
   init(viewModel: MusicListViewModel) {
     self.viewModel = viewModel
     super.init(nibName: nil, bundle: nil)
@@ -39,10 +43,18 @@ class MusicListViewController: BaseViewController {
     scrollView.contentView = clipView
     clipView.documentView = self.tableView
     self.view.addSubview(scrollView)
-    
+    self.view.addSubview(self.buttonGroupView)
+
     scrollView.snp.makeConstraints { (make) in
       make.top.equalTo(self.titleLabel.snp.bottom).offset(16)
       make.bottom.leading.trailing.equalToSuperview()
+    }
+    
+    buttonGroupView.snp.makeConstraints { (make) in
+      make.centerX.equalTo(scrollView)
+      make.width.equalTo(300)
+      make.height.equalTo(70)
+      make.bottom.equalTo(scrollView).offset(-50)
     }
   }
   
@@ -55,6 +67,14 @@ class MusicListViewController: BaseViewController {
       self?.cellViewModels = viewModels
       self?.tableView.reloadData()
       self?.tableView.scrollRowToVisible(0)
+    }).disposed(by: self.disposeBag)
+    
+    self.viewModel.isExistingSelectedCell.subscribe(onNext: { [weak self] in
+      self?.buttonGroupView.isHidden = !$0
+    }).disposed(by: self.disposeBag)
+    
+    self.buttonGroupView.selectedButtonIndex.subscribe(onNext: { [weak self] in
+      [self?.viewModel.deselectAll, self?.viewModel.addSelectedMusicToPlaylist, self?.viewModel.selectAll][$0]?()
     }).disposed(by: self.disposeBag)
   }
 }
