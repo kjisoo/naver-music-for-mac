@@ -45,6 +45,13 @@ class MusicCellView: NSView {
     textField.textColor = .lightGray
     return textField
   }()
+  private var selectedDimView: NSView = {
+    let view = NSView()
+    view.wantsLayer = true
+    view.layer?.backgroundColor = NSColor.darkGray.cgColor
+    view.alphaValue = 0.3
+    return view
+  }()
  
   private var disposeBag = DisposeBag()
   public var viewModel: MusicCellViewModel? {
@@ -59,11 +66,7 @@ class MusicCellView: NSView {
       self.coverImage.kf.setImage(with: viewModel.albumImage)
       
       viewModel.isChecked.subscribe(onNext: { [weak self] in
-        if $0 {
-          self?.layer?.backgroundColor = NSColor.red.cgColor
-        } else {
-          self?.layer?.backgroundColor = NSColor.white.cgColor
-        }
+        self?.selectedDimView.isHidden = !$0
       }).disposed(by: self.disposeBag)
     }
   }
@@ -87,6 +90,7 @@ class MusicCellView: NSView {
     self.addSubview(coverImage)
     self.addSubview(textStackView)
     self.addSubview(rank)
+    self.addSubview(selectedDimView)
     textStackView.addArrangedSubview(musicName)
     textStackView.addArrangedSubview(informationField)
     
@@ -112,6 +116,9 @@ class MusicCellView: NSView {
       make.centerY.equalToSuperview()
       make.trailing.equalToSuperview().offset(-8)
       make.leading.equalTo(coverImage.snp.trailing).offset(8)
+    }
+    selectedDimView.snp.makeConstraints { (make) in
+      make.top.bottom.leading.trailing.equalToSuperview()
     }
   }
 }

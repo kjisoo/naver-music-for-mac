@@ -41,7 +41,7 @@ class TOPViewController: BaseViewController {
     tableView.dataSource = self
     tableView.delegate = self
     tableView.rowHeight = 100
-    tableView.intercellSpacing = NSSize.zero
+    tableView.intercellSpacing = NSSize(width: 0, height: 1)
     tableView.addTableColumn(NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "MusicColumn")))
     return tableView
   }()
