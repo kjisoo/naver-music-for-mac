@@ -46,6 +46,10 @@ class TOPViewController: BaseViewController {
     return tableView
   }()
   
+  private let buttonGroupView = ButtonGroupView(buttonTitles: [("취소", NSColor.darkGray),
+                                                               ("플레이리스트에 추가", NSColor.darkGray),
+                                                               ("전체선택", NSColor.darkGray)])
+  
   
   override func setupConstraint() {
     super.setupConstraint()
@@ -58,6 +62,7 @@ class TOPViewController: BaseViewController {
     scrollView.contentView = clipView
     clipView.documentView = self.tableView
     self.view.addSubview(scrollView)
+    self.view.addSubview(self.buttonGroupView)
     
     overseaButton.snp.makeConstraints { (make) in
       make.centerY.equalTo(self.titleLabel)
@@ -78,6 +83,13 @@ class TOPViewController: BaseViewController {
       make.top.equalTo(self.titleLabel.snp.bottom).offset(16)
       make.bottom.leading.trailing.equalToSuperview()
     }
+    
+    buttonGroupView.snp.makeConstraints { (make) in
+      make.centerX.equalTo(scrollView)
+      make.width.equalTo(300)
+      make.height.equalTo(70)
+      make.bottom.equalTo(scrollView).offset(-50)
+    }
   }
   
   override func bindWithViewModel() {
@@ -97,6 +109,14 @@ class TOPViewController: BaseViewController {
           self.selectedType(index: $0, buttons: [self.totalButton, self.domesticButton, self.overseaButton])
         }
       }).disposed(by: self.disposeBag)
+    
+    self.viewModel.isExistingSelectedCell.subscribe(onNext: { [weak self] in
+      self?.buttonGroupView.isHidden = !$0
+    }).disposed(by: self.disposeBag)
+    
+    self.buttonGroupView.selectedButtonIndex.subscribe(onNext: { [weak self] in
+      [self?.viewModel.deselectAll, self?.viewModel.addSelectedMusicToPlaylist, self?.viewModel.selectAll][$0]?()
+    }).disposed(by: self.disposeBag)
   }
   
   private func selectedType(index: Int, buttons: [NSButton]) {

@@ -114,10 +114,4 @@ class MusicCellView: NSView {
       make.leading.equalTo(coverImage.snp.trailing).offset(8)
     }
   }
-  
-  @objc private func stateChange(sender: NSButton) {
-    if let viewModel = self.viewModel {
-      viewModel.isChecked.onNext(!(try! viewModel.isChecked.value()))
-    }
-  }
 }
