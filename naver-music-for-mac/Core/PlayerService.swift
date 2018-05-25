@@ -33,10 +33,12 @@ class PlayerService: NSObject {
     if self.webPlayer.superview == nil {
       // injection before object is loaded
       self.webPlayer.stringByEvaluatingJavaScript(from: """
-MobilePlayerManager._playerCore.options.callbacks.ended = function() {
-fEndedDrawUI();
-MobilePlayerManager._bIsPlaying = false;
-alert('ENDED');
+MobilePlayerManager._endedUIDelegate = function() {
+    if((new Error().stack).toString().includes("ended@")) {
+        alert('ENDED');
+    }
+    fEndedDrawUI();
+    MobilePlayerManager._bIsPlaying = false;
 };
 """
       )
