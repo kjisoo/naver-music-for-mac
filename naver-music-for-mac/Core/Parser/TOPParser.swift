@@ -14,11 +14,22 @@ protocol ParserType {
   func parse(from htmlString: String) -> [Any]
 }
 
-class TOPParser: ParserType {
-  private func getQueryStringParameter(url: String, param: String) -> String? {
+extension ParserType {
+  func getQueryStringParameter(url: String, param: String) -> String? {
     guard let url = URLComponents(string: url) else { return nil }
     return url.queryItems?.first(where: { $0.name == param })?.value
   }
+  
+  func slice(string: String, from: String, to: String) -> String? {
+    return (string.range(of: from)?.upperBound).flatMap { substringFrom in
+      (string.range(of: to, range: substringFrom..<string.endIndex)?.lowerBound).map { substringTo in
+        String(string[substringFrom..<substringTo])
+      }
+    }
+  }
+}
+
+class TOPParser: ParserType {
 
   func parse(from htmlString: String) -> [Any] {
     guard let doc = try? HTML(html: htmlString, encoding: .utf8) else {

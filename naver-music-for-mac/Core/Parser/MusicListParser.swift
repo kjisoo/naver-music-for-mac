@@ -10,14 +10,6 @@ import Foundation
 import Kanna
 
 class MusicListParser: ParserType {
-  private func slice(string: String, from: String, to: String) -> String? {
-    return (string.range(of: from)?.upperBound).flatMap { substringFrom in
-      (string.range(of: to, range: substringFrom..<string.endIndex)?.lowerBound).map { substringTo in
-        String(string[substringFrom..<substringTo])
-      }
-    }
-  }
-  
   func parse(from htmlString: String) -> [Any] {
     guard let doc = try? HTML(html: htmlString, encoding: .utf8) else {
       return []

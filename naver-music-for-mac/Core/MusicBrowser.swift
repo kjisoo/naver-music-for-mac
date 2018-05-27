@@ -78,4 +78,21 @@ class MusicBrowser {
       return []
     }
   }
+  
+  func fetchMusic(musicId: String) -> Single<Music> {
+    return self.provider.rx.request(.musicDetail(id: musicId)).map {
+      if let responseString = String(data: $0.data, encoding: .utf8) {
+        let result = MusicParser().parse(from: responseString)
+        if result.count > 0 {
+          var music: Music!
+          try? self.realm.write {
+            music = self.realm.create(Music.self, value: result[0], update: true)
+          }
+          return music
+        }
+        throw MoyaError.jsonMapping($0)
+      }
+      throw MoyaError.jsonMapping($0)
+    }
+  }
 }

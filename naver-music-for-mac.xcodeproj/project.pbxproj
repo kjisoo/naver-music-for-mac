@@ -42,6 +42,7 @@
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
 		E83A3DD320B47ECE00E18EC0 /* NSImage+tint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83A3DD220B47ECE00E18EC0 /* NSImage+tint.swift */; };
 		E83A3DD520B597B400E18EC0 /* NSColor+newColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83A3DD420B597B400E18EC0 /* NSColor+newColor.swift */; };
+		E83A3DD820BB000000E18EC0 /* MusicParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83A3DD720BB000000E18EC0 /* MusicParser.swift */; };
 		E85B8D4D20A6C39A007D3C90 /* Music.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D4C20A6C39A007D3C90 /* Music.swift */; };
 		E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D4E20A6C680007D3C90 /* Album.swift */; };
 		E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = E85B8D5020A6C696007D3C90 /* Artist.swift */; };
@@ -110,6 +111,7 @@
 		E837905D20A086BE006BCBBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E83A3DD220B47ECE00E18EC0 /* NSImage+tint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+tint.swift"; sourceTree = "<group>"; };
 		E83A3DD420B597B400E18EC0 /* NSColor+newColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSColor+newColor.swift"; sourceTree = "<group>"; };
+		E83A3DD720BB000000E18EC0 /* MusicParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicParser.swift; sourceTree = "<group>"; };
 		E85B8D4C20A6C39A007D3C90 /* Music.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Music.swift; sourceTree = "<group>"; };
 		E85B8D4E20A6C680007D3C90 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		E85B8D5020A6C696007D3C90 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				E85B8D8B20A81C25007D3C90 /* TOPParser.swift */,
 				E0ABE60D20B2B88000C28E77 /* MyListParser.swift */,
 				E0ABE61120B2BF1C00C28E77 /* MusicListParser.swift */,
+				E83A3DD720BB000000E18EC0 /* MusicParser.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				E83A3DD520B597B400E18EC0 /* NSColor+newColor.swift in Sources */,
 				E0857E7020B716AE00974987 /* MusicCellView.swift in Sources */,
 				E05DFBD220B7CD9E00C47754 /* ButtonGroupView.swift in Sources */,
+				E83A3DD820BB000000E18EC0 /* MusicParser.swift in Sources */,
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E0ABE61220B2BF1C00C28E77 /* MusicListParser.swift in Sources */,
 				E83A3DD320B47ECE00E18EC0 /* NSImage+tint.swift in Sources */,
