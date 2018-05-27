@@ -1,5 +1,8 @@
 PODS:
   - Alamofire (4.7.2)
+  - Crashlytics (3.10.2):
+    - Fabric (~> 1.7.7)
+  - Fabric (1.7.7)
   - Kanna (4.0.0)
   - Kingfisher (4.7.0)
   - Moya/Core (11.0.2):
@@ -34,6 +37,8 @@ PODS:
   - SnapKit (4.0.0)
 
 DEPENDENCIES:
+  - Crashlytics
+  - Fabric
   - Kanna (~> 4.0.0)
   - Kingfisher (~> 4.7)
   - Moya/RxSwift (~> 11.0)
@@ -50,6 +55,8 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
+    - Crashlytics
+    - Fabric
     - Kanna
     - Kingfisher
     - Moya
@@ -68,6 +75,8 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
+  Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
   Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
   Moya: a725035953bc1c0eb1be505ab903984501d82440
@@ -84,6 +93,6 @@ SPEC CHECKSUMS:
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: c340b0d755aa06b02a939a5afe119ebcad7fde99
+PODFILE CHECKSUM: 86807cb3f199a98be1bfcc170d6927afe0d55f25
 
 COCOAPODS: 1.5.0

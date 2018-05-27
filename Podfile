@@ -27,6 +27,10 @@ target 'naver-music-for-mac' do
   # UI
   pod 'SnapKit'
 
+  # Fabric
+  pod 'Fabric'
+  pod 'Crashlytics'
+
   target 'naver-music-for-macTests' do
     inherit! :search_paths
     # Pods for testing

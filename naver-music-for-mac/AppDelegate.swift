@@ -8,7 +8,9 @@
 
 import Cocoa
 import RealmSwift
-import Moya
+import Fabric
+import Crashlytics
+
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -16,6 +18,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
+    Fabric.with([Crashlytics.self, Answers.self])
     self.window = WindowController()
     window?.showWindow(nil)
   }

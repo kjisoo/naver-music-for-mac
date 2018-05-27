@@ -406,6 +406,7 @@
 				E837904420A086BE006BCBBF /* Frameworks */,
 				E837904520A086BE006BCBBF /* Resources */,
 				6014E9F4103E7C293F1E870D /* [CP] Embed Pods Frameworks */,
+				E83A3DD620BAE92500E18EC0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -582,6 +583,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E83A3DD620BAE92500E18EC0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 12551ba30af10213d024086c18d999c4a3a75292 c589804ec1b6de40fdf919c537d3ac9bae723e85a53618ab3009873d73ffbda8";
 		};
 		F09BD6A826358EE6859DA7D1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
