@@ -13,12 +13,13 @@ enum NaverPage {
   case top(domain: String, page: Int)
   case myList
   case listDetail(id: String)
+  case musicDetail(id: String)
 }
 
 extension NaverPage: TargetType {
   var baseURL: URL {
     switch self {
-    case .top:
+    case .top, .musicDetail:
       return URL(string: "http://music.naver.com")!
     case .myList, .listDetail:
       return URL(string: "http://m.music.naver.com")!
@@ -33,6 +34,8 @@ extension NaverPage: TargetType {
       return "/myMusic/myList.nhn"
     case .listDetail:
       return "/myMusic/myalbum.nhn"
+    case .musicDetail:
+      return "/lyric/index.nhn"
     }
   }
   
@@ -47,6 +50,9 @@ extension NaverPage: TargetType {
                                 encoding: URLEncoding.queryString)
     case .listDetail(let id):
       return .requestParameters(parameters: ["albumId": id],
+                                encoding: URLEncoding.queryString)
+    case .musicDetail(let id):
+      return .requestParameters(parameters: ["trackId": id],
                                 encoding: URLEncoding.queryString)
     default:
       return .requestPlain
