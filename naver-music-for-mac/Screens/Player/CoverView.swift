@@ -75,6 +75,17 @@ class CoverView: NSView {
     return button
   }()
   
+  let lyricsView: NSTextView = {
+    let textView = NSTextView()
+    textView.isEditable = false
+    textView.isSelectable = false
+    textView.alignment = .center
+    textView.textColor = .darkGray
+    textView.isVerticallyResizable = true
+    textView.isHorizontallyResizable = true
+    return textView
+  }()
+  
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
     self.setupConstraint()
@@ -126,6 +137,15 @@ class CoverView: NSView {
       make.leading.equalTo(self.playButton.snp.trailing).offset(16)
       make.centerY.equalTo(self.playButton)
       make.width.height.equalTo(40)
+    }
+    
+    let scrollView = NSScrollView()
+    scrollView.contentView.documentView = lyricsView
+    self.addSubview(scrollView)
+    scrollView.snp.makeConstraints { (make) in
+      make.leading.trailing.equalTo(self.coverImageView)
+      make.bottom.equalToSuperview().offset(-16)
+      make.top.equalTo(playButton.snp.bottom).offset(16)
     }
   }
   

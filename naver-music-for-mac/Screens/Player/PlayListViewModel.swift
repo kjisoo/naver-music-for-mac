@@ -14,18 +14,21 @@ import RxSwift
 class PlayListViewModel {
   private let disposeBag = DisposeBag()
   private let player: PlayerService
+  private let musicBorwser: MusicBrowser
   
   // Output
   private(set) public var playListCellViewModels = BehaviorSubject<[PlayListCellViewModel]>(value: [])
   private(set) public var isExistingSelectedCell: Observable<Bool>!
   public var coverImageURLString: Observable<URL?>!
   public var musicName: Observable<String?>!
+  public var lyrics: Observable<String?>!
   public var albumeName: Observable<String?>!
   public var artistName: Observable<String?>!
   public var isPaused: Observable<Bool>!
   
-  init(player: PlayerService = PlayerService.shared()) {
+  init(player: PlayerService = PlayerService.shared(), musicBrowser: MusicBrowser) {
     self.player = player
+    self.musicBorwser = musicBrowser
     self.binding()
   }
   
@@ -40,10 +43,24 @@ class PlayListViewModel {
         return index != nil
     }
     
+    self.player.playingMusicState.subscribe(onNext: { [weak self] in
+      if $0?.music.lyrics == nil,
+        let musicID = $0?.music.id {
+        _ = self?.musicBorwser.fetchMusic(musicId: musicID).subscribe()
+      }
+    }).disposed(by: self.disposeBag)
     self.coverImageURLString = player.playingMusicState.map { $0?.music.album?.coverImageURL(size: .large) }
-    self.musicName = player.playingMusicState.map { $0?.music.name }
-    self.albumeName = player.playingMusicState.map { $0?.music.album?.name }
-    self.artistName = player.playingMusicState.map { $0?.music.artist?.name }
+    
+    let musicObserable = player.playingMusicState
+      .filter { $0 != nil }
+      .map { $0!.music }
+      .flatMapLatest { (music) -> Observable<Music> in
+        return Observable.from(object: music)
+    }
+    self.musicName = musicObserable.map { $0.name }
+    self.lyrics = musicObserable.map { $0.lyrics }
+    self.albumeName = musicObserable.map { $0.album?.name }
+    self.artistName = musicObserable.map { $0.artist?.name }
     self.isPaused = player.isPaused.asObservable().distinctUntilChanged()
   }
   

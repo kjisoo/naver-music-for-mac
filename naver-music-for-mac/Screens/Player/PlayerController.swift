@@ -83,6 +83,10 @@ class PlayerController: BaseViewController {
       self?.coverView.musicNameField.stringValue = $0 ?? ""
     }).disposed(by: self.disposeBag)
     
+    self.viewModel.lyrics.subscribe(onNext: { [weak self] in
+      self?.coverView.lyricsView.string = $0 ?? "등록된 가사가 없습니다."
+    }).disposed(by: self.disposeBag)
+    
     self.viewModel.artistName.subscribe(onNext: { [weak self] in
       self?.coverView.artistNameField.stringValue = $0 ?? ""
     }).disposed(by: self.disposeBag)
