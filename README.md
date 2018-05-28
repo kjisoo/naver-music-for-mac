@@ -11,8 +11,14 @@ Mobile web browser에서는 특별한 플레이어 없이 곡을 재생 가능�
 가상의 웹뷰에서 trackid를 이용하여 한곡씩 재생합니다. 
 뮤직정보는 웹 페이지를 파싱하여 로컬 데이터베이스에 저장합니다.
 
-### 추가될 기능
- - 검색
- - 가사등 추가 정보
- - etc
+### 플레이어 이미지
+아이콘 
+![icon](https://github.com/kjisoo/naver-music-for-mac/blob/master/naver-music-for-mac/Assets.xcassets/AppIcon.appiconset/Mac-512.png)
  
+플레이어
+![플레이어](http://blog.jisoo.net/assets/img/posts/2018-05-28-naver-music-for-mac/player.png)
+ 
+TOP100
+![TOP100](http://blog.jisoo.net/assets/img/posts/2018-05-28-naver-music-for-mac/top100.png)
+
+app 파일 https://github.com/kjisoo/naver-music-for-mac/blob/master/latest.zip
