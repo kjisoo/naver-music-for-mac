@@ -21,4 +21,4 @@ Mobile web browser에서는 특별한 플레이어 없이 곡을 재생 가능�
 TOP100
 ![TOP100](http://blog.jisoo.net/assets/img/posts/2018-05-28-naver-music-for-mac/top100.png)
 
-app 파일 https://github.com/kjisoo/naver-music-for-mac/blob/master/latest.zip
+app 파일 다운로드 https://github.com/kjisoo/naver-music-for-mac/raw/master/latest.zip
