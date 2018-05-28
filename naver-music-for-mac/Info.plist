@@ -17,7 +17,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>Fabric</key>
@@ -48,7 +48,11 @@
 		<true/>
 	</dict>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2018년 Kimjisoo. All rights reserved.</string>
+	<string>Copyright © 2018년 Kimjisoo. All rights reserved.
+개인 개발자 제작 
+문의 메일 kim@jisoo.net
+소스코드 https://github.com/kjisoo/naver-music-for-mac
+최신정보 http://blog.jisoo.net/</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
