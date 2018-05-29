@@ -15,26 +15,8 @@ class WindowController: NSWindowController {
     return NSNib.Name("WindowController")
   }
   
-  lazy var statusBarItems: [NSStatusItem] = {
-    let nextItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    let playItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
-    let prevItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    
-    nextItem.target = self
-    nextItem.action = #selector(WindowController.next(sender:))
-    nextItem.image = NSImage(named: NSImage.Name("next"))
-    
-    playItem.target = self
-    playItem.action = #selector(WindowController.palyOrPause(sender:))
-    playItem.image = NSImage(named: NSImage.Name("play"))
-    
-    prevItem.target = self
-    prevItem.action = #selector(WindowController.prev(sender:))
-    prevItem.image = NSImage(named: NSImage.Name("prev"))
-    return [nextItem, playItem, prevItem]
-  }()
-  
   // MARK: Variables
+  private let statusBarItemManager = NSStatusItemManager()
   private let musicBrowser = MusicBrowser(provider: MoyaProvider<NaverPage>())
   private let selectedIndex = BehaviorSubject<Int>(value: 1)
   private let sideMenuViewModel = SideMenuViewModel()
@@ -61,7 +43,7 @@ class WindowController: NSWindowController {
     self.window?.isMovableByWindowBackground = true
     self.window?.isOpaque = false
     self.setupSplitView()
-    self.setupPlayer()
+    self.setupStatusBarItems()
     self.setupAuthorizedState()
     self.setupMenuList()
   }
@@ -87,10 +69,21 @@ class WindowController: NSWindowController {
     window.contentViewController = splitViewController
   }
   
-  private func setupPlayer() {
+  private func setupStatusBarItems() {
     _ = PlayerService.shared().isPaused
-      .map { $0 ? NSImage(named: NSImage.Name("play")) : NSImage(named: NSImage.Name("pause")) }
-      .subscribe(onNext: { self.statusBarItems[1].image = $0 })
+      .subscribe(onNext: { [weak self] in
+        self?.statusBarItemManager.currentPlayingState(isPlaying: !$0)
+      })
+    
+    _ = self.statusBarItemManager.selectedButtonType.subscribe(onNext: { (type) in
+      if type == .prev {
+        PlayerService.shared().prev()
+      } else if type == .next {
+        PlayerService.shared().next()
+      } else if type == .playOrPause {
+        PlayerService.shared().togglePlay()
+      }
+    })
   }
 
   private func setupAuthorizedState() {
@@ -171,19 +164,6 @@ class WindowController: NSWindowController {
       }
       self.myListViewModel.musicListID.onNext(String(tokens[1]))
     }
-  }
-  
-  // MARK: IBActions
-  @IBAction func prev(sender: NSButton) {
-    PlayerService.shared().prev()
-  }
-  
-  @IBAction func next(sender: NSButton) {
-    PlayerService.shared().next()
-  }
-  
-  @IBAction func palyOrPause(sender: NSButton) {
-    PlayerService.shared().togglePlay()
   }
 }
 
