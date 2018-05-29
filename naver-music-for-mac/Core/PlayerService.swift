@@ -45,6 +45,8 @@ MobilePlayerManager._endedUIDelegate = function() {
       // injection after object is loaded
       self.webPlayer.stringByEvaluatingJavaScript(from: """
 setTimeout(function() {
+    MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopMediaElement.mediaElement.volume = 1;
+    MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopConfigStorage.syncVolume(1);
     MobilePlayerManager._playerCore.playerCoreSwitcher.audiopMusicWebPlayerCore.audiopMusicAPIFetch._fetchPlay = function(t, e, n, r, i) {
         var o = 'AAC_320_ENC';
         this._fetchAPI(this.options.musicAPIStPlay.replace('{play.trackId}', t).replace('{play.serviceType}', e).replace('{deviceId}', n).replace('{mediaSourceType}', o), function(t) {
