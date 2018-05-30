@@ -11,13 +11,15 @@ import RealmSwift
 import Fabric
 import Crashlytics
 
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
   var window: WindowController?
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    Realm.Configuration.defaultConfiguration =  Realm.Configuration(schemaVersion: 2,
+                                                                    migrationBlock: { (migration, oldSchemaVersion) in
+    })
     UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
     Fabric.with([Crashlytics.self, Answers.self])
     self.window = WindowController()

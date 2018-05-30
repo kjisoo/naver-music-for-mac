@@ -12,10 +12,24 @@ import RealmSwift
 class Playlist: Object {
   @objc dynamic var id = "MY"
   @objc dynamic var name = ""
+  @objc dynamic var isLoop = true
+  @objc dynamic var isRandom = false
   let musicStates = List<MusicState>()
   
   override class func primaryKey() -> String? {
     return "id"
+  }
+  
+  public func setIsLoop(loop: Bool) {
+    try? self.realm?.write {
+      self.isLoop = loop
+    }
+  }
+  
+  public func setIsRandom(random: Bool) {
+    try? self.realm?.write {
+      self.isRandom = random
+    }
   }
   
   public func index(id: String) -> Int? {
