@@ -12,7 +12,6 @@ import RealmSwift
 class MusicState: Object {
   @objc dynamic var id = UUID().uuidString
   @objc dynamic var isPlaying = false
-  @objc dynamic var isRandomPlayed = false
   @objc dynamic var music: Music!
   override class func primaryKey() -> String? {
     return "id"
@@ -22,14 +21,6 @@ class MusicState: Object {
     if self.isPlaying != isPlaying {
       try? self.realm?.write {
         self.isPlaying = isPlaying
-      }
-    }
-  }
-  
-  func changeRandomPayed(isPlayed: Bool) {
-    if self.isRandomPlayed != isPlayed {
-      try? self.realm?.write {
-        self.isRandomPlayed = isPlayed
       }
     }
   }

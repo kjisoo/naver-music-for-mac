@@ -17,7 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    Realm.Configuration.defaultConfiguration =  Realm.Configuration(schemaVersion: 5,
+    Realm.Configuration.defaultConfiguration =  Realm.Configuration(schemaVersion: 6,
                                                                     migrationBlock: { (migration, oldSchemaVersion) in
     })
     UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])

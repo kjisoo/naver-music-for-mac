@@ -65,7 +65,9 @@ class PlayListViewModel {
   }
   
   public func play(index: Int) {
-    self.player.play(index: index)
+    if let id = try? self.playListCellViewModels.value()[index].id {
+      self.player.play(stateID: id)
+    }
   }
   
   public func play() {

@@ -97,7 +97,7 @@ setTimeout(function() {
   
   private func bindingPlayList() {
     Observable.changeset(from: playList.musicStates).subscribe(onNext: { [weak self] (a, changeset) in
-      if let _ = changeset, self?.playList.playingIndex() == nil {
+      if let _ = changeset, self?.playList.playingMusicState() == nil {
         self?.stop()
       }
     }).disposed(by: self.disposeBag)
@@ -115,13 +115,13 @@ setTimeout(function() {
   }
   
   public func resume() {
-    if let currentPlayingIndex = self.playList.playingIndex() {
+    if let currentPlayingState = self.playList.playingMusicState() {
       if let currentTime = Double(self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.currentTime()")),
         currentTime > 0 {
         self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.resume();")
         self.isPaused.onNext(false)
       } else {
-        self.play(index: currentPlayingIndex)
+        self.play(state: currentPlayingState)
       }
     } else {
       self.next()
@@ -134,26 +134,14 @@ setTimeout(function() {
   }
   
   public func next() {
-    guard self.playList.musicStates.count > 0 else {
-      return
-    }
-    if let currentIndex = self.playList.playingIndex(),
-      currentIndex + 1 < self.playList.musicStates.count {
-      self.play(index: currentIndex + 1)
-    } else {
-      self.play(index: 0)
+    if let state = self.playList.next() {
+      self.play(state: state)
     }
   }
   
   public func prev() {
-    guard self.playList.musicStates.count > 0 else {
-      return
-    }
-    if let currentIndex = self.playList.playingIndex(),
-      0 < currentIndex - 1 {
-      self.play(index: currentIndex - 1)
-    } else {
-      self.play(index: self.playList.musicStates.count - 1)
+    if let state = self.playList.prev() {
+      self.play(state: state)
     }
   }
   
@@ -163,18 +151,23 @@ setTimeout(function() {
     self.pause()
   }
   
-  public func play(index: Int) {
-    self.addWebPlayerToWindow()
-    self.playList.playingMusicState()?.changePlaying(isPlaying: false)
-    let musicState = self.playList.musicStates[index]
-    musicState.changePlaying(isPlaying: true)
-    self.playingMusicState.onNext(musicState)
-    play(id: musicState.music.id)
+  public func play(stateID id: String) {
+    if let state = self.playList.musicStates.first(where: { $0.id == id }) {
+      self.playList.playingMusicState()?.changePlaying(isPlaying: false)
+      state.changePlaying(isPlaying: true)
+      self.play(musicID: state.music.id)
+    }
   }
   
-  private func play(id: String) {
+  public func play(musicID id: String) {
+    self.addWebPlayerToWindow()
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.play(" + id + ");")
     self.isPaused.onNext(false)
+    self.playingMusicState.onNext(self.playList.playingMusicState())
+  }
+  
+  public func play(state: MusicState) {
+    self.play(musicID: state.music.id)
   }
 }
 
