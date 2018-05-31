@@ -42,6 +42,7 @@ class WindowController: NSWindowController {
     self.window?.titlebarAppearsTransparent = true
     self.window?.isMovableByWindowBackground = true
     self.window?.isOpaque = false
+    PlayerService.configure()
     self.setupSplitView()
     self.setupStatusBarItems()
     self.setupAuthorizedState()
@@ -70,18 +71,18 @@ class WindowController: NSWindowController {
   }
   
   private func setupStatusBarItems() {
-    _ = PlayerService.shared().isPaused
-      .subscribe(onNext: { [weak self] in
-        self?.statusBarItemManager.currentPlayingState(isPlaying: !$0)
-      })
+//    _ = PlayerService.shared().isPaused
+//      .subscribe(onNext: { [weak self] in
+//        self?.statusBarItemManager.currentPlayingState(isPlaying: !$0)
+//      })
     
     _ = self.statusBarItemManager.selectedButtonType.subscribe(onNext: { (type) in
       if type == .prev {
-        PlayerService.shared().prev()
+//        PlayerService.shared().prev()
       } else if type == .next {
-        PlayerService.shared().next()
+//        PlayerService.shared().next()
       } else if type == .playOrPause {
-        PlayerService.shared().togglePlay()
+//        PlayerService.shared().togglePlay()
       }
     })
   }

@@ -10,12 +10,16 @@ import Foundation
 import RealmSwift
 
 class Playlist: Object {
+  // MARK: Realm Variables
   @objc dynamic var id = "MY"
   @objc dynamic var name = ""
   @objc dynamic var isRepeated = true
   @objc dynamic var isShuffled = false
+  @objc dynamic var isPaused = true
   @objc dynamic var volume: Double = 1.0
   let musicStates = List<MusicState>()
+  
+  // MARK: Variables
   private var shuffledMusicStates: [MusicState] = []
   private var currentMusicStates: [MusicState] {
     if self.isShuffled {
@@ -32,7 +36,7 @@ class Playlist: Object {
     var playList: Playlist!
     let realm = try! Realm()
     try? realm.write {
-      playList = realm.create(Playlist.self, value: ["id": "MY"], update: true)
+      playList = realm.create(Playlist.self, value: ["id": "MY", "isPaused": true], update: true)
     }
     return playList
   }
@@ -53,6 +57,12 @@ class Playlist: Object {
     }
     if isShuffled {
       self.shuffledMusicStates = self.musicStates.toArray().shuffled()
+    }
+  }
+  
+  public func setIsPaused(isPaused: Bool) {
+    try? self.realm?.write {
+      self.isPaused = isPaused
     }
   }
   
@@ -85,6 +95,7 @@ class Playlist: Object {
     }
   }
   
+  @discardableResult
   public func next() -> MusicState? {
     if let index = self.playingIndex(),
       let currentState = self.playingMusicState() {
@@ -107,6 +118,7 @@ class Playlist: Object {
     return nil
   }
   
+  @discardableResult
   public func prev() -> MusicState? {
     if let index = self.playingIndex(),
       let currentState = self.playingMusicState() {
@@ -127,5 +139,12 @@ class Playlist: Object {
       return nextState
     }
     return nil
+  }
+  
+  public func play(stateID id: String) {
+    if let state = self.musicStates.first(where: { $0.id == id }) {
+      self.playingMusicState()?.changePlaying(isPlaying: false)
+      state.changePlaying(isPlaying: true)
+    }
   }
 }

@@ -16,12 +16,10 @@ class PlayerService: NSObject {
   private static let instance = PlayerService()
   private let disposeBag = DisposeBag()
   private let webPlayer = WebView()
+  private let playList: Playlist = Playlist.getMyPlayList()
+  private let isPaused = BehaviorSubject<Bool>(value: true)
+  private let playingMusicState = BehaviorSubject<MusicState?>(value: nil)
   
-  public let playList: Playlist = Playlist.getMyPlayList()
-  public let playMusicStateList = Observable.collection(from: Playlist.getMyPlayList().musicStates).map { $0.toArray() }
-  public let playingMusicState = BehaviorSubject<MusicState?>(value: nil)
-  public let isPaused = BehaviorSubject<Bool>(value: true)
-
   private override init() {
     super.init()
     setupWebPlayer()
@@ -84,8 +82,8 @@ setTimeout(function() {
     }
   }
   
-  public static func shared() -> PlayerService {
-    return self.instance
+  public static func configure() {
+    print(self.instance)
   }
   
   private func setupWebPlayer() {
@@ -98,83 +96,62 @@ setTimeout(function() {
   private func bindingPlayList() {
     Observable.changeset(from: playList.musicStates).subscribe(onNext: { [weak self] (a, changeset) in
       if let _ = changeset, self?.playList.playingMusicState() == nil {
-        self?.stop()
+        self?.pause()
+      }
+      self?.playingMusicState.onNext(self?.playList.playingMusicState())
+    }).disposed(by: self.disposeBag)
+    
+    Observable.from(object: self.playList).subscribe(onNext: { [weak self] in
+      self?.isPaused.onNext($0.isPaused)
+    }).disposed(by: self.disposeBag)
+
+    self.isPaused.distinctUntilChanged().subscribe(onNext: { [weak self] (isPaused) in
+      if isPaused {
+        self?.pause()
+      } else {
+        self?.resume()
       }
     }).disposed(by: self.disposeBag)
-    playingMusicState.onNext(self.playList.playingMusicState())
-  }
-  
-  public func togglePlay() {
-    if let isPaused = try? self.isPaused.value() {
-      if isPaused {
-        self.resume()
-      } else {
-        self.pause()
+    
+    self.playingMusicState.do(onNext: { [weak self] in
+      if $0 == nil {
+        self?.pause()
       }
-    }
+    }).distinctUntilChanged { $0?.id == $1?.id }
+      .subscribe(onNext: { [weak self] in
+        if let state = $0 {
+          self?.play(musicID: state.music.id)
+        }
+      }).disposed(by: self.disposeBag)
   }
   
-  public func resume() {
+  private func resume() {
     if let currentPlayingState = self.playList.playingMusicState() {
       if let currentTime = Double(self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.currentTime()")),
         currentTime > 0 {
         self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.resume();")
-        self.isPaused.onNext(false)
       } else {
-        self.play(state: currentPlayingState)
+        self.play(musicID: currentPlayingState.music.id)
       }
     } else {
-      self.next()
+      self.playList.next()
     }
   }
   
-  public func pause() {
+  private func pause() {
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.pause();")
-    self.isPaused.onNext(true)
   }
   
-  public func next() {
-    if let state = self.playList.next() {
-      self.play(state: state)
-    }
-  }
-  
-  public func prev() {
-    if let state = self.playList.prev() {
-      self.play(state: state)
-    }
-  }
-  
-  public func stop() {
-    self.playList.playingMusicState()?.changePlaying(isPlaying: false)
-    self.playingMusicState.onNext(nil)
-    self.pause()
-  }
-  
-  public func play(stateID id: String) {
-    if let state = self.playList.musicStates.first(where: { $0.id == id }) {
-      self.playList.playingMusicState()?.changePlaying(isPlaying: false)
-      state.changePlaying(isPlaying: true)
-      self.play(musicID: state.music.id)
-    }
-  }
-  
-  public func play(musicID id: String) {
+  private func play(musicID id: String) {
     self.addWebPlayerToWindow()
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.play(" + id + ");")
-    self.isPaused.onNext(false)
-    self.playingMusicState.onNext(self.playList.playingMusicState())
-  }
-  
-  public func play(state: MusicState) {
-    self.play(musicID: state.music.id)
   }
 }
 
 extension PlayerService: WebUIDelegate {
   public func webView(_ sender: WebView!, runJavaScriptAlertPanelWithMessage message: String!, initiatedBy frame: WebFrame!) {
     if message == "ENDED" {
-      self.next()
+      self.playList.next()
     }
   }
 }
