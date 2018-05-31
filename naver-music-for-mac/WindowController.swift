@@ -71,18 +71,19 @@ class WindowController: NSWindowController {
   }
   
   private func setupStatusBarItems() {
-//    _ = PlayerService.shared().isPaused
-//      .subscribe(onNext: { [weak self] in
-//        self?.statusBarItemManager.currentPlayingState(isPlaying: !$0)
-//      })
+    let playlist = Playlist.getMyPlayList()
+
+    _ = Observable.from(object: playlist, properties: ["isPaused"]).subscribe(onNext: { [weak self] in
+      self?.statusBarItemManager.currentPlayingState(isPlaying: !$0.isPaused)
+    })
     
     _ = self.statusBarItemManager.selectedButtonType.subscribe(onNext: { (type) in
       if type == .prev {
-//        PlayerService.shared().prev()
+        playlist.prev()
       } else if type == .next {
-//        PlayerService.shared().next()
+        playlist.next()
       } else if type == .playOrPause {
-//        PlayerService.shared().togglePlay()
+        playlist.setIsPaused(isPaused: !playlist.isPaused)
       }
     })
   }
