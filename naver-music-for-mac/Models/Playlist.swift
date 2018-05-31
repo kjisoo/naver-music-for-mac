@@ -16,7 +16,7 @@ class Playlist: Object {
   @objc dynamic var isRepeated = true
   @objc dynamic var isShuffled = false
   @objc dynamic var isPaused = true
-  @objc dynamic var volume: Double = 1.0
+  @objc dynamic var volume: Double = 0.5
   let musicStates = List<MusicState>()
   
   // MARK: Variables
@@ -64,6 +64,18 @@ class Playlist: Object {
     try? self.realm?.write {
       self.isPaused = isPaused
     }
+  }
+  
+  public func changeVolume(volume: Double) {
+    self.realm?.beginWrite()
+    if volume < 0 {
+      self.volume = 0
+    } else if volume > 1 {
+      self.volume = 1
+    } else {
+      self.volume = volume
+    }
+    try? self.realm?.commitWrite()
   }
   
   private func playingIndex() -> Int? {
@@ -145,6 +157,7 @@ class Playlist: Object {
     if let state = self.musicStates.first(where: { $0.id == id }) {
       self.playingMusicState()?.changePlaying(isPlaying: false)
       state.changePlaying(isPlaying: true)
+      self.setIsPaused(isPaused: false)
     }
   }
 }

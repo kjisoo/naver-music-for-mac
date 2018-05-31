@@ -43,8 +43,6 @@ MobilePlayerManager._endedUIDelegate = function() {
       // injection after object is loaded
       self.webPlayer.stringByEvaluatingJavaScript(from: """
 setTimeout(function() {
-    MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopMediaElement.mediaElement.volume = 1;
-    MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopConfigStorage.syncVolume(1);
     MobilePlayerManager._playerCore.playerCoreSwitcher.audiopMusicWebPlayerCore.audiopMusicAPIFetch._fetchPlay = function(t, e, n, r, i) {
         var o = 'AAC_320_ENC';
         this._fetchAPI(this.options.musicAPIStPlay.replace('{play.trackId}', t).replace('{play.serviceType}', e).replace('{deviceId}', n).replace('{mediaSourceType}', o), function(t) {
@@ -103,6 +101,7 @@ setTimeout(function() {
     
     Observable.from(object: self.playList).subscribe(onNext: { [weak self] in
       self?.isPaused.onNext($0.isPaused)
+      self?.volume(volume: $0.volume)
     }).disposed(by: self.disposeBag)
 
     self.isPaused.distinctUntilChanged().subscribe(onNext: { [weak self] (isPaused) in
@@ -145,6 +144,11 @@ setTimeout(function() {
   private func play(musicID id: String) {
     self.addWebPlayerToWindow()
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.play(" + id + ");")
+  }
+  
+  private func volume(volume: Double) {
+    self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopMediaElement.mediaElement.volume = \(volume);")
+    self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopConfigStorage.syncVolume(\(volume));")
   }
 }
 
