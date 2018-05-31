@@ -105,6 +105,13 @@ class CoverView: NSView {
     return button
   }()
   
+  let soundImage: NSImageView = {
+    let imageView = NSImageView()
+    imageView.imageScaling = .scaleProportionallyUpOrDown
+    imageView.image = NSImage(named: NSImage.Name(rawValue: "cover_sound"))?.tint(color: .lightGray)
+    return imageView
+  }()
+  
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
     self.setupConstraint()
@@ -124,6 +131,7 @@ class CoverView: NSView {
     self.addSubview(nextButton)
     self.addSubview(volumeSlider)
     self.addSubview(shuffleButton)
+    self.addSubview(soundImage)
     
     self.coverImageView.snp.makeConstraints { (make) in
       make.top.equalToSuperview().offset(64)
@@ -167,10 +175,18 @@ class CoverView: NSView {
     }
     
     volumeSlider.snp.makeConstraints { (make) in
-      make.leading.trailing.equalTo(coverImageView)
+      make.trailing.equalTo(coverImageView)
+      make.leading.equalTo(soundImage.snp.trailing).offset(8)
       make.top.equalTo(playButton.snp.bottom)
       make.height.equalTo(20)
     }
+    
+    soundImage.snp.makeConstraints { (make) in
+      make.leading.equalTo(coverImageView)
+      make.width.height.equalTo(20)
+      make.top.equalTo(playButton.snp.bottom)
+    }
+    
     
     let scrollView = NSScrollView()
     scrollView.contentView.documentView = lyricsView
