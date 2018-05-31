@@ -56,10 +56,6 @@ class Playlist: Object {
     }
   }
   
-  private func index(id: String) -> Int? {
-    return self.currentMusicStates.index(where: { $0.id == id })
-  }
-  
   private func playingIndex() -> Int? {
     return self.currentMusicStates.index(where: { $0.isPlaying })
   }
@@ -76,22 +72,17 @@ class Playlist: Object {
     self.shuffledMusicStates.append(contentsOf: musicStates)
   }
   
-  // TODO: 셔플 배열에서도 삭제해야함
-  func remove(at index: Int) {
-    try? self.realm?.write {
-      if index < self.musicStates.count {
-        self.musicStates.remove(at: index)
-      }
-    }
-  }
-  
-  // TODO: 셔플 배열에서도 삭제해야함
-  func remove(at indexs: [Int]) {
+  public func remove(at ids: [String]) {
+    var indexs = self.musicStates.enumerated().filter( { ids.contains($0.element.id) }).map { $0.offset }.sorted().reversed()
     self.realm?.beginWrite()
-    for index in indexs.sorted().reversed().filter({ $0 < self.musicStates.count }) {
+    for index in indexs {
       self.musicStates.remove(at: index)
     }
     try? self.realm?.commitWrite()
+    indexs = self.shuffledMusicStates.enumerated().filter( { ids.contains($0.element.id) }).map { $0.offset }.sorted().reversed()
+    for index in indexs {
+      self.shuffledMusicStates.remove(at: index)
+    }
   }
   
   public func next() -> MusicState? {

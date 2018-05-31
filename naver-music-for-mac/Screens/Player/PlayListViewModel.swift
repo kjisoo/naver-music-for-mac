@@ -96,7 +96,7 @@ class PlayListViewModel {
   
   public func deleteSelectedList() {
     if let cellViewModels = try? self.playListCellViewModels.value() {
-      self.player.playList.remove(at: cellViewModels.enumerated().filter({ try! $1.isChecked.value() }).map({ $0.offset }))
+      self.player.playList.remove(at: cellViewModels.enumerated().filter({ try! $1.isChecked.value() }).map({ $0.element.id }))
     }
   }
 }
