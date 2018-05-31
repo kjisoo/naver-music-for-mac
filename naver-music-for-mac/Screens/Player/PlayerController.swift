@@ -70,27 +70,31 @@ class PlayerController: BaseViewController {
       self?.cellViewModels = $0
       self?.playListView.tableView.reloadData()
     }).disposed(by: self.disposeBag)
-    
+
     self.viewModel.isExistingSelectedCell.subscribe(onNext: { [weak self] in
       self?.buttonGroupView.isHidden = !$0
     }).disposed(by: self.disposeBag)
-    
+
     self.viewModel.coverImageURLString.subscribe(onNext: { [weak self] in
       self?.coverView.coverImageView.kf.setImage(with: $0)
     }).disposed(by: self.disposeBag)
-    
+
     self.viewModel.musicName.subscribe(onNext: { [weak self] in
       self?.coverView.musicNameField.stringValue = $0 ?? ""
     }).disposed(by: self.disposeBag)
-    
+
     self.viewModel.lyrics.subscribe(onNext: { [weak self] in
       self?.coverView.lyricsView.string = $0 ?? "등록된 가사가 없습니다."
     }).disposed(by: self.disposeBag)
-    
+
     self.viewModel.artistName.subscribe(onNext: { [weak self] in
       self?.coverView.artistNameField.stringValue = $0 ?? ""
     }).disposed(by: self.disposeBag)
     
+    self.viewModel.volume.subscribe(onNext: { [weak self] in
+      self?.coverView.volumeSlider.intValue = Int32($0)
+    }).disposed(by: self.disposeBag)
+
     self.coverView.prevButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
       self?.viewModel.prev()
     }).disposed(by: self.disposeBag)
@@ -102,9 +106,25 @@ class PlayerController: BaseViewController {
     self.coverView.playButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
       self?.viewModel.play()
     }).disposed(by: self.disposeBag)
+
+    self.coverView.volumeSlider.rx.value.distinctUntilChanged().subscribe(onNext: { [weak self] in
+      if let `self` = self {
+        self.viewModel.change(volume: Int($0))
+      }
+    }).disposed(by: self.disposeBag)
     
     self.viewModel.isPaused.subscribe(onNext: { [weak self] in
       self?.coverView.setPaused(isPuased: $0)
+    }).disposed(by: self.disposeBag)
+    
+    self.viewModel.isShuffled.subscribe(onNext: { [weak self] in
+      let image = self?.coverView.shuffleButton.image
+      self?.coverView.shuffleButton.image = $0 ? image?.tint(color: .violet) : image?.tint(color: .lightGray)
+      self?.coverView.shuffleButton.state = $0 ? .on : .off
+    }).disposed(by: self.disposeBag)
+    
+    self.coverView.shuffleButton.rx.controlEvent.subscribe(onNext: { [weak self] in
+      self?.viewModel.change(isShuffled: self!.coverView.shuffleButton.state == .on)
     }).disposed(by: self.disposeBag)
     
     self.buttonGroupView.selectedButtonIndex.subscribe(onNext: { [weak self] in

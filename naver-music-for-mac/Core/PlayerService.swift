@@ -16,12 +16,10 @@ class PlayerService: NSObject {
   private static let instance = PlayerService()
   private let disposeBag = DisposeBag()
   private let webPlayer = WebView()
+  private let playList: Playlist = Playlist.getMyPlayList()
+  private let isPaused = BehaviorSubject<Bool>(value: true)
+  private let playingMusicState = BehaviorSubject<MusicState?>(value: nil)
   
-  public let playList: Playlist = Playlist.getMyPlayList()
-  public let playMusicStateList = Observable.collection(from: Playlist.getMyPlayList().musicStates).map { $0.toArray() }
-  public let playingMusicState = BehaviorSubject<MusicState?>(value: nil)
-  public let isPaused = BehaviorSubject<Bool>(value: true)
-
   private override init() {
     super.init()
     setupWebPlayer()
@@ -45,8 +43,8 @@ MobilePlayerManager._endedUIDelegate = function() {
       // injection after object is loaded
       self.webPlayer.stringByEvaluatingJavaScript(from: """
 setTimeout(function() {
-    MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopMediaElement.mediaElement.volume = 1;
-    MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopConfigStorage.syncVolume(1);
+    MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopMediaElement.mediaElement.volume = \(self.playList.volume);
+    MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopConfigStorage.syncVolume(\(self.playList.volume));
     MobilePlayerManager._playerCore.playerCoreSwitcher.audiopMusicWebPlayerCore.audiopMusicAPIFetch._fetchPlay = function(t, e, n, r, i) {
         var o = 'AAC_320_ENC';
         this._fetchAPI(this.options.musicAPIStPlay.replace('{play.trackId}', t).replace('{play.serviceType}', e).replace('{deviceId}', n).replace('{mediaSourceType}', o), function(t) {
@@ -84,8 +82,8 @@ setTimeout(function() {
     }
   }
   
-  public static func shared() -> PlayerService {
-    return self.instance
+  public static func configure() {
+    print(self.instance)
   }
   
   private func setupWebPlayer() {
@@ -97,91 +95,69 @@ setTimeout(function() {
   
   private func bindingPlayList() {
     Observable.changeset(from: playList.musicStates).subscribe(onNext: { [weak self] (a, changeset) in
-      if let _ = changeset, self?.playList.playingIndex() == nil {
-        self?.stop()
+      if let _ = changeset, self?.playList.playingMusicState() == nil {
+        self?.pause()
+      }
+      self?.playingMusicState.onNext(self?.playList.playingMusicState())
+    }).disposed(by: self.disposeBag)
+    
+    Observable.from(object: self.playList).subscribe(onNext: { [weak self] in
+      self?.isPaused.onNext($0.isPaused)
+      self?.volume(volume: $0.volume)
+    }).disposed(by: self.disposeBag)
+
+    self.isPaused.distinctUntilChanged().subscribe(onNext: { [weak self] (isPaused) in
+      if isPaused {
+        self?.pause()
+      } else {
+        self?.resume()
       }
     }).disposed(by: self.disposeBag)
-    playingMusicState.onNext(self.playList.playingMusicState())
-  }
-  
-  public func togglePlay() {
-    if let isPaused = try? self.isPaused.value() {
-      if isPaused {
-        self.resume()
-      } else {
-        self.pause()
+    
+    self.playingMusicState.do(onNext: { [weak self] in
+      if $0 == nil {
+        self?.pause()
       }
-    }
+    }).distinctUntilChanged { $0?.id == $1?.id }
+      .subscribe(onNext: { [weak self] in
+        if let state = $0 {
+          self?.play(musicID: state.music.id)
+        }
+      }).disposed(by: self.disposeBag)
   }
   
-  public func resume() {
-    if let currentPlayingIndex = self.playList.playingIndex() {
+  private func resume() {
+    if let currentPlayingState = self.playList.playingMusicState() {
       if let currentTime = Double(self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.currentTime()")),
         currentTime > 0 {
         self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.resume();")
-        self.isPaused.onNext(false)
       } else {
-        self.play(index: currentPlayingIndex)
+        self.play(musicID: currentPlayingState.music.id)
       }
     } else {
-      self.next()
+      self.playList.next()
     }
   }
   
-  public func pause() {
+  private func pause() {
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.pause();")
-    self.isPaused.onNext(true)
   }
   
-  public func next() {
-    guard self.playList.musicStates.count > 0 else {
-      return
-    }
-    if let currentIndex = self.playList.playingIndex(),
-      currentIndex + 1 < self.playList.musicStates.count {
-      self.play(index: currentIndex + 1)
-    } else {
-      self.play(index: 0)
-    }
-  }
-  
-  public func prev() {
-    guard self.playList.musicStates.count > 0 else {
-      return
-    }
-    if let currentIndex = self.playList.playingIndex(),
-      0 < currentIndex - 1 {
-      self.play(index: currentIndex - 1)
-    } else {
-      self.play(index: self.playList.musicStates.count - 1)
-    }
-  }
-  
-  public func stop() {
-    self.playList.playingMusicState()?.changePlaying(isPlaying: false)
-    self.playingMusicState.onNext(nil)
-    self.pause()
-  }
-  
-  public func play(index: Int) {
+  private func play(musicID id: String) {
     self.addWebPlayerToWindow()
-    self.playList.playingMusicState()?.changePlaying(isPlaying: false)
-    let musicState = self.playList.musicStates[index]
-    musicState.changePlaying(isPlaying: true)
-    self.playingMusicState.onNext(musicState)
-    play(id: musicState.music.id)
+    self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.play(" + id + ");")
   }
   
-  private func play(id: String) {
-    self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.play(" + id + ");")
-    self.isPaused.onNext(false)
+  private func volume(volume: Double) {
+    self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopMediaElement.mediaElement.volume = \(volume);")
+    self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopConfigStorage.syncVolume(\(volume));")
   }
 }
 
 extension PlayerService: WebUIDelegate {
   public func webView(_ sender: WebView!, runJavaScriptAlertPanelWithMessage message: String!, initiatedBy frame: WebFrame!) {
     if message == "ENDED" {
-      self.next()
+      self.playList.next()
     }
   }
 }

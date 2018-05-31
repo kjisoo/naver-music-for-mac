@@ -12,6 +12,7 @@ import RxRealm
 
 class PlayListCellViewModel {
   // MARK: Output
+  public let id: String
   public let name: Observable<String>
   public let isPlaying: Observable<Bool>
   public let artistName: Observable<String?>
@@ -20,6 +21,7 @@ class PlayListCellViewModel {
   public let isChecked = BehaviorSubject<Bool>(value: false)
   
   init(musicState: MusicState) {
+    id = musicState.id
     let musicStateObservable = Observable.from(object: musicState)
     self.isPlaying = musicStateObservable.map({$0.isPlaying})
     self.name = musicStateObservable.map({$0.music!.name!})

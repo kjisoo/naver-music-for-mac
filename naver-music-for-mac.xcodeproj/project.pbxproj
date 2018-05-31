@@ -38,6 +38,7 @@
 		E0ABE61420B5572B00C28E77 /* CoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE61320B5572B00C28E77 /* CoverView.swift */; };
 		E0ABE61620B5574A00C28E77 /* PlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ABE61520B5574A00C28E77 /* PlayListView.swift */; };
 		E0ED010D20BCF40B00BBA947 /* NSStatusItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED010C20BCF40B00BBA947 /* NSStatusItemManager.swift */; };
+		E0ED011520BFF25D00BBA947 /* Sequence+Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED011420BFF25D00BBA947 /* Sequence+Shuffle.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -103,6 +104,7 @@
 		E0ABE61320B5572B00C28E77 /* CoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoverView.swift; sourceTree = "<group>"; };
 		E0ABE61520B5574A00C28E77 /* PlayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListView.swift; sourceTree = "<group>"; };
 		E0ED010C20BCF40B00BBA947 /* NSStatusItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStatusItemManager.swift; sourceTree = "<group>"; };
+		E0ED011420BFF25D00BBA947 /* Sequence+Shuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Shuffle.swift"; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				E83A3DD220B47ECE00E18EC0 /* NSImage+tint.swift */,
 				E83A3DD420B597B400E18EC0 /* NSColor+newColor.swift */,
 				E0ED010C20BCF40B00BBA947 /* NSStatusItemManager.swift */,
+				E0ED011420BFF25D00BBA947 /* Sequence+Shuffle.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -638,6 +641,7 @@
 				E83A3DD520B597B400E18EC0 /* NSColor+newColor.swift in Sources */,
 				E0857E7020B716AE00974987 /* MusicCellView.swift in Sources */,
 				E05DFBD220B7CD9E00C47754 /* ButtonGroupView.swift in Sources */,
+				E0ED011520BFF25D00BBA947 /* Sequence+Shuffle.swift in Sources */,
 				E83A3DD820BB000000E18EC0 /* MusicParser.swift in Sources */,
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E0ABE61220B2BF1C00C28E77 /* MusicListParser.swift in Sources */,

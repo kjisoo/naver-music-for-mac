@@ -15,6 +15,7 @@ class Music: Object {
   @objc dynamic var lyrics: String?
   @objc dynamic var artist: Artist?
   @objc dynamic var album: Album?
+  @objc dynamic var playtime: Double = 0.0
   
   override class func primaryKey() -> String? {
     return "id"
