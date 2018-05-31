@@ -95,6 +95,16 @@ class CoverView: NSView {
     return slider
   }()
   
+  let shuffleButton: NSButton = {
+    let button = NSButton()
+    button.title = ""
+    button.setButtonType(NSButton.ButtonType.momentaryChange)
+    button.isBordered = false
+    button.imageScaling = .scaleProportionallyUpOrDown
+    button.image = NSImage(named: NSImage.Name(rawValue: "cover_shuffle"))?.tint(color: .lightGray)
+    return button
+  }()
+  
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
     self.setupConstraint()
@@ -113,6 +123,7 @@ class CoverView: NSView {
     self.addSubview(playButton)
     self.addSubview(nextButton)
     self.addSubview(volumeSlider)
+    self.addSubview(shuffleButton)
     
     self.coverImageView.snp.makeConstraints { (make) in
       make.top.equalToSuperview().offset(64)
@@ -147,6 +158,12 @@ class CoverView: NSView {
       make.leading.equalTo(self.playButton.snp.trailing).offset(16)
       make.centerY.equalTo(self.playButton)
       make.width.height.equalTo(40)
+    }
+    
+    shuffleButton.snp.makeConstraints { (make) in
+      make.centerY.equalTo(playButton)
+      make.leading.equalTo(coverImageView)
+      make.width.height.equalTo(24)
     }
     
     volumeSlider.snp.makeConstraints { (make) in

@@ -117,6 +117,16 @@ class PlayerController: BaseViewController {
       self?.coverView.setPaused(isPuased: $0)
     }).disposed(by: self.disposeBag)
     
+    self.viewModel.isShuffled.subscribe(onNext: { [weak self] in
+      let image = self?.coverView.shuffleButton.image
+      self?.coverView.shuffleButton.image = $0 ? image?.tint(color: .violet) : image?.tint(color: .lightGray)
+      self?.coverView.shuffleButton.state = $0 ? .on : .off
+    }).disposed(by: self.disposeBag)
+    
+    self.coverView.shuffleButton.rx.controlEvent.subscribe(onNext: { [weak self] in
+      self?.viewModel.change(isShuffled: self!.coverView.shuffleButton.state == .on)
+    }).disposed(by: self.disposeBag)
+    
     self.buttonGroupView.selectedButtonIndex.subscribe(onNext: { [weak self] in
       [self?.viewModel.deselectAll, self?.viewModel.deleteSelectedList, self?.viewModel.selectAll][$0]?()
     }).disposed(by: self.disposeBag)

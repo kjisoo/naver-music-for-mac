@@ -27,6 +27,7 @@ class PlayListViewModel {
   public var artistName: Observable<String?>!
   public var isPaused: Observable<Bool>!
   public var volume: Observable<Int>!
+  public var isShuffled: Observable<Bool>!
   
   init(playlist: Playlist = Playlist.getMyPlayList(), musicBrowser: MusicBrowser) {
     self.playlist = playlist
@@ -59,6 +60,7 @@ class PlayListViewModel {
     self.artistName = musicObserable.map { $0?.artist?.name }
     self.isPaused = Observable.from(object: self.playlist).map { $0.isPaused }.distinctUntilChanged()
     self.volume = Observable.from(object: self.playlist).map { $0.volume }.distinctUntilChanged().map { Int($0*10) }
+    self.isShuffled = Observable.from(object: self.playlist).map { $0.isShuffled }.distinctUntilChanged()
   }
   
   public func play(index: Int) {
@@ -81,6 +83,10 @@ class PlayListViewModel {
   
   public func change(volume: Int) {
     self.playlist.changeVolume(volume: Double(volume) / 10.0)
+  }
+  
+  public func change(isShuffled: Bool) {
+    self.playlist.setIsShuffled(isShuffled: isShuffled)
   }
   
   public func selectAll() {
