@@ -70,7 +70,7 @@ class Playlist: Object {
     self.realm?.beginWrite()
     if volume < 0 {
       self.volume = 0
-    } else if volume > 1 {
+    } else if volume >= 1 {
       self.volume = 1
     } else {
       self.volume = volume

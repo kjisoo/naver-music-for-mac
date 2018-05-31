@@ -90,6 +90,10 @@ class PlayerController: BaseViewController {
     self.viewModel.artistName.subscribe(onNext: { [weak self] in
       self?.coverView.artistNameField.stringValue = $0 ?? ""
     }).disposed(by: self.disposeBag)
+    
+    self.viewModel.volume.subscribe(onNext: { [weak self] in
+      self?.coverView.volumeSlider.intValue = Int32($0)
+    }).disposed(by: self.disposeBag)
 
     self.coverView.prevButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
       self?.viewModel.prev()
@@ -101,6 +105,12 @@ class PlayerController: BaseViewController {
     
     self.coverView.playButton.rx.controlEvent.subscribe(onNext: { [weak self] (_) in
       self?.viewModel.play()
+    }).disposed(by: self.disposeBag)
+
+    self.coverView.volumeSlider.rx.value.distinctUntilChanged().subscribe(onNext: { [weak self] in
+      if let `self` = self {
+        self.viewModel.change(volume: Int($0))
+      }
     }).disposed(by: self.disposeBag)
     
     self.viewModel.isPaused.subscribe(onNext: { [weak self] in

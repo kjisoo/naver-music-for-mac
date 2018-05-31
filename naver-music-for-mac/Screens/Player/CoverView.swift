@@ -86,6 +86,15 @@ class CoverView: NSView {
     return textView
   }()
   
+  let volumeSlider: NSSlider = {
+    let slider = NSSlider()
+    slider.isVertical = false
+    slider.minValue = 0
+    slider.maxValue = 10
+    slider.intValue = 5
+    return slider
+  }()
+  
   override init(frame frameRect: NSRect) {
     super.init(frame: frameRect)
     self.setupConstraint()
@@ -103,6 +112,7 @@ class CoverView: NSView {
     self.addSubview(prevButton)
     self.addSubview(playButton)
     self.addSubview(nextButton)
+    self.addSubview(volumeSlider)
     
     self.coverImageView.snp.makeConstraints { (make) in
       make.top.equalToSuperview().offset(64)
@@ -139,13 +149,19 @@ class CoverView: NSView {
       make.width.height.equalTo(40)
     }
     
+    volumeSlider.snp.makeConstraints { (make) in
+      make.leading.trailing.equalTo(coverImageView)
+      make.top.equalTo(playButton.snp.bottom)
+      make.height.equalTo(20)
+    }
+    
     let scrollView = NSScrollView()
     scrollView.contentView.documentView = lyricsView
     self.addSubview(scrollView)
     scrollView.snp.makeConstraints { (make) in
       make.leading.trailing.equalTo(self.coverImageView)
       make.bottom.equalToSuperview().offset(-16)
-      make.top.equalTo(playButton.snp.bottom).offset(16)
+      make.top.equalTo(volumeSlider.snp.bottom).offset(16)
     }
   }
   

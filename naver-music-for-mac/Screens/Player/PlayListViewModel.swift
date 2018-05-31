@@ -26,6 +26,7 @@ class PlayListViewModel {
   public var albumeName: Observable<String?>!
   public var artistName: Observable<String?>!
   public var isPaused: Observable<Bool>!
+  public var volume: Observable<Int>!
   
   init(playlist: Playlist = Playlist.getMyPlayList(), musicBrowser: MusicBrowser) {
     self.playlist = playlist
@@ -57,6 +58,7 @@ class PlayListViewModel {
     self.albumeName = musicObserable.map { $0?.album?.name }
     self.artistName = musicObserable.map { $0?.artist?.name }
     self.isPaused = Observable.from(object: self.playlist).map { $0.isPaused }.distinctUntilChanged()
+    self.volume = Observable.from(object: self.playlist).map { $0.volume }.distinctUntilChanged().map { Int($0*10) }
   }
   
   public func play(index: Int) {
@@ -75,6 +77,10 @@ class PlayListViewModel {
   
   public func next() {
     self.playlist.next()
+  }
+  
+  public func change(volume: Int) {
+    self.playlist.changeVolume(volume: Double(volume) / 10.0)
   }
   
   public func selectAll() {
