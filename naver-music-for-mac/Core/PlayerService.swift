@@ -91,6 +91,19 @@ setTimeout(function() {
     self.webPlayer.mainFrame.load(URLRequest(url: URL(string: "http://m.music.naver.com/search/search.nhn")!))
     self.webPlayer.uiDelegate = self
     self.webPlayer.frameLoadDelegate = self
+    Observable<Int>.interval(1, scheduler: MainScheduler.instance)
+      .map { _ -> (Double, Double)? in
+        if let playTime = Double(self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.currentAudioInfo.playTime")),
+          let currentTime = Double(self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.currentTime()")) {
+          return (playTime, currentTime)
+        }
+        return nil
+      }
+      .filter { $0 != nil }
+      .subscribe(onNext: { [weak self] time in
+        self?.playList.update(seek: time!.1)
+        self?.playList.playingMusicState()?.music.setPlaytime(time: time!.0)
+      }).disposed(by: self.disposeBag)
   }
   
   private func bindingPlayList() {
@@ -103,7 +116,8 @@ setTimeout(function() {
     
     Observable.from(object: self.playList).subscribe(onNext: { [weak self] in
       self?.isPaused.onNext($0.isPaused)
-      self?.volume(volume: $0.volume)
+      self?.update(volume: $0.volume)
+      self?.update(seek: $0.seek)
     }).disposed(by: self.disposeBag)
 
     self.isPaused.distinctUntilChanged().subscribe(onNext: { [weak self] (isPaused) in
@@ -148,9 +162,17 @@ setTimeout(function() {
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.play(" + id + ");")
   }
   
-  private func volume(volume: Double) {
+  private func update(volume: Double) {
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopMediaElement.mediaElement.volume = \(volume);")
     self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.playerCoreSwitcher.playerCore.audiopMseHlsCore.audiopConfigStorage.syncVolume(\(volume));")
+  }
+  
+  private func update(seek: Double) {
+    if let currentTime = Double(self.webPlayer.stringByEvaluatingJavaScript(from: "MobilePlayerManager._playerCore.currentTime()")) {
+      if abs(currentTime - seek) > 3 {
+        self.webPlayer.stringByEvaluatingJavaScript(from:"MobilePlayerManager._playerCore.seek(\(seek))")
+      }
+    }
   }
 }
 

@@ -52,6 +52,10 @@ class ControlViewController: NSViewController {
     viewModel?.isPaused.subscribe(onNext: { [weak self] in
       self?.playButton.isSelected = !$0
     }).disposed(by: self.disposeBag)
+    
+    viewModel?.playTime.subscribe(onNext: { [weak self] in
+      self?.timeSlider.setTime(current: $0.current, max: $0.playtime)
+    }).disposed(by: self.disposeBag)
   }
   
   @IBAction func action(sender: NSControl) {
@@ -66,9 +70,12 @@ class ControlViewController: NSViewController {
     case "play":
       self.viewModel?.play()
     case "volumeBar":
-      self.viewModel?.change(volume: sender.integerValue)
+      self.viewModel?.update(volume: sender.integerValue)
     case "shuffle":
       self.viewModel?.toggleShuffle()
+    case "playBar":
+      print(sender.integerValue)
+      self.viewModel?.update(seek: sender.integerValue)
     default:
       print(id)
     }

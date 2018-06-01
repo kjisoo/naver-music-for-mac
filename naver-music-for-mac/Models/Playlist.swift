@@ -17,6 +17,7 @@ class Playlist: Object {
   @objc dynamic var isShuffled = false
   @objc dynamic var isPaused = true
   @objc dynamic var volume: Double = 0.5
+  @objc dynamic var seek: Double = 0
   let musicStates = List<MusicState>()
   
   // MARK: Variables
@@ -36,13 +37,22 @@ class Playlist: Object {
     var playList: Playlist!
     let realm = try! Realm()
     try? realm.write {
-      playList = realm.create(Playlist.self, value: ["id": "MY", "isPaused": true], update: true)
+      playList = realm.create(Playlist.self, value: ["id": "MY", "isPaused": true, "seek": 0], update: true)
     }
     return playList
   }
   
   override class func primaryKey() -> String? {
     return "id"
+  }
+  
+  public func update(seek: Double) {
+    guard self.seek != seek else {
+      return
+    }
+    try? self.realm?.write {
+      self.seek = seek
+    }
   }
   
   public func setIsRepeated(isRepeated: Bool) {
