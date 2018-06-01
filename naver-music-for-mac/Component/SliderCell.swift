@@ -14,6 +14,10 @@ class SliderCell: NSSliderCell {
     super.init(coder: aDecoder)
   }
   
+  override init() {
+    super.init()
+  }
+  
   override func drawBar(inside aRect: NSRect, flipped: Bool) {
     var rect = aRect
     rect.size.height = CGFloat(5)

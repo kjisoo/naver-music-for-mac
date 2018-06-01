@@ -17,7 +17,7 @@ class ControlViewController: NSViewController {
   @IBOutlet weak var shuffleButton: NSButton!
   @IBOutlet weak var playButton: NSButton!
   @IBOutlet weak var volumeSlider: NSSlider!
-  
+  @IBOutlet weak var timeSlider: TimeSliderBar!
   
   // MARK: Variables
   private let disposeBag = DisposeBag()

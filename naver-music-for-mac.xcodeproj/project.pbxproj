@@ -45,6 +45,7 @@
 		E0ED010D20BCF40B00BBA947 /* NSStatusItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED010C20BCF40B00BBA947 /* NSStatusItemManager.swift */; };
 		E0ED011520BFF25D00BBA947 /* Sequence+Shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED011420BFF25D00BBA947 /* Sequence+Shuffle.swift */; };
 		E826253F20C16C5B005E5DEF /* SliderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826253E20C16C5B005E5DEF /* SliderCell.swift */; };
+		E826254320C17100005E5DEF /* TimeSliderBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E826254220C17100005E5DEF /* TimeSliderBar.swift */; };
 		E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837904A20A086BE006BCBBF /* AppDelegate.swift */; };
 		E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E837904C20A086BE006BCBBF /* Assets.xcassets */; };
 		E837905C20A086BE006BCBBF /* naver_music_for_macTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E837905B20A086BE006BCBBF /* naver_music_for_macTests.swift */; };
@@ -117,6 +118,7 @@
 		E0ED010C20BCF40B00BBA947 /* NSStatusItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSStatusItemManager.swift; sourceTree = "<group>"; };
 		E0ED011420BFF25D00BBA947 /* Sequence+Shuffle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Shuffle.swift"; sourceTree = "<group>"; };
 		E826253E20C16C5B005E5DEF /* SliderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCell.swift; sourceTree = "<group>"; };
+		E826254220C17100005E5DEF /* TimeSliderBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSliderBar.swift; sourceTree = "<group>"; };
 		E837904720A086BE006BCBBF /* 네이버 뮤직.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "네이버 뮤직.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E837904A20A086BE006BCBBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E837904C20A086BE006BCBBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */,
 				E05DFBD120B7CD9E00C47754 /* ButtonGroupView.swift */,
 				E826253E20C16C5B005E5DEF /* SliderCell.swift */,
+				E826254220C17100005E5DEF /* TimeSliderBar.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -691,6 +694,7 @@
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
 				009AD15F20C15CFA00A0C935 /* NSButton+Properties.swift in Sources */,
+				E826254320C17100005E5DEF /* TimeSliderBar.swift in Sources */,
 				E8D9204D20B44C8C001F18DC /* BaseViewController.swift in Sources */,
 				E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */,
 				E8D9204720ADB97A001F18DC /* MusicState.swift in Sources */,
