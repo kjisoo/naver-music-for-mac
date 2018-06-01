@@ -25,7 +25,6 @@ class ControlViewController: NSViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.view.bgColor = NSColor(red: 39/255.0, green: 39/255.0, blue: 39/255.0, alpha: 1)
     self.bindWithViewModel()
   }
   
