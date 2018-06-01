@@ -14,6 +14,7 @@
 		009AD15920C14B2700A0C935 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009AD15820C14B2700A0C935 /* ControlViewController.swift */; };
 		009AD15B20C14B5200A0C935 /* ControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009AD15A20C14B5200A0C935 /* ControlViewModel.swift */; };
 		009AD15D20C14E7400A0C935 /* NSView+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009AD15C20C14E7400A0C935 /* NSView+BackgroundColor.swift */; };
+		009AD15F20C15CFA00A0C935 /* NSButton+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009AD15E20C15CFA00A0C935 /* NSButton+Properties.swift */; };
 		0BBAD2039A96ACE75A857173 /* Pods_naver_music_for_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */; };
 		1DEBEF20739C8892B0655037 /* Pods_naver_music_for_macTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */; };
 		E05DFBD220B7CD9E00C47754 /* ButtonGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05DFBD120B7CD9E00C47754 /* ButtonGroupView.swift */; };
@@ -82,6 +83,7 @@
 		009AD15820C14B2700A0C935 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
 		009AD15A20C14B5200A0C935 /* ControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewModel.swift; sourceTree = "<group>"; };
 		009AD15C20C14E7400A0C935 /* NSView+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+BackgroundColor.swift"; sourceTree = "<group>"; };
+		009AD15E20C15CFA00A0C935 /* NSButton+Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSButton+Properties.swift"; sourceTree = "<group>"; };
 		63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_naver_music_for_mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C088D875D5E3480DFE3C105 /* Pods-naver-music-for-mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.release.xcconfig"; sourceTree = "<group>"; };
 		8097FFEA310C198CABC3865F /* Pods-naver-music-for-macTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				E0ED010C20BCF40B00BBA947 /* NSStatusItemManager.swift */,
 				E0ED011420BFF25D00BBA947 /* Sequence+Shuffle.swift */,
 				009AD15C20C14E7400A0C935 /* NSView+BackgroundColor.swift */,
+				009AD15E20C15CFA00A0C935 /* NSButton+Properties.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 				E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
+				009AD15F20C15CFA00A0C935 /* NSButton+Properties.swift in Sources */,
 				E8D9204D20B44C8C001F18DC /* BaseViewController.swift in Sources */,
 				E85B8D5120A6C696007D3C90 /* Artist.swift in Sources */,
 				E8D9204720ADB97A001F18DC /* MusicState.swift in Sources */,

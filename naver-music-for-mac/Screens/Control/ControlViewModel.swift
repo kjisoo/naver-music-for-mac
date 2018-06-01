@@ -72,8 +72,8 @@ class ControlViewModel {
     self.playlist.changeVolume(volume: Double(volume) / 10.0)
   }
   
-  public func change(isShuffled: Bool) {
-    self.playlist.setIsShuffled(isShuffled: isShuffled)
+  public func toggleShuffle() {
+    self.playlist.setIsShuffled(isShuffled: !self.playlist.isShuffled)
   }
   
   public func selectAll() {
