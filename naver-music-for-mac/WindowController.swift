@@ -54,20 +54,29 @@ class WindowController: NSWindowController {
     guard let window = self.window else {
       return
     }
-    let splitViewController = SplitViewController()
+    let contentSplitViewController = SplitViewController()
     
     let sideMenuSplitViewItem = NSSplitViewItem(contentListWithViewController: self.sideMenuViewController)
     sideMenuSplitViewItem.minimumThickness = 200
     sideMenuSplitViewItem.maximumThickness = 200
-    splitViewController.addSplitViewItem(sideMenuSplitViewItem)
+    contentSplitViewController.addSplitViewItem(sideMenuSplitViewItem)
     
     let contentSplitViewItem = NSSplitViewItem(viewController: contentTabViewController)
     contentSplitViewItem.minimumThickness = 700
-    splitViewController.addSplitViewItem(contentSplitViewItem)
+    contentSplitViewController.addSplitViewItem(contentSplitViewItem)
 
     let frameSize = window.contentRect(forFrameRect: window.frame).size
-    splitViewController.view.setFrameSize(frameSize)
-    window.contentViewController = splitViewController
+    contentSplitViewController.view.setFrameSize(frameSize)
+    
+    let mainSplitViewController = SplitViewController()
+    mainSplitViewController.splitView.isVertical = false
+    mainSplitViewController.addSplitViewItem(NSSplitViewItem(contentListWithViewController: contentSplitViewController))
+    let storyboard = NSStoryboard(name: NSStoryboard.Name.init(rawValue: "Main"), bundle: nil)
+    let controlViewControllerItem = NSSplitViewItem(viewController: storyboard.instantiateController(withIdentifier: NSStoryboard.SceneIdentifier.init(rawValue: "ControlViewController")) as! NSViewController)
+    controlViewControllerItem.minimumThickness = 70
+    controlViewControllerItem.maximumThickness = 70
+    mainSplitViewController.addSplitViewItem(controlViewControllerItem)
+    window.contentViewController = mainSplitViewController
   }
   
   private func setupStatusBarItems() {

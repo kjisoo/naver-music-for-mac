@@ -10,6 +10,10 @@
 		0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */; };
 		0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */; };
 		0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */; };
+		009AD15620C14AEE00A0C935 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 009AD15520C14AEE00A0C935 /* Main.storyboard */; };
+		009AD15920C14B2700A0C935 /* ControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009AD15820C14B2700A0C935 /* ControlViewController.swift */; };
+		009AD15B20C14B5200A0C935 /* ControlViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009AD15A20C14B5200A0C935 /* ControlViewModel.swift */; };
+		009AD15D20C14E7400A0C935 /* NSView+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009AD15C20C14E7400A0C935 /* NSView+BackgroundColor.swift */; };
 		0BBAD2039A96ACE75A857173 /* Pods_naver_music_for_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */; };
 		1DEBEF20739C8892B0655037 /* Pods_naver_music_for_macTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */; };
 		E05DFBD220B7CD9E00C47754 /* ButtonGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05DFBD120B7CD9E00C47754 /* ButtonGroupView.swift */; };
@@ -74,6 +78,10 @@
 		0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		009AD15520C14AEE00A0C935 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		009AD15820C14B2700A0C935 /* ControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewController.swift; sourceTree = "<group>"; };
+		009AD15A20C14B5200A0C935 /* ControlViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlViewModel.swift; sourceTree = "<group>"; };
+		009AD15C20C14E7400A0C935 /* NSView+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+BackgroundColor.swift"; sourceTree = "<group>"; };
 		63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_naver_music_for_mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C088D875D5E3480DFE3C105 /* Pods-naver-music-for-mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.release.xcconfig"; sourceTree = "<group>"; };
 		8097FFEA310C198CABC3865F /* Pods-naver-music-for-macTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +171,7 @@
 				E0ABE5EF20AEB0D000C28E77 /* Setting */,
 				E0ABE5F420AEB0E800C28E77 /* Sign */,
 				0085C9E020A5946F00CEFCA5 /* SideMenu */,
+				009AD15720C14B0200A0C935 /* Control */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -196,6 +205,15 @@
 				0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		009AD15720C14B0200A0C935 /* Control */ = {
+			isa = PBXGroup;
+			children = (
+				009AD15820C14B2700A0C935 /* ControlViewController.swift */,
+				009AD15A20C14B5200A0C935 /* ControlViewModel.swift */,
+			);
+			path = Control;
 			sourceTree = "<group>";
 		};
 		971E7684D73AA1A188553876 /* Pods */ = {
@@ -243,6 +261,7 @@
 				E83A3DD420B597B400E18EC0 /* NSColor+newColor.swift */,
 				E0ED010C20BCF40B00BBA947 /* NSStatusItemManager.swift */,
 				E0ED011420BFF25D00BBA947 /* Sequence+Shuffle.swift */,
+				009AD15C20C14E7400A0C935 /* NSView+BackgroundColor.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -309,6 +328,7 @@
 				E0ABE5A520A5795900C28E77 /* MainMenu.xib */,
 				E0ABE5C120A57A8800C28E77 /* WindowController.swift */,
 				E0ABE5C220A57A8800C28E77 /* WindowController.xib */,
+				009AD15520C14AEE00A0C935 /* Main.storyboard */,
 			);
 			path = "naver-music-for-mac";
 			sourceTree = "<group>";
@@ -492,6 +512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E837904D20A086BE006BCBBF /* Assets.xcassets in Resources */,
+				009AD15620C14AEE00A0C935 /* Main.storyboard in Resources */,
 				E0ABE5C420A57A8800C28E77 /* WindowController.xib in Resources */,
 				E0ABE5A620A5795900C28E77 /* MainMenu.xib in Resources */,
 				E0ABE5F820AEB0FB00C28E77 /* SignViewController.xib in Resources */,
@@ -635,6 +656,7 @@
 				E0ABE5F220AEB0E500C28E77 /* SettingViewController.swift in Sources */,
 				E0ABE5FA20AEB39D00C28E77 /* AuthService.swift in Sources */,
 				E0ED010D20BCF40B00BBA947 /* NSStatusItemManager.swift in Sources */,
+				009AD15B20C14B5200A0C935 /* ControlViewModel.swift in Sources */,
 				E0ABE5D220AADA6A00C28E77 /* PlayListViewModel.swift in Sources */,
 				E0ABE60E20B2B88000C28E77 /* MyListParser.swift in Sources */,
 				E0857E7220B7194800974987 /* MusicCellViewModel.swift in Sources */,
@@ -643,6 +665,7 @@
 				E05DFBD220B7CD9E00C47754 /* ButtonGroupView.swift in Sources */,
 				E0ED011520BFF25D00BBA947 /* Sequence+Shuffle.swift in Sources */,
 				E83A3DD820BB000000E18EC0 /* MusicParser.swift in Sources */,
+				009AD15D20C14E7400A0C935 /* NSView+BackgroundColor.swift in Sources */,
 				E837904B20A086BE006BCBBF /* AppDelegate.swift in Sources */,
 				E0ABE61220B2BF1C00C28E77 /* MusicListParser.swift in Sources */,
 				E83A3DD320B47ECE00E18EC0 /* NSImage+tint.swift in Sources */,
@@ -669,6 +692,7 @@
 				E0ABE5E520AE762C00C28E77 /* SideMenuViewModel.swift in Sources */,
 				E85B8D4F20A6C680007D3C90 /* Album.swift in Sources */,
 				E85B8D5D20A7FD72007D3C90 /* PlayerService.swift in Sources */,
+				009AD15920C14B2700A0C935 /* ControlViewController.swift in Sources */,
 				E85B8D5320A6C6DF007D3C90 /* Playlist.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
