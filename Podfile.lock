@@ -55,7 +55,7 @@ DEPENDENCIES:
   - SnapKit
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - Crashlytics
     - Fabric
@@ -99,4 +99,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: bcd4eb84e5b117bf9f024c37ad2c1f95471f1e3e
 
-COCOAPODS: 1.5.2
+COCOAPODS: 1.5.0
