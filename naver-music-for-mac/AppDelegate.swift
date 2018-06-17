@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                                                     migrationBlock: { (migration, oldSchemaVersion) in
     })
     UserDefaults.standard.register(defaults: ["NSApplicationCrashOnExceptions": true])
-//    Fabric.with([Crashlytics.self, Answers.self])
+    Fabric.with([Crashlytics.self, Answers.self])
     self.window = WindowController()
     window?.showWindow(nil)
     
