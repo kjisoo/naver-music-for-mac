@@ -5,6 +5,7 @@ PODS:
   - Fabric (1.7.7)
   - Kanna (4.0.0)
   - Kingfisher (4.7.0)
+  - MediaKeyTap (2.1.0)
   - Moya/Core (11.0.2):
     - Alamofire (~> 4.1)
     - Result (~> 3.0)
@@ -41,6 +42,7 @@ DEPENDENCIES:
   - Fabric
   - Kanna (~> 4.0.0)
   - Kingfisher (~> 4.7)
+  - MediaKeyTap
   - Moya/RxSwift (~> 11.0)
   - Nimble
   - Quick
@@ -59,6 +61,7 @@ SPEC REPOS:
     - Fabric
     - Kanna
     - Kingfisher
+    - MediaKeyTap
     - Moya
     - Nimble
     - Quick
@@ -79,6 +82,7 @@ SPEC CHECKSUMS:
   Fabric: bda89e242bce1b7b8ab264248cf3407774ce0095
   Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
   Kingfisher: da6b005aa96d37698e3e4f1ccfe96a5b9bbf27d6
+  MediaKeyTap: 1849cb1882ebd1ece5fed6b3cec6565a5f30da00
   Moya: a725035953bc1c0eb1be505ab903984501d82440
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
@@ -93,6 +97,6 @@ SPEC CHECKSUMS:
   RxTest: e634f15fd2c2cd0e0120132ef7a4f7be69ad0393
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
 
-PODFILE CHECKSUM: 86807cb3f199a98be1bfcc170d6927afe0d55f25
+PODFILE CHECKSUM: bcd4eb84e5b117bf9f024c37ad2c1f95471f1e3e
 
 COCOAPODS: 1.5.0

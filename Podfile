@@ -31,6 +31,9 @@ target 'naver-music-for-mac' do
   pod 'Fabric'
   pod 'Crashlytics'
 
+  # Media Key
+  pod 'MediaKeyTap'
+
   target 'naver-music-for-macTests' do
     inherit! :search_paths
     # Pods for testing

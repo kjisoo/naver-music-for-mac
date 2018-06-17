@@ -24,7 +24,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     Fabric.with([Crashlytics.self, Answers.self])
     self.window = WindowController()
     window?.showWindow(nil)
+    
+    // MediaKey
+    MediaKeyService.shared.start()
+    
   }
 
 }
+
 
