@@ -10,6 +10,7 @@
 		0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */; };
 		0085C9E720A599CA00CEFCA5 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */; };
 		0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */; };
+		0B9BF9E120D6165900934DAF /* MediaKeyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B9BF9E020D6165900934DAF /* MediaKeyService.swift */; };
 		0BBAD2039A96ACE75A857173 /* Pods_naver_music_for_mac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */; };
 		1DEBEF20739C8892B0655037 /* Pods_naver_music_for_macTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83FDD90144E30356C14EE51E /* Pods_naver_music_for_macTests.framework */; };
 		E05DFBD220B7CD9E00C47754 /* ButtonGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E05DFBD120B7CD9E00C47754 /* ButtonGroupView.swift */; };
@@ -74,6 +75,7 @@
 		0085C9E120A5948900CEFCA5 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		0085C9E620A599CA00CEFCA5 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		0085C9F320A5AE4D00CEFCA5 /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		0B9BF9E020D6165900934DAF /* MediaKeyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaKeyService.swift; sourceTree = "<group>"; };
 		63BA5BB43280329660B98C4B /* Pods_naver_music_for_mac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_naver_music_for_mac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C088D875D5E3480DFE3C105 /* Pods-naver-music-for-mac.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-mac.release.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-mac/Pods-naver-music-for-mac.release.xcconfig"; sourceTree = "<group>"; };
 		8097FFEA310C198CABC3865F /* Pods-naver-music-for-macTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-naver-music-for-macTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-naver-music-for-macTests/Pods-naver-music-for-macTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 				E83A3DD420B597B400E18EC0 /* NSColor+newColor.swift */,
 				E0ED010C20BCF40B00BBA947 /* NSStatusItemManager.swift */,
 				E0ED011420BFF25D00BBA947 /* Sequence+Shuffle.swift */,
+				0B9BF9E020D6165900934DAF /* MediaKeyService.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -659,6 +662,7 @@
 				0085C9E320A5948900CEFCA5 /* SideMenuViewController.swift in Sources */,
 				E0ABE5C720A9534200C28E77 /* NaverPage.swift in Sources */,
 				E0ABE60520B2A43000C28E77 /* MusicList.swift in Sources */,
+				0B9BF9E120D6165900934DAF /* MediaKeyService.swift in Sources */,
 				E0ABE5D620AADDC400C28E77 /* PlayListCellViewModel.swift in Sources */,
 				0085C9F420A5AE4D00CEFCA5 /* PlayerController.swift in Sources */,
 				E0ABE5C320A57A8800C28E77 /* WindowController.swift in Sources */,
