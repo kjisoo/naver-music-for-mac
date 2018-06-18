@@ -1,3 +1,7 @@
+# 안내
+네이버 뮤직이 2018년 서비스 종료 예정이기 때문에 더이상 기능 추가가 이루어 지지 않을 예정입니다. 
+[관련기사](http://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=001&oid=030&aid=0002715489) 
+
 # 네이버 뮤직 for MAC 
 없어서 만든 네이버 맥용 클라이언트
 
